@@ -12,13 +12,16 @@ app.set("views", __dirname + "/views");
 app.set("layout", "layouts/layout");
 app.use(expressLayouts);
 
-// Bodyparser
+// Body parser
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
 
 // Database
 const mongoose = require("mongoose");
-mongoose.connect(process.env.DATABASE_URL, { useNewUrlParser: true });
+mongoose.connect(process.env.DATABASE_URL, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
 const db = mongoose.connection;
 db.on("error", (error) => {
   console.log(error);
