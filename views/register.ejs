@@ -1,5 +1,5 @@
 <h1>Register</h1>
-<form action="/register" method="POST" novalidate>
+<form action="/users/register" method="POST" novalidate>
   <div>
     <%- include('./partials/messages') %>
   </div>
@@ -26,3 +26,4 @@
     <button type="submit">Register</button>
   </div>
 </form>
+<div><a href="/users/login">Already have an account?</a></div>

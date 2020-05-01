@@ -5,6 +5,12 @@ if (process.env.NODE_ENV !== "production") {
 const express = require("express");
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
+const flash = require('connect-flash')
+const session = require('express-session')
+const passport = require('passport')
+
+// Passport config
+require('./config/passport')(passport)
 
 // EJS
 app.set("view engine", "ejs");
@@ -15,6 +21,28 @@ app.use(expressLayouts);
 // Body parser
 app.use(express.urlencoded({ extended: false }));
 app.use(express.static("public"));
+
+//Express session
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  resave: false,
+  saveUninitialized: false,
+}))
+
+// Passport middleware
+app.use(passport.initialize());
+app.use(passport.session());
+
+//Connect flash
+app.use(flash())
+
+//Global vars
+app.use((req, res, next) => {
+  res.locals.success_msg = req.flash('success_msg')
+  res.locals.error_msg = req.flash('error_msg')
+  res.locals.error = req.flash('error')
+  next()
+})
 
 // Database
 const mongoose = require("mongoose");
@@ -34,6 +62,6 @@ db.once("open", () => {
 const indexRouter = require("./routes/index");
 const userRouter = require("./routes/user");
 app.use("/", indexRouter);
-app.use("/", userRouter);
+app.use("/users", userRouter);
 
 app.listen(process.env.PORT || 3000);
