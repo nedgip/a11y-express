@@ -24,12 +24,12 @@ router.post("/register", (req, res) => {
 
   // Check passwords match
   if (password !== confirmPassword) {
-    errors.push({ msg: "The passwords do not match" });
+    errors.push({ msg: "Passwords do not match" });
   }
 
   //check password length
   if (password.length < 8) {
-    errors.push({ msg: "The password should be at least 8 characters long" });
+    errors.push({ msg: "Password should be at least 8 characters long" });
   }
 
   if (errors.length > 0) {
