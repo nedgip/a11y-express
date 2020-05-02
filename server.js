@@ -20,13 +20,15 @@ app.use(expressLayouts);
 
 // Body parser
 app.use(express.urlencoded({ extended: false }));
+
+// Public files}
 app.use(express.static("public"));
 
 //Express session
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  resave: false,
-  saveUninitialized: false,
+  resave: true,
+  saveUninitialized: true
 }))
 
 // Passport middleware
