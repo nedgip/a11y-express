@@ -1,3 +1,16 @@
+@import "shared/form.css";
+@import "shared/buttons.css";
+
 body {
   font-family: arial;
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 3rem;
+}
+
+.container-inner {
+  margin: 0 2rem;
 }

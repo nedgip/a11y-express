@@ -1,0 +1,13 @@
+.form-item label{
+    margin-bottom:10px;
+    font-size:1.1rem;
+    font-weight:600;
+}
+.form-item input{
+    height:2rem;
+    padding: 0.25rem 0.50rem;
+    font-size:1rem;
+    margin-bottom:1rem;
+    border:1px solid grey;
+    border-radius:5px;
+}
