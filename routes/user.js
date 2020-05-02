@@ -2,17 +2,18 @@ const express = require("express");
 const router = express.Router();
 const bcrypt = require('bcrypt')
 const passport = require('passport')
+const { Authenticated, NotAuthenticated } = require('../config/auth')
 
 //User model
 const User = require('../models/User')
 
 // Login page
-router.get("/login", (req, res) => {
+router.get("/login", NotAuthenticated, (req, res) => {
   res.render("login");
 });
 
 // Register page
-router.get("/register", (req, res) => {
+router.get("/register", NotAuthenticated, (req, res) => {
   res.render("register");
 });
 
