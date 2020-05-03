@@ -9,11 +9,13 @@ const User = require('../models/User')
 
 // Login page
 router.get("/login", NotAuthenticated, (req, res) => {
+  res.locals.title = 'Log in - Speedcuber'
   res.render("login");
 });
 
 // Register page
 router.get("/register", NotAuthenticated, (req, res) => {
+  res.locals.title = 'Register - Speedcuber'
   res.render("register");
 });
 
@@ -38,6 +40,7 @@ router.post("/register", (req, res) => {
   }
 
   if (errors.length > 0) {
+    res.locals.title = 'Register - Speedcuber'
     res.render("register", {
       errors,
       name,
@@ -51,6 +54,7 @@ router.post("/register", (req, res) => {
       if (user) {
         //User exists
         errors.push({ msg: 'Email is already registered' })
+        res.locals.title = 'Register - Speedcuber'
         res.render("register", {
           errors,
           name,
@@ -74,7 +78,7 @@ router.post("/register", (req, res) => {
             newUser.save()
               .then(user => {
                 req.flash('success_msg', 'Your are now registered.')
-                res.redirect('/users/login')
+                res.redirect('/login')
               })
               .catch(err => console.log(err))
           })
@@ -88,8 +92,8 @@ router.post("/register", (req, res) => {
 //Login handle
 router.post('/login', (req, res, next) => {
   passport.authenticate('local', {
-    successRedirect: '/dashboard',
-    failureRedirect: '/users/login',
+    successRedirect: '/',
+    failureRedirect: '/login',
     failureFlash: true
   })(req, res, next)
 })
@@ -99,7 +103,7 @@ router.post('/login', (req, res, next) => {
 router.get('/logout', (req, res) => {
   req.logout()
   req.flash('success_msg', `You're are logged out`)
-  res.redirect('/users/login')
+  res.redirect('/login')
 })
 
 module.exports = router;

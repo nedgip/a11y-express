@@ -13,7 +13,7 @@ const passport = require('passport')
 // Passport config
 require('./config/passport')(passport)
 
-//Security
+//Security (Headers)
 const expectCt = require('expect-ct')
 app.disable('x-powered-by')
 app.use(helmet.contentSecurityPolicy({
@@ -99,6 +99,6 @@ db.once("open", () => {
 const indexRouter = require("./routes/index");
 const userRouter = require("./routes/user");
 app.use("/", indexRouter);
-app.use("/users", userRouter);
+app.use("/", userRouter);
 
 app.listen(process.env.PORT || 3000);

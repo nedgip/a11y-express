@@ -1,3 +1,6 @@
-<h1>Weclome</h1>
-<div><a href="/users/login">Login</a></div>
-<div><a href="/users/register">Register</a></div>
+<h1>Dashboard</h1>
+<p>Welcome <%= name %></p>
+<div><a class="btn btn-primary" href="/logout">Logout</a></div>
+<div>
+    <%- include('./partials/form-fields') %>
+</div>
