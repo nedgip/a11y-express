@@ -3,6 +3,7 @@ if (process.env.NODE_ENV !== "production") {
 }
 
 const express = require("express");
+const helmet = require('helmet')
 const app = express();
 const expressLayouts = require("express-ejs-layouts");
 const flash = require('connect-flash')
@@ -11,6 +12,35 @@ const passport = require('passport')
 
 // Passport config
 require('./config/passport')(passport)
+
+//Security
+app.disable('x-powered-by')
+app.use(helmet.contentSecurityPolicy({
+  directives: {
+    defaultSrc: ["'self'"],
+    styleSrc: ["'self'"],
+    scriptSrc: ["'self'", "'unsafe-inline'"],
+  }
+}))
+app.use(helmet.xssFilter({ reportUri: '/report-xss-violation' }))
+app.use(helmet.noSniff())
+app.use(helmet.frameguard({ action: 'DENY' }))
+const sixtyDaysInSeconds = 5184000
+app.use(helmet.hsts({
+  maxAge: sixtyDaysInSeconds
+}))
+app.use(helmet.referrerPolicy({ policy: 'same-origin' }))
+app.use(helmet.ieNoOpen())
+app.use(helmet.featurePolicy({
+  features: {
+    fullscreen: ["'self'"],
+    vibrate: ["'none'"],
+    syncXhr: ["'none'"],
+    microphone: ["'none"],
+    camera: ["'none"],
+
+  }
+}))
 
 // EJS
 app.set("view engine", "ejs");

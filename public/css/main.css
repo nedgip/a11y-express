@@ -1,5 +1,8 @@
 @import "shared/form.css";
 @import "shared/buttons.css";
+@import "shared/message.css";
+@import "shared/header.css";
+@import "shared/var.css";
 
 body {
   font-family: arial;
