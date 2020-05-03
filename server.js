@@ -14,6 +14,7 @@ const passport = require('passport')
 require('./config/passport')(passport)
 
 //Security
+const expectCt = require('expect-ct')
 app.disable('x-powered-by')
 app.use(helmet.contentSecurityPolicy({
   directives: {
@@ -40,6 +41,10 @@ app.use(helmet.featurePolicy({
     camera: ["'none"],
 
   }
+}))
+app.use(expectCt({
+  enforce: true,
+  maxAge: 123
 }))
 
 // EJS

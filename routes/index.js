@@ -3,7 +3,7 @@ const router = express.Router();
 const { Authenticated, NotAuthenticated } = require('../config/auth')
 
 //Welcome page
-router.get("/", (req, res) => {
+router.get("/", NotAuthenticated, (req, res) => {
   res.render("index");
 });
 
