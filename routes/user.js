@@ -7,7 +7,7 @@ const { Authenticated, NotAuthenticated } = require('../config/auth')
 //User model
 const User = require('../models/User')
 
-// Login page
+// Login page 
 router.get("/login", NotAuthenticated, (req, res) => {
   res.locals.title = 'Log in - Speedcuber'
   res.render("login");

@@ -1,22 +1,24 @@
 const mongoose = require("mongoose");
-const User = require(/models/User)
 
 const speedSchema = new mongoose.Schema({
-    speed: {
-        type: Number,
-        required: true,
-    },
-    date: {
-        type: Date.toString,
-        required: true,
-        default: Date.now,
-    },
-    user: {
-        type: mongoose.Schema.Types.ObjectId,
-        required: true,
-        ref: 'User'
-    }
-})
+  speed: {
+    type: Number,
+    required: true,
+  },
+  date: {
+    type: Date,
+    required: true,
+    default: Date.now,
+  },
+  userId: {
+    type: String,
+    required: true,
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+});
 
-const User = mongoose.model("Speed", speedSchema);
+const Speed = mongoose.model("Speed", speedSchema);
 module.exports = Speed;

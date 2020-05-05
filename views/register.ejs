@@ -6,28 +6,49 @@
   <div class="form-item">
     <label for="name">Name</label>
     <div>
-      <input type="text" name="name" id="name" required value="<%= typeof name != 'undefined' ? name : '' %>" />
+      <input
+        type="text"
+        name="name"
+        id="name"
+        required
+        value="<%= typeof name != 'undefined' ? name : '' %>"
+      />
     </div>
   </div>
   <div class="form-item">
     <label for="email">Email</label>
     <div>
-      <input type="email" name="email" id="email" required value="<%= typeof email != 'undefined' ? email : '' %>" />
+      <input
+        type="email"
+        name="email"
+        id="email"
+        required
+        value="<%= typeof email != 'undefined' ? email : '' %>"
+      />
     </div>
   </div>
   <div class="form-item">
     <label for="password">Password</label>
     <div>
-      <input type="password" name="password" id="password" required
-        value="<%= typeof password != 'undefined' ? password : '' %>" />
+      <input
+        type="password"
+        name="password"
+        id="password"
+        required
+        value="<%= typeof password != 'undefined' ? password : '' %>"
+      />
     </div>
-
   </div>
   <div class="form-item">
     <label for="confirmPassword">Confirm password</label>
     <div>
-      <input type="password" name="confirmPassword" id="confirmPassword" required
-        value="<%= typeof confirmPassword != 'undefined' ? confirmPassword : '' %>" />
+      <input
+        type="password"
+        name="confirmPassword"
+        id="confirmPassword"
+        required
+        value="<%= typeof confirmPassword != 'undefined' ? confirmPassword : '' %>"
+      />
     </div>
   </div>
 
@@ -35,4 +56,4 @@
     <button class="btn btn-primary" type="submit">Register</button>
   </div>
 </form>
-<div><a href="/login">Already have an account?</a></div>
+<div><a href="/login">Login</a></div>

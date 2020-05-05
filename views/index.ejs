@@ -2,5 +2,19 @@
 <p>Welcome <%= name %></p>
 <div><a class="btn btn-primary" href="/logout">Logout</a></div>
 <div>
-    <%- include('./partials/form-fields') %>
+  <%- include('./partials/form-fields') %>
 </div>
+<table>
+  <tr>
+    <th>Speed</th>
+    <th>Date</th>
+    <th>Name</th>
+  </tr>
+  <% speeds.forEach(speed => { %>
+  <tr>
+    <td><%= speed.speed %></td>
+    <td><%= speed.date %></td>
+    <td><%= speed.name %></td>
+  </tr>
+
+  <% }) %>

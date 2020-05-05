@@ -9,6 +9,7 @@ const expressLayouts = require("express-ejs-layouts");
 const flash = require('connect-flash')
 const session = require('express-session')
 const passport = require('passport')
+const bodyParser = require('body-parser')
 
 // Passport config
 require('./config/passport')(passport)
@@ -54,7 +55,7 @@ app.set("layout", "layouts/layout");
 app.use(expressLayouts);
 
 // Body parser
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: false }));
 
 // Public files}
 app.use(express.static("public"));
