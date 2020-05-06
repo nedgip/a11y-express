@@ -4,7 +4,7 @@
 <div>
   <%- include('./partials/form-fields') %>
 </div>
-<table>
+<table class="speed-table">
   <tr>
     <th>Speed</th>
     <th>Date</th>
@@ -13,7 +13,7 @@
   <% speeds.forEach(speed => { %>
   <tr>
     <td><%= speed.speed %></td>
-    <td><%= speed.date %></td>
+    <td><%= speed.date.toLocaleString() %></td>
     <td><%= speed.name %></td>
   </tr>
 

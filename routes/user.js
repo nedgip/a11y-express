@@ -6,6 +6,7 @@ const { Authenticated, NotAuthenticated } = require('../config/auth')
 
 //User model
 const User = require('../models/User')
+const Speed = require('../models/Speed')
 
 // Login page 
 router.get("/login", NotAuthenticated, (req, res) => {

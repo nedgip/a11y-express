@@ -11,7 +11,7 @@ router.get("/", Authenticated, async (req, res) => {
   const thisUserId = req.user._id
   try {
     console.log(thisUserId)
-    speeds = await Speed.find({ id: thisUserId })
+    speeds = await Speed.find({ userId: thisUserId }).sort({ date: 'desc' }).limit(10)
     console.log(speeds)
   } catch {
     console.log('Not working')
