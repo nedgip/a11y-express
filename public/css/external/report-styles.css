@@ -32,3 +32,10 @@ margin:auto;
 .issue-section-heading {
   color: hsl(16, 88%, 44%);
 }
+.seperator {
+  border-bottom:
+    solid 
+    1px 
+    hsl(100,0%,70%);
+  margin:2em 0 4em 0
+}
