@@ -1,0 +1,18 @@
+<h2>Recent times</h2>
+<table class="speed-table">
+  <tr>
+    <th>Speed</th>
+    <th>Date</th>
+    <th>Name</th>
+    <th>Action</th>
+  </tr>
+  <% speeds.forEach(speed => { %>
+  <tr>
+    <td><%= speed.speed %></td>
+    <td><%= speed.date.toLocaleString() %></td>
+    <td><%= speed.name %></td>
+    <td><span><a class="btn btn-primary" href="/<%= speed.id %>/edit">Edit</a></span><span><button
+          class="btn btn-danger">Delete</button></span></td>
+  </tr>
+
+  <% }) %>

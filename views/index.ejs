@@ -4,17 +4,6 @@
 <div>
   <%- include('./partials/form-fields') %>
 </div>
-<table class="speed-table">
-  <tr>
-    <th>Speed</th>
-    <th>Date</th>
-    <th>Name</th>
-  </tr>
-  <% speeds.forEach(speed => { %>
-  <tr>
-    <td><%= speed.speed %></td>
-    <td><%= speed.date.toLocaleString() %></td>
-    <td><%= speed.name %></td>
-  </tr>
-
-  <% }) %>
+<% if(speeds.speed !== null || speeds.speed !== []){ %>
+<%- include('./partials/recent-times') %>
+<% } %>

@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const speedSchema = new mongoose.Schema({
   speed: {
     type: Number,
-    required: true,
+    required: [true, 'Speed is missing']
   },
   date: {
     type: Date,
