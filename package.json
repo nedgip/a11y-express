@@ -20,7 +20,7 @@
     "express-validator": "^6.4.1",
     "helmet": "^3.22.0",
     "mongodb": "^3.5.7",
-    "mongoose": "^5.9.10",
+    "mongoose": "^5.9.11",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0"
   },
