@@ -76,4 +76,10 @@ async function renderFormPage(res, speed, form, hasError = false) {
     console.log("Error: rendering from page")
   }
 }
+
+
+// app.get('/:id/all', Authenticated, (req, res) => {
+//   res.locals.title = "All speeds - Speedcuber";
+// })
+
 module.exports = router;
