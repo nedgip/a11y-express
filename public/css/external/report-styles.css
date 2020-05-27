@@ -20,11 +20,13 @@ margin:auto;
 }
 .issue-detail {
   display:flex;
-  /* justify-content:space-between; */
   flex-wrap:wrap;
 }
 .issue-detail span {
   justify-self: left;
+}
+.issue-detail strong {
+    min-width: 10em;
 }
 .logo {
   max-width:250px;
