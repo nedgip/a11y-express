@@ -19,11 +19,15 @@ margin:auto;
  padding-left:0; 
  line-height:2em;
 }
+.issue-detail:last-child {
+  border-bottom:none;
+}
 .issue-detail {
   display:flex;
   flex-wrap:wrap;
   border-bottom: 1px solid hsl(100, 0%, 90%);
 }
+
 .issue-detail span {
   justify-self: left;
   border-left: 1px solid hsl(100,0%, 90%);
