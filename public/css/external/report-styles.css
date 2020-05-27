@@ -55,3 +55,15 @@ margin:auto;
     hsl(100,0%, 90%);
   margin:2em 0 2em 0
 }
+.intopia-btn {
+  border:2px solid;
+  border-radius:.2em;
+  padding:.7em;
+  font-size:1.3em;
+  background:white;
+  cursor:pointer;
+}
+.intopia-btn:hover {
+ background: hsl(100,0%,90%)
+}
+
