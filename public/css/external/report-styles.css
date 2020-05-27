@@ -10,7 +10,7 @@ margin:auto;
 .header {
   display: flex;
   flex-wrap:wrap;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 .report-title {
   max-width:80%;
@@ -58,8 +58,8 @@ margin:auto;
 .intopia-btn {
   border:2px solid;
   border-radius:.2em;
-  padding:.7em;
-  font-size:1.3em;
+  padding:.5em;
+  font-size:1.1em;
   background:white;
   cursor:pointer;
 }
