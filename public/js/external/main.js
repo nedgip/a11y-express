@@ -23,22 +23,22 @@ if (params.has('edit')) {
   </div>
   <div>
     <label>Product</label>
-    <input type="text">
+    <input ng-model="product" type="text">
   </div>
 <div>
     <label>WCAG</label>
-  <select>
+  <select ng-model="wcag">
     <option>WCAG 2.1</option>
     <option>WCAG 2.0</option>
   </select>
   </div>
   <div>
     <label>Start date</label>
-    <input type="date">
+    <input type="date" ng-model="start-date">
 </div>
    <div>
     <label>End date</label>
-    <input type="date">
+    <input type="date" ng-model="end-date">
 </div>
     `
 
