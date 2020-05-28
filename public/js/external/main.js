@@ -14,6 +14,7 @@ const editArray = [...edit]
 if (params.has('edit')) {
     editArray.forEach((element) => {
         element.classList.add('editLive');
-        element.setAttribute('contenteditable', true, 'tabindex', 0)
+        element.setAttribute('contenteditable', true, 'tabindex', 0, 'role', 'textarea')
+
     })
 }
