@@ -78,6 +78,6 @@ margin:auto;
 @page :right {
   margin-left: 4cm;
 }
-h2 {
+h2.new-page {
   page-break-before: always;
 }
