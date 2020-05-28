@@ -7,4 +7,4 @@ printBtn.addEventListener('click', () => {
 const queryString = new URLSearchParams(window.location.search);
 const currentQueryString = queryString.get('currentQueryString');
 
-console.log(myParam)
+console.log(currentQueryString)
