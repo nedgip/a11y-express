@@ -1,11 +1,19 @@
+// PRINT BTN
 const printBtn = document.querySelector('.print')
 
 printBtn.addEventListener('click', () => {
     window.print()
 })
 
-const params = new URLSearchParams(window.location.search)
+
+// EDIT REPORT
+const params = new URLSearchParams(window.location.search);
+const edit = document.querySelectorAll('.editable');
+const editArray = [...edit]
 
 if (params.has('edit')) {
-    console.log('yes')
+    editArray.forEach((element) => {
+        element.classList.add('editLive');
+        element.setAttribute('contenteditable', true)
+    })
 }

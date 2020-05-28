@@ -91,3 +91,7 @@ h2.new-page {
        display:none;
    }
 }
+
+.editLive {
+  background:hsl(48, 90%, 68%);
+}
