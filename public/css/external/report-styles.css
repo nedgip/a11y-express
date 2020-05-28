@@ -101,4 +101,5 @@ h2.new-page {
 }
 .editLive:focus {
   outline:3px hsl(200, 70%, 35%) solid;
+  margin: .2em;
 }
