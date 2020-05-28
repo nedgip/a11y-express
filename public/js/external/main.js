@@ -6,10 +6,10 @@ printBtn.addEventListener('click', () => {
     window.print()
 })
 
-const queryString = new URLSearchParams(window.location.search);
-const currentQueryString = queryString.get('currentQueryString');
+const urlParams = new URLSearchParams(window.location.search);
+const myParam = urlParams.get('myParam');
 
-if (currentQueryString === "edit") {
+if (myParam === "edit") {
     console.log('edit')
 } else {
     console.log('nothing to see here')
