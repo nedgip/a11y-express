@@ -81,3 +81,13 @@ margin:auto;
 h2.new-page {
   page-break-before: always;
 }
+@page:left{
+  @bottom-left {
+    content: "Page " counter(page) " of " counter(pages);
+  }
+}
+@media print{
+   .noprint{
+       display:none;
+   }
+}
