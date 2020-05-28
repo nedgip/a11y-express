@@ -4,11 +4,12 @@ printBtn.addEventListener('click', () => {
     window.print()
 })
 
-const urlParams = new URLSearchParams(window.location.search);
-const myParam = urlParams.get('myParam').toString();
-const edit = "edit"
-if (myParam === edit) {
-    console.log('edit')
+var paramsString = "edit=true";
+var searchParams = new URLSearchParams(paramsString);
+
+
+if (searchParams.has("edit") === true) {
+    console.log = "yay"
 } else {
     console.log(myParam)
 }
