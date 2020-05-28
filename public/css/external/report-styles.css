@@ -95,3 +95,6 @@ h2.new-page {
 .editLive {
   background:hsl(48, 90%, 68%);
 }
+.editLive:focus {
+  outline:3px black solid;
+}
