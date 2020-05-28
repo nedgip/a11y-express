@@ -67,3 +67,17 @@ margin:auto;
  background: hsl(100,0%,90%)
 }
 
+/* Page media */
+@page {
+  size:A4;
+}
+@page :left {
+  margin-left: 3cm;
+}
+
+@page :right {
+  margin-left: 4cm;
+}
+h2 {
+  page-break-before: always;
+}
