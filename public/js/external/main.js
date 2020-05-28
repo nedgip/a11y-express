@@ -1,5 +1,5 @@
 const printBtn = document.querySelector('.print')
 
-PrintBtn.addEventListener('click', () => {
+printBtn.addEventListener('click', () => {
     window.print()
 })
