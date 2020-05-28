@@ -56,15 +56,19 @@ margin:auto;
   margin:2em 0 2em 0
 }
 .print {
-  border:2px solid;
+  border:1px solid;
   border-radius:.2em;
-  padding:.3em .5em;
+  padding:.1em .8em;
   font-size:1.1em;
   background:white;
   cursor:pointer;
 }
 .print:hover {
  background: hsl(100,0%,90%)
+}
+.print:focus {
+ box-shadow:0 0 0 2px hsl(16, 88%, 44%);
+ outline:transparent dotted 3px;
 }
 
 /* Page media */
