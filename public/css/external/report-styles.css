@@ -57,7 +57,7 @@ margin:auto;
 }
 .print {
   border:1px solid;
-  border-radius:.2em;
+  border-radius:.3em;
   padding:.1em .8em;
   font-size:1.1em;
   background:white;
@@ -67,7 +67,7 @@ margin:auto;
  background: hsl(100,0%,90%)
 }
 .print:focus {
- box-shadow:0 0 0 2px hsl(16, 88%, 44%);
+ box-shadow:0 0 0 2px hsl(200, 70%, 35%);
  outline:transparent dotted 3px;
 }
 
@@ -100,5 +100,5 @@ h2.new-page {
   background:hsl(48, 90%, 68%);
 }
 .editLive:focus {
-  outline:3px black solid;
+  outline:3px hsl(200, 70%, 35%) solid;
 }
