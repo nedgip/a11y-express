@@ -1,5 +1,3 @@
-import { Collection } from "mongoose";
-
 const printBtn = document.querySelector('.print')
 
 printBtn.addEventListener('click', () => {
