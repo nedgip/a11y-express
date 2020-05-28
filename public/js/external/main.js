@@ -8,8 +8,8 @@ printBtn.addEventListener('click', () => {
 
 const urlParams = new URLSearchParams(window.location.search);
 const myParam = urlParams.get('myParam');
-
-if (myParam === "edit") {
+const edit = "edit"
+if (myParam.match(edit)) {
     console.log('edit')
 } else {
     console.log('nothing to see here')
