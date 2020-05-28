@@ -4,7 +4,7 @@ printBtn.addEventListener('click', () => {
     window.print()
 })
 
-const urlParams = new URLSearchParams(window.location.search);
+const urlParams = new URLSearchParams(window.location.search).toString();
 const myParam = urlParams.get('myParam');
 const edit = "edit"
 if (myParam === edit) {
