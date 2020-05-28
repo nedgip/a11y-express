@@ -13,9 +13,9 @@ const editArray = [...edit];
 
 
 if (params.has('edit')) {
-    const script = document.querySelector('#script');
-    console.log(script)
-    script.textContent = `<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>`;
+    // const script = document.querySelector('#script');
+    // console.log(script)
+    // script.textContent = `<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>`;
     const sidebar = document.querySelector('.off-site-container');
     sidebar.innerHTML = `<ul class="menuList">
      <li><a href="#">About us</a></li>
