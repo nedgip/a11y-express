@@ -54,6 +54,10 @@ const wcag = document.querySelector('.wcag')
 wcag.setAttribute('ng-model', "wcag")
 const level = document.querySelector('.level')
 level.setAttribute('ng-model', "level")
+const start = document.querySelector('.start')
+level.setAttribute('ng-model', "start")
+const end = document.querySelector('.end')
+end.setAttribute('ng-model', "end")
 
 const clientValue = document.querySelectorAll('.client-hl')
 clientValueArray = [...clientValue]
