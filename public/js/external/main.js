@@ -1,4 +1,4 @@
-// PRINT BTN
+// Print button
 const printBtn = document.querySelector('.print');
 
 printBtn.addEventListener('click', () => {
@@ -42,7 +42,7 @@ closeSiteMenu.addEventListener("click", event => {
 
 
 
-// EDIT REPORT
+// Add Angular to file
 const config = document.querySelector('.config')
 config.setAttribute('ng-app', "")
 
@@ -59,17 +59,31 @@ start.setAttribute('ng-model', "start")
 const end = document.querySelector('.end')
 end.setAttribute('ng-model', "end")
 
-const clientValue = document.querySelectorAll('.client-hl')
-clientValueArray = [...clientValue]
-clientValueArray.forEach(e => {
-    e.textContent = '{{client}}'
-})
 
-const productValue = document.querySelectorAll('.product-hl')
-productValueArray = [...productValue]
-productValueArray.forEach(e => {
-    e.textContent = '{{product}}'
-})
+class bindFields {
+    constructor(value, selector) {
+        const v = document.querySelector(selector);
+        const vArray = [...v];
+        vArray.forEach(e => {
+            e.textContent = `{{${value}}}`
+        })
+    }
+}
+
+bindFields('client', '.client-h1');
+bindFields('product', '.product-h1');
+
+// const clientValue = document.querySelectorAll('.client-hl')
+// const clientValueArray = [...clientValue]
+// clientValueArray.forEach(e => {
+//     e.textContent = '{{client}}'
+// })
+
+// const productValue = document.querySelectorAll('.product-hl')
+// const productValueArray = [...productValue]
+// productValueArray.forEach(e => {
+//     e.textContent = '{{product}}'
+// })
 
 
 const wcagValue = document.querySelector('.wcag-hl')
