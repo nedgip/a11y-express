@@ -1,9 +1,43 @@
 // PRINT BTN
-const printBtn = document.querySelector('.print')
+const printBtn = document.querySelector('.print');
 
 printBtn.addEventListener('click', () => {
     window.print()
 })
+// Sidebar menu
+const menuBtn = document.querySelector(".sidebar");
+const offSiteContainer = document.querySelector(".off-site-container");
+const siteMenu = offSiteContainer.querySelector("#siteMenu");
+const closeSiteMenu = siteMenu.querySelector("#closeSiteMenu");
+const siteMenuListWrapper = siteMenu.querySelector(".menuListWrapper");
+
+// Menu button event listener
+menuBtn.addEventListener("click", event => {
+    body.classList.toggle("is-open");
+    if (body.classList.contains("is-open")) {
+        offSiteContainer.removeAttribute("aria-hidden");
+        siteMenuListWrapper.classList.remove("hidden");
+        menuBtn.setAttribute("aria-expanded", "true");
+        // 	 Set focus on the labelled menu container
+        closeSiteMenu.focus();
+    } else {
+        offSiteContainer.setAttribute("aria-hidden", "true");
+        siteMenuListWrapper.classList.add("hidden");
+        menuBtn.setAttribute("aria-expanded", "false");
+    }
+});
+
+// Close menu button event listener
+closeSiteMenu.addEventListener("click", event => {
+    body.classList.remove("is-open");
+    offSiteContainer.setAttribute("aria-hidden", "true");
+    menuBtn.setAttribute("aria-expanded", "false");
+    // 	Return focus to the menu button
+    menuBtn.focus();
+});
+
+
+
 
 
 // EDIT REPORT
@@ -12,6 +46,7 @@ const edit = document.querySelectorAll('.editable');
 const editArray = [...edit];
 const config = document.querySelector('.config')
 config.setAttribute('ng-app', "")
+
 // const product = document.querySelector('.product')
 // product.setAttribute('ng-model', "product")
 // const client = document.querySelector('.client')
