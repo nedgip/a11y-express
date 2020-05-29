@@ -43,9 +43,17 @@ closeSiteMenu.addEventListener("click", event => {
 
 
 // Add Angular to file
-const config = document.querySelector('.config')
-config.setAttribute('ng-app', "")
 
+class AddAttr {
+    constructor(selector, attr, value) {
+        const selector = document.querySelector(selector);
+        selector.setAttribute(attr, value)
+    }
+}
+
+const ngApp = new AddAttr('.config', 'ng-app', "")
+// const config = document.querySelector('.config')
+// config.setAttribute('ng-app', "")
 const product = document.querySelector('.product')
 product.setAttribute('ng-model', "product")
 const client = document.querySelector('.client')
