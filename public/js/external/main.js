@@ -61,7 +61,7 @@ clientValueArray.forEach(e => {
     e.textContent = '{{client}}'
 })
 
-const productValue = document.querySelector('.product-hl')
+const productValue = document.querySelectorAll('.product-hl')
 productValueArray = [...productValue]
 productValueArray.forEach(e => {
     e.textContent = '{{product}}'
