@@ -54,9 +54,9 @@ product.setAttribute('ng-model', "product")
 const client = document.querySelector('.client')
 client.setAttribute('ng-model', "client")
 const wcag = document.querySelector('.wcag')
-client.setAttribute('ng-model', "wcag")
+wcag.setAttribute('ng-model', "wcag")
 const level = document.querySelector('.level')
-client.setAttribute('ng-model', "level")
+level.setAttribute('ng-model', "level")
 
 const clientValue = document.querySelector('.client-hl')
 const clientCurly = "{{client}}"
