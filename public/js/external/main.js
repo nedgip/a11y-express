@@ -60,7 +60,9 @@ const end = document.querySelector('.end')
 end.setAttribute('ng-model', "end")
 
 
-class bindFields {
+
+// Binding fields using Angular
+class BindFields {
     constructor(value, selector) {
         const v = document.querySelectorAll(selector);
         const vArray = [...v];
@@ -70,33 +72,9 @@ class bindFields {
     }
 }
 
-const clientBind = new bindFields('client', '.client-hl');
-const productBind = new bindFields('product', '.product-hl');
-const wcagBind = new bindFields('wcag', '.wcag-hl');
-const levelBind = new bindFields('level', '.level-hl');
-const startBind = new bindFields('start', '.start-hl');
-const endBind = new bindFields('end', '.end-hl');
-// const clientValue = document.querySelectorAll('.client-hl')
-// const clientValueArray = [...clientValue]
-// clientValueArray.forEach(e => {
-//     e.textContent = '{{client}}'
-// })
-
-// const productValue = document.querySelectorAll('.product-hl')
-// const productValueArray = [...productValue]
-// productValueArray.forEach(e => {
-//     e.textContent = '{{product}}'
-// })
-
-
-// const wcagValue = document.querySelector('.wcag-hl')
-// wcagValue.textContent = '{{wcag}}'
-
-// const levelValue = document.querySelector('.level-hl')
-// levelValue.textContent = '{{level}}'
-
-// const startValue = document.querySelector('.start-hl')
-// startValue.textContent = '{{start}}'
-
-// const endValue = document.querySelector('.end-hl')
-// endValue.textContent = '{{end}}'
+const clientBind = new BindFields('client', '.client-hl');
+const productBind = new BindFields('product', '.product-hl');
+const wcagBind = new BindFields('wcag', '.wcag-hl');
+const levelBind = new BindFields('level', '.level-hl');
+const startBind = new BindFields('start', '.start-hl');
+const endBind = new BindFields('end', '.end-hl');
