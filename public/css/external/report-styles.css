@@ -103,3 +103,29 @@ h2.new-page {
   outline:3px hsl(200, 70%, 35%) solid;
   padding: .2em;
 }
+
+/* Off-site container */
+/* Containers */
+.off-site-container{
+	position:fixed;
+/* 	top:0;
+	bottom:0; */
+	left:-14rem;
+	width:14rem;
+	border-right:solid black 2px;
+	background:#F5F5F5;
+	z-index:100;
+	overflow-y: auto;
+  top: 0;
+  bottom: 0;
+	transition: transform 0.3s ease-out;
+}
+.site-container{
+	padding:1em;
+	width:75%;
+	transition: transform 0.3s ease-out;
+	
+	}
+.is-open .off-site-container , .is-open .site-container {
+	transform: translateX(14rem); 
+}
