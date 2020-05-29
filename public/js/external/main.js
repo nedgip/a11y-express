@@ -78,3 +78,8 @@ wcagValue.textContent = '{{wcag}}'
 const levelValue = document.querySelector('.level-hl')
 levelValue.textContent = '{{level}}'
 
+const startValue = document.querySelector('.start-hl')
+startValue.textContent = '{{start}}'
+
+const endValue = document.querySelector('.end-hl')
+endValue.textContent = '{{end}}'
