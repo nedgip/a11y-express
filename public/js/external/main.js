@@ -72,10 +72,10 @@ class bindFields {
 
 const clientBind = new bindFields('client', '.client-hl');
 const productBind = new bindFields('product', '.product-hl');
-const productBind = new bindFields('wcag', '.wcag-hl');
-const productBind = new bindFields('level', '.level-hl');
-const productBind = new bindFields('start', '.start-hl');
-const productBind = new bindFields('end', '.end-hl');
+const wcagBind = new bindFields('wcag', '.wcag-hl');
+const levelBind = new bindFields('level', '.level-hl');
+const startBind = new bindFields('start', '.start-hl');
+const endBind = new bindFields('end', '.end-hl');
 // const clientValue = document.querySelectorAll('.client-hl')
 // const clientValueArray = [...clientValue]
 // clientValueArray.forEach(e => {
