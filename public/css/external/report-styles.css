@@ -67,7 +67,7 @@ margin:auto;
  background: hsl(100,0%,90%)
 }
 .btn:focus {
- box-shadow:0 0 0 2px hsl(200, 70%, 35%);
+ box-shadow:0 0 0 2px hsl(344, 85%, 49%);
  outline:transparent dotted 3px;
 }
 
@@ -100,7 +100,7 @@ h2.new-page {
   background:hsl(48, 90%, 68%);
 }
 .editLive:focus {
-  outline:3px hsl(200, 70%, 35%) solid;
+  outline:3px hsl(344, 85%, 49%) solid;
   padding: .2em;
 }
 
