@@ -55,7 +55,7 @@ margin:auto;
     hsl(100,0%, 90%);
   margin:2em 0 2em 0
 }
-.print {
+.btn {
   border:1px solid;
   border-radius:.3em;
   padding:.1em .8em;
@@ -63,10 +63,10 @@ margin:auto;
   background:white;
   cursor:pointer;
 }
-.print:hover {
+.btn:hover {
  background: hsl(100,0%,90%)
 }
-.print:focus {
+.btn:focus {
  box-shadow:0 0 0 2px hsl(200, 70%, 35%);
  outline:transparent dotted 3px;
 }
