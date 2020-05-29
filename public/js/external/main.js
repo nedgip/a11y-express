@@ -43,9 +43,9 @@ closeSiteMenu.addEventListener("click", event => {
 
 
 // EDIT REPORT
-const params = new URLSearchParams(window.location.search);
-const edit = document.querySelectorAll('.editable');
-const editArray = [...edit];
+// const params = new URLSearchParams(window.location.search);
+// const edit = document.querySelectorAll('.editable');
+// const editArray = [...edit];
 const config = document.querySelector('.config')
 config.setAttribute('ng-app', "")
 
@@ -58,6 +58,8 @@ client.setAttribute('ng-model', "wcag")
 const level = document.querySelector('.level')
 client.setAttribute('ng-model', "level")
 
+const clientValue = document.querySelector('.client-hl')
+clientValue.innerHTML = '{{client}}'
 
 // if (params.has('edit')) {
 // const script = document.querySelector('#script');
