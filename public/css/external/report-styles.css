@@ -127,6 +127,12 @@ h2.new-page {
 .is-open .off-site-container , .is-open .site-container {
 	transform: translateX(14rem); 
 }
+/* Close button */
+.right-align{
+	position: absolute;
+  right: 0px;
+	margin-right:0.5em;
+}
 
 /* Form */
 .intopia-form label{
