@@ -10,8 +10,8 @@ printBtn.addEventListener('click', () => {
 const params = new URLSearchParams(window.location.search);
 const edit = document.querySelectorAll('.editable');
 const editArray = [...edit];
-
-
+const config = document.querySelector('.config')
+config.setAttribute('ng-app', "")
 if (params.has('edit')) {
     // const script = document.querySelector('#script');
     // console.log(script)
