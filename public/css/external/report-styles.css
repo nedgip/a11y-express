@@ -131,7 +131,8 @@ h2.new-page {
 .right-align{
 	position: absolute;
   right: 0px;
-	margin-right:0.5em;
+  margin-right:0.5em;
+  top:.5em;
 }
 
 
