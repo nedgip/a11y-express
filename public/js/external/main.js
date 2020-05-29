@@ -1,7 +1,7 @@
-// Print button
-const printBtn = document.querySelector('.print');
 
-printBtn.addEventListener('click', () => {
+// PrintBtn
+const pBtn = document.querySelector('.print');
+pBtn.addEventListener('click', () => {
     window.print()
 })
 // Sidebar menu
@@ -42,15 +42,15 @@ closeSiteMenu.addEventListener("click", event => {
 
 
 
-// Add Angular to file
 
+// Add attributes to elements
 class AddAttr {
     constructor(selector, attr, value) {
         const s = document.querySelector(selector);
         s.setAttribute(attr, value)
     }
 }
-
+// Add Angular to file and inputs
 const ngApp = new AddAttr('.config', 'ng-app', '')
 const product = new AddAttr('.product', 'ng-model', 'product')
 const client = new AddAttr('.client', 'ng-model', 'client')
@@ -58,24 +58,10 @@ const wcag = new AddAttr('.wcag', 'ng-model', 'wcag')
 const level = new AddAttr('.level', 'ng-model', 'level')
 const start = new AddAttr('.start', 'ng-model', 'start')
 const end = new AddAttr('.end', 'ng-model', 'end')
-// const config = document.querySelector('.config')
-// config.setAttribute('ng-app', "")
-// const product = document.querySelector('.product')
-// product.setAttribute('ng-model', "product")
-// const client = document.querySelector('.client')
-// client.setAttribute('ng-model', "client")
-// const wcag = document.querySelector('.wcag')
-// wcag.setAttribute('ng-model', "wcag")
-// const level = document.querySelector('.level')
-// level.setAttribute('ng-model', "level")
-// const start = document.querySelector('.start')
-// start.setAttribute('ng-model', "start")
-// const end = document.querySelector('.end')
-// end.setAttribute('ng-model', "end")
 
 
 
-// Binding fields using Angular
+// Binds fields using Angular
 class BindFields {
     constructor(value, selector) {
         const v = document.querySelectorAll(selector);
