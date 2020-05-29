@@ -59,7 +59,7 @@ const level = document.querySelector('.level')
 client.setAttribute('ng-model', "level")
 
 const clientValue = document.querySelector('.client-hl')
-clientValue.innerHTML = '{{client}}'
+clientValue.textContent = '{{client}}'
 
 // if (params.has('edit')) {
 // const script = document.querySelector('#script');
