@@ -5,8 +5,9 @@ printBtn.addEventListener('click', () => {
     window.print()
 })
 // Sidebar menu
-const menuBtn = document.querySelector(".sidebar");
-const offSiteContainer = document.querySelector(".off-site-container");
+const menuBtn = document.querySelector("#menuBtn");
+const body = document.body;
+const offSiteContainer = body.querySelector(".off-site-container");
 const siteMenu = offSiteContainer.querySelector("#siteMenu");
 const closeSiteMenu = siteMenu.querySelector("#closeSiteMenu");
 const siteMenuListWrapper = siteMenu.querySelector(".menuListWrapper");
@@ -35,6 +36,7 @@ closeSiteMenu.addEventListener("click", event => {
     // 	Return focus to the menu button
     menuBtn.focus();
 });
+
 
 
 
