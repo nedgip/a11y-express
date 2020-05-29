@@ -70,8 +70,8 @@ class bindFields {
     }
 }
 
-const client = new bindFields('client', '.client-hl');
-const product = new bindFields('product', '.product-hl');
+const clientBind = new bindFields('client', '.client-hl');
+const productBind = new bindFields('product', '.product-hl');
 
 // const clientValue = document.querySelectorAll('.client-hl')
 // const clientValueArray = [...clientValue]
