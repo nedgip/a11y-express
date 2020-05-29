@@ -62,7 +62,7 @@ end.setAttribute('ng-model', "end")
 
 class bindFields {
     constructor(value, selector) {
-        const v = document.querySelector(selector);
+        const v = document.querySelectorAll(selector);
         const vArray = [...v];
         vArray.forEach(e => {
             e.textContent = `{{${value}}}`
