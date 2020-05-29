@@ -2,6 +2,7 @@ const pBtn = document.querySelector('.print');
 pBtn.addEventListener('click', () => {
     window.print()
 })
+
 // Sidebar menu
 const menuBtn = document.querySelector("#menuBtn");
 const body = document.body;
@@ -35,12 +36,6 @@ closeSiteMenu.addEventListener("click", event => {
     menuBtn.focus();
 });
 
-
-
-
-
-
-
 // Add attributes to elements
 class AddAttr {
     constructor(selector, attr, value) {
@@ -56,8 +51,6 @@ const wcag = new AddAttr('.wcag', 'ng-model', 'wcag')
 const level = new AddAttr('.level', 'ng-model', 'level')
 const start = new AddAttr('.start', 'ng-model', 'start')
 const end = new AddAttr('.end', 'ng-model', 'end')
-
-
 
 // Binds fields using Angular
 class BindFields {
