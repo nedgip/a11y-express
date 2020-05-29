@@ -71,7 +71,7 @@ margin:auto;
  outline:transparent dotted 3px;
 }
 
-/* Page media */
+/* Page media print styles */
 @page {
   size:A4;
 }
@@ -134,7 +134,12 @@ h2.new-page {
 	margin-right:0.5em;
 }
 
+
 /* Form */
+
+.intopia-form{
+  margin-top:2.5em;
+}
 .intopia-form label{
 font-weight:bold;
 margin:.5em .5em 1em .5em;
@@ -145,5 +150,5 @@ border: 1px solid;
 border-radius:.2em;
 margin:.5em .5em 1em .5em;
 padding:.5em 1em;
-width:90%;
+max-width:12em;
 }
