@@ -62,9 +62,15 @@ clientValueArray.forEach(e => {
 })
 
 const productValue = document.querySelector('.product-hl')
-productValue.textContent = '{{product}}'
+productValueArray = [...productValue]
+productValueArray.forEach(e => {
+    e.textContent = '{{product}}'
+})
+
+
 const wcagValue = document.querySelector('.wcag-hl')
 wcagValue.textContent = '{{wcag}}'
+
 const levelValue = document.querySelector('.level-hl')
 levelValue.textContent = '{{level}}'
 
