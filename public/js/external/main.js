@@ -72,7 +72,10 @@ class bindFields {
 
 const clientBind = new bindFields('client', '.client-hl');
 const productBind = new bindFields('product', '.product-hl');
-
+const productBind = new bindFields('wcag', '.wcag-hl');
+const productBind = new bindFields('level', '.level-hl');
+const productBind = new bindFields('start', '.start-hl');
+const productBind = new bindFields('end', '.end-hl');
 // const clientValue = document.querySelectorAll('.client-hl')
 // const clientValueArray = [...clientValue]
 // clientValueArray.forEach(e => {
@@ -86,14 +89,14 @@ const productBind = new bindFields('product', '.product-hl');
 // })
 
 
-const wcagValue = document.querySelector('.wcag-hl')
-wcagValue.textContent = '{{wcag}}'
+// const wcagValue = document.querySelector('.wcag-hl')
+// wcagValue.textContent = '{{wcag}}'
 
-const levelValue = document.querySelector('.level-hl')
-levelValue.textContent = '{{level}}'
+// const levelValue = document.querySelector('.level-hl')
+// levelValue.textContent = '{{level}}'
 
-const startValue = document.querySelector('.start-hl')
-startValue.textContent = '{{start}}'
+// const startValue = document.querySelector('.start-hl')
+// startValue.textContent = '{{start}}'
 
-const endValue = document.querySelector('.end-hl')
-endValue.textContent = '{{end}}'
+// const endValue = document.querySelector('.end-hl')
+// endValue.textContent = '{{end}}'
