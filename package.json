@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "devStart": "nodemon server.js"
+    "devStart": "nodemon server.js",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "keywords": [],
   "author": "",
@@ -22,10 +24,12 @@
     "mongodb": "^3.5.7",
     "mongoose": "^5.9.10",
     "passport": "^0.4.1",
-    "passport-local": "^1.0.0"
+    "passport-local": "^1.0.0",
+    "snyk": "^1.316.2"
   },
   "devDependencies": {
     "dotenv": "^8.2.0",
     "nodemon": "^2.0.3"
-  }
+  },
+  "snyk": true
 }
