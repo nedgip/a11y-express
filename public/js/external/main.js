@@ -1,5 +1,3 @@
-
-// PrintBtn
 const pBtn = document.querySelector('.print');
 pBtn.addEventListener('click', () => {
     window.print()
