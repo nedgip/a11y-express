@@ -22,12 +22,12 @@ config.setAttribute('ng-app', "")
 // client.setAttribute('ng-model', "level")
 
 
-if (params.has('edit')) {
-    // const script = document.querySelector('#script');
-    // console.log(script)
-    // script.textContent = `<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>`;
-    const sidebar = document.querySelector('.off-site-container');
-    sidebar.innerHTML = `<div>
+// if (params.has('edit')) {
+// const script = document.querySelector('#script');
+// console.log(script)
+// script.textContent = `<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>`;
+const sidebar = document.querySelector('.off-site-container');
+sidebar.innerHTML = `<div>
     <label>Client</label>
     <input type="text" ng-model="client">
   </div>
@@ -60,4 +60,4 @@ if (params.has('edit')) {
 
 
     // })
-}
+// }
