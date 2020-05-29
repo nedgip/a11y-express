@@ -59,12 +59,13 @@ const level = document.querySelector('.level')
 client.setAttribute('ng-model', "level")
 
 const clientValue = document.querySelector('.client-hl')
-clientValue.textContent = `${{{ client }}}`
+const clientCurly = "{{client}}"
+clientValue.textContent = clientCurly
 
 // if (params.has('edit')) {
 // const script = document.querySelector('#script');
 // console.log(script)
-// script.textContent = `< script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" ></script > `;
+// script.textContent = `< script src = "https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js" ></ > `;
 // const sidebar = document.querySelector('.off-site-container');
 // sidebar.innerHTML = `<div>
 //     <label>Client</label>
