@@ -46,8 +46,8 @@ closeSiteMenu.addEventListener("click", event => {
 
 class AddAttr {
     constructor(selector, attr, value) {
-        const selector = document.querySelector(selector);
-        selector.setAttribute(attr, value)
+        const s = document.querySelector(selector);
+        s.setAttribute(attr, value)
     }
 }
 
