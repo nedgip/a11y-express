@@ -111,7 +111,7 @@ h2.new-page {
 /* 	top:0;
 	bottom:0; */
 	left:-14rem;
-	width:14rem;
+	width:20rem;
 	border-right:solid black 2px;
 	background:#F5F5F5;
 	z-index:100;
@@ -137,6 +137,7 @@ h2.new-page {
 /* Form */
 .intopia-form label{
 font-weight:bold;
+margin:.5em .5em 1em .5em;
 }
 .intopia-form input,.intopia-form select {
 display:block;
@@ -144,4 +145,5 @@ border: 1px solid;
 border-radius:.2em;
 margin:.5em .5em 1em .5em;
 padding:.5em 1em;
+width:100%;
 }
