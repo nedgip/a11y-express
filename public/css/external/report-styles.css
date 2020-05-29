@@ -121,8 +121,6 @@ h2.new-page {
 	transition: transform 0.3s ease-out;
 }
 .site-container{
-	padding:1em;
-	width:75%;
 	transition: transform 0.3s ease-out;
 	
 	}
