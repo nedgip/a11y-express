@@ -12,14 +12,14 @@ const edit = document.querySelectorAll('.editable');
 const editArray = [...edit];
 const config = document.querySelector('.config')
 config.setAttribute('ng-app', "")
-const product = document.querySelector('.product')
-product.setAttribute('ng-model', "product")
-const client = document.querySelector('.client')
-client.setAttribute('ng-model', "client")
-const wcag = document.querySelector('.wcag')
-client.setAttribute('ng-model', "wcag")
-const level = document.querySelector('.level')
-client.setAttribute('ng-model', "level")
+// const product = document.querySelector('.product')
+// product.setAttribute('ng-model', "product")
+// const client = document.querySelector('.client')
+// client.setAttribute('ng-model', "client")
+// const wcag = document.querySelector('.wcag')
+// client.setAttribute('ng-model', "wcag")
+// const level = document.querySelector('.level')
+// client.setAttribute('ng-model', "level")
 
 
 if (params.has('edit')) {
