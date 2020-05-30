@@ -37,32 +37,32 @@ closeSiteMenu.addEventListener("click", event => {
     menuBtn.focus();
 });
 
-// Add attributes to elements
-class AddAttr {
-    constructor(selector, attr, value) {
-        const s = document.querySelector(selector);
-        s.setAttribute(attr, value)
-    }
-}
-// Add Angular to file and inputs
-const ngApp = new AddAttr('.config', 'ng-app', '')
-const product = new AddAttr('.product', 'ng-model', 'product')
-const client = new AddAttr('.client', 'ng-model', 'client')
-const wcag = new AddAttr('.wcag', 'ng-model', 'wcag')
-const level = new AddAttr('.level', 'ng-model', 'level')
-const start = new AddAttr('.start', 'ng-model', 'start')
-const end = new AddAttr('.end', 'ng-model', 'end')
+// // Add attributes to elements
+// class AddAttr {
+//     constructor(selector, attr, value) {
+//         const s = document.querySelector(selector);
+//         s.setAttribute(attr, value)
+//     }
+// }
+// // Add Angular to file and inputs
+// const ngApp = new AddAttr('.config', 'ng-app', '')
+// const product = new AddAttr('.product', 'ng-model', 'product')
+// const client = new AddAttr('.client', 'ng-model', 'client')
+// const wcag = new AddAttr('.wcag', 'ng-model', 'wcag')
+// const level = new AddAttr('.level', 'ng-model', 'level')
+// const start = new AddAttr('.start', 'ng-model', 'start')
+// const end = new AddAttr('.end', 'ng-model', 'end')
 
-// Binds fields using Angular
-class BindFields {
-    constructor(value, selector) {
-        const v = document.querySelectorAll(selector);
-        const vArray = [...v];
-        vArray.forEach(e => {
-            e.textContent = `{{${value}}}`
-        })
-    }
-}
+// // Binds fields using Angular
+// class BindFields {
+//     constructor(value, selector) {
+//         const v = document.querySelectorAll(selector);
+//         const vArray = [...v];
+//         vArray.forEach(e => {
+//             e.textContent = `{{${value}}}`
+//         })
+//     }
+// }
 
 const clientBind = new BindFields('client', '.client-hl');
 const productBind = new BindFields('product', '.product-hl');
