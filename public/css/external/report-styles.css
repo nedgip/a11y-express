@@ -157,3 +157,6 @@ max-width:12em;
    box-shadow:0 0 0 2px hsl(344, 85%, 49%);
  outline:transparent dotted 3px;
 }
+.hidden {
+  display:none;
+}
