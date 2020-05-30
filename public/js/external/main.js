@@ -1,5 +1,3 @@
-const saveStorage = require('./savestorage.min')
-
 const pBtn = document.querySelector('.print');
 pBtn.addEventListener('click', () => {
     window.print()
