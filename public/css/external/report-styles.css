@@ -145,7 +145,7 @@ h2.new-page {
 font-weight:bold;
 margin:1em .5em 1em .5em;
 }
-.intopia-form input,.intopia-form select {
+.intopia-form input,.intopia-form select,.intopia-form textarea {
 display:block;
 border: 1px solid;
 border-radius:.2em;
