@@ -73,5 +73,5 @@ const startBind = new BindFields('start', '.start-hl');
 const endBind = new BindFields('end', '.end-hl');
 
 // Save to local storage using saveStorage.js
-const intopiaForm = document.querySelector('#intopiaForm')
-saveStorage(intopiaForm);
+const saveStorageScript = document.querySelector('#saveStorage')
+saveStorageScript.innerHTML = 'saveStorage(#intopiaForm);'
