@@ -1,0 +1,202 @@
+<body class="">
+    <div class="fr-view">
+        <meta format="a4" orientation="portrait">
+        <title>Intopia accessibility review</title>
+        <link rel="stylesheet" href="https://a11y-express.herokuapp.com/css/external/report-styles.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+        <div class="container">
+            <div class="config ng-scope" ng-app="">
+                <div class="off-site-container noprint" aria-hidden="true">
+                    <div aria-label="Side menu" id="siteMenu" tabindex="-1">
+                        <div class="menuListWrapper"><button aria-label="Close side menu" class="right-align btn"
+                                id="closeSiteMenu"> <span aria-hidden="true" class="fas fa-times"></span> </button>
+                            <form class="intopia-form ng-valid ng-dirty ng-valid-parse">
+                                <div><label for="intopiaClient">Client</label><input id="intopiaClient" type="text"
+                                        class="client ng-valid ng-dirty ng-valid-parse ng-not-empty ng-touched" value=""
+                                        ng-model="client"></div>
+                                <div><label for="intopiaProduct">Product</label><input id="intopiaProduct" type="text"
+                                        class="product ng-valid ng-not-empty ng-dirty ng-valid-parse ng-touched"
+                                        value="" ng-model="product"></div>
+                                <div><label for="intopiaWCAG">WCAG</label> <select
+                                        class="wcag ng-pristine ng-untouched ng-valid ng-empty" id="intopiaWCAG"
+                                        ng-model="wcag">
+                                        <option value="? undefined:undefined ?" selected="selected"></option>
+                                        <option value="WCAG 2.1">WCAG 2.1</option>
+                                        <option value="WCAG 2.0">WCAG 2.0</option>
+                                    </select></div>
+                                <div><label for="intopiaLevel">Level</label> <select
+                                        class="level ng-pristine ng-untouched ng-valid ng-empty" id="intopiaLevel"
+                                        ng-model="level">
+                                        <option value="? undefined:undefined ?" selected="selected"></option>
+                                        <option value="A">A</option>
+                                        <option value="AA">AA</option>
+                                        <option value="AAA">AAA</option>
+                                    </select></div>
+                                <div><label for="intopiaStartDate">Start date</label><input id="intopiaStartDate"
+                                        type="date" class="start ng-pristine ng-untouched ng-valid ng-empty" value=""
+                                        ng-model="start"></div>
+                                <div><label for="intopiaEndDate">End date</label><input id="intopiaEndDate" type="date"
+                                        class="end ng-pristine ng-untouched ng-valid ng-empty" value="" ng-model="end">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="site-container"><button aria-expanded="false" class="sibebar btn noprint" id="menuBtn">
+                        <span aria-hidden="true" class="fas fa-chevron-left"></span> </button>
+                    <div class="header"><img alt="Intopia " class="logo fr-fic fr-dii"
+                            src="https://intopia.digital/wp-content/themes/intopia/assets/images/intopia.png "
+                            style="width: 170px;"><button aria-label="Print " class="print noprint btn"> <span
+                                class="fas fa-print "></span> </button></div>
+                    <h1 class="report-title ">Accessibilty review of <span class="editable product-hl ng-binding">Status
+                            page</span></h1>
+                    <div><span style="font-family: Lato,sans-serif;">By Intopia for <span
+                                class="editable client-hl ng-binding">Atlassian</span></span></div>
+                    <div><span style="font-family: Lato,sans-serif;">Created on 29/05/20</span></div>
+                    <h2 class="new-page">Introduction </h2><span style="font-family: Lato,sans-serif;"><span
+                            class="editable client-hl ng-binding">Atlassian</span> engaged Intopia to conduct an
+                        independent accessibility review of select features on the update product name. Accessibility is
+                        the extent to which a site or app is accessible to as many people as possible. Expert
+                        accessibility testers reviewed select pages and features of <span
+                            class="editable product-hl ng-binding">Status page</span> against the Web Content
+                        Accessibility Guidelines <span class="editable wcag-hl ng-binding"></span> <span
+                            class="editable level-hl ng-binding"></span> from <span
+                            class="editable start-hl ng-binding"></span> - <span
+                            class="editable end-hl ng-binding"></span></span>
+                    <h2>How you went </h2><span style="font-family: Lato,sans-serif;"><span
+                            class="editable product-hl ng-binding">Status page</span> tested very well for accessibility
+                        and is a credit to client's time and effort towards making the site accessible. Most of the
+                        issues identified were low priority issues, with only a few medium and high priority issues
+                        identified.</span>
+                    <h2>What you’re doing well</h2>
+                    <ul>
+                        <li><span style="background-color: rgb(247, 218, 100); font-family: Lato, sans-serif;">The
+                                interface is keyboard friendly. Users that rely on the keyboard alone will be able to
+                                navigate and operate the interface easily. The focus outline which enables sighted
+                                keyboard users to see which component has keyboard focus is clear and applied
+                                consistently across the pages tested. </span></li>
+                        <li><span style="background-color: rgb(247, 218, 100); font-family: Lato, sans-serif;"> The
+                                sequence and structure of content is generally good. Screen reader users navigate
+                                content on a page linearly, making the order of content important. The order of content
+                                is consistent and makes it easy for content to be understood. Structural and
+                                navigational elements such as headings, lists and links are used well. </span></li>
+                    </ul>
+                    <h2>Your most critical issues </h2>
+                    <ul>
+                        <li><span style="background-color: rgb(247, 218, 100); font-family: Lato, sans-serif;">Search
+                                and Browse form fields are not associated with the correct error messages. This will
+                                cause screen reader users to hear the incorrect error message for these fields. </span>
+                        </li>
+                        <li><span style="background-color: rgb(247, 218, 100); font-family: Lato, sans-serif;">Focus is
+                                lost after certain interactions. When information changes dynamically, focus must be set
+                                via scripting otherwise focus can be lost and is often placed at a random position on
+                                the page. This impacts screen reader users and keyboard only users, who will navigate
+                                through content from this random location and be particularly confusing for screen
+                                reader users. </span></li>
+                    </ul>
+                    <h2 class="new-page"><span style="font-family: Lato, sans-serif;">Issues</span></h2>
+                </div>
+                <div></div>
+                <div class="container ">
+                    <h3 class="issue-section-heading"><span style="font-family: Comfortaa, sans-serif;">Page
+                            &lt;title&gt; is missing</span></h3>
+                    <ul class="issue-detail-container ">
+                        <li class="issue-detail "><strong>Type:</strong> WCAG 2</li>
+                        <li class="issue-detail "><strong>Principle:</strong> Operable</li>
+                        <li class="issue-detail "><strong>Guideline:</strong> 2.4 Navigable</li>
+                        <li class="issue-detail "><strong>Success Criteria:</strong> 2.4.2 Page Titled (A)</li>
+                        <li class="issue-detail "><strong>Level:</strong> A</li>
+                        <li class="issue-detail "><strong>Platform:</strong> All</li>
+                        <li class="issue-detail "><strong>Technology:</strong>All </li>
+                        <li class="issue-detail "><strong>Severity:</strong> Medium</li>
+                        <li class="issue-detail "><strong>Element:</strong> Title</li>
+                        <li class="issue-detail "><strong>Component:</strong> Head</li>
+                        <li class="issue-detail "><strong>Page:</strong> About us</li>
+                        <li class="issue-detail "><strong>URL:</strong> /about-us</li>
+                        <li class="issue-detail "><strong>Ref:</strong> <a
+                                href="https://intopia.atlassian.net/browse/PC-8">PC-8</a></li>
+                    </ul>
+                    <div>
+                        <h4 class="issue-section-heading "><span style="font-family: Comfortaa,sans-serif;">What's the
+                                issue?</span></h4>
+                    </div>
+                    <div class="issue ">
+                        <p>The About us page is missing a title.</p>
+                    </div>
+                    <div>
+                        <h4 class="issue-section-heading "><span style="font-family: Comfortaa,sans-serif;">Why it
+                                matters</span></h4>
+                    </div>
+                    <div class="issue ">
+                        <p>Every page must have a page title. The page title is the first thing heard by screen reader
+                            users on page load, as well as when switching between browser tabs, so it is essential to
+                            wayfinding.</p>
+                    </div>
+                    <div>
+                        <h4 class="issue-section-heading "><span style="font-family: Comfortaa,sans-serif;">Our
+                                recommendation</span></h4>
+                    </div>
+                    <div class="issue ">
+                        <p>Give the page a title by adding a &lt;title&gt; to the &lt;head&gt;. It is best practice to
+                            put the most unique (i.e. page specific) title information first, most generic (i.e. site
+                            name) last.<br><br><b>Code example</b><br><br>&lt;title&gt;Page title - Site
+                            title&lt;/title&gt;</p>
+                    </div>
+                </div>
+                <div class="seperator "><span style="font-family: Lato,sans-serif;"></span></div><br>
+                <div class="pagebreak"></div>
+            </div>
+            <div class="container ">
+                <h3 class="issue-section-heading"><span style="font-family: Comfortaa, sans-serif;">Related items should
+                        be marked up in a list</span></h3>
+                <ul class="issue-detail-container ">
+                    <li class="issue-detail "><strong>Type:</strong> WCAG 2</li>
+                    <li class="issue-detail "><strong>Principle:</strong> Perceivable</li>
+                    <li class="issue-detail "><strong>Guideline:</strong> 1.3 Adaptable</li>
+                    <li class="issue-detail "><strong>Success Criteria:</strong> 1.3.1 Info and Relationships (A)</li>
+                    <li class="issue-detail "><strong>Level:</strong> A</li>
+                    <li class="issue-detail "><strong>Platform:</strong> All</li>
+                    <li class="issue-detail "><strong>Technology:</strong>Screen reader </li>
+                    <li class="issue-detail "><strong>Severity:</strong> Medium</li>
+                    <li class="issue-detail "><strong>Element:</strong> Links</li>
+                    <li class="issue-detail "><strong>Component:</strong> Main navigation bar</li>
+                    <li class="issue-detail "><strong>Page:</strong> All pages</li>
+                    <li class="issue-detail "><strong>URL:</strong> https://test-site.com</li>
+                    <li class="issue-detail "><strong>Ref:</strong> <a
+                            href="https://intopia.atlassian.net/browse/PC-7">PC-7</a></li>
+                </ul>
+                <div>
+                    <h4 class="issue-section-heading "><span style="font-family: Comfortaa,sans-serif;">What's the
+                            issue?</span></h4>
+                </div>
+                <div class="issue ">
+                    <p>The links in the navigation are related items and have not been marked up in a list.</p>
+                </div>
+                <div>
+                    <h4 class="issue-section-heading "><span style="font-family: Comfortaa,sans-serif;">Why it
+                            matters</span></h4>
+                </div>
+                <div class="issue ">
+                    <p>Assistive technology relies on semantically meaningful HTML to provide the appropriate support to
+                        users. Without list mark-up in the HTML, assistive technologies cannot provide shortcuts which
+                        allow users to navigate the lists quickly. Screen readers will not be able to announce the
+                        number of lists in the item or other supporting information.</p>
+                </div>
+                <div>
+                    <h4 class="issue-section-heading "><span style="font-family: Comfortaa,sans-serif;">Our
+                            recommendation</span></h4>
+                </div>
+                <div class="issue ">
+                    <p>A list of items should be marked up as an ordered (numbered) list, unordered (bullet) list or a
+                        definition list. Mark up the links in the navigation in an unordered list.<br><br><b>Code
+                            example</b><br><br>&lt;ul&gt;<br><br>&lt;li&gt;Test 1&lt;/li&gt;<br><br>&lt;li&gt;Test
+                        2&lt;/li&gt;<br><br>&lt;/ul&gt;</p>
+                </div>
+            </div>
+            <div class="seperator "><span style="font-family: Lato,sans-serif;"></span></div><br>
+            <div class="pagebreak"></div>
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://a11y-express.herokuapp.com/js/external/main.js"></script>
+    </div>
+</body>

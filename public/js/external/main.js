@@ -69,3 +69,7 @@ const wcagBind = new BindFields('wcag', '.wcag-hl');
 const levelBind = new BindFields('level', '.level-hl');
 const startBind = new BindFields('start', '.start-hl');
 const endBind = new BindFields('end', '.end-hl');
+
+// Save to local storage using saveStorage.js
+const intopiaForm = document.querySelector('#intopiaForm')
+saveStorage(intopiaForm);
