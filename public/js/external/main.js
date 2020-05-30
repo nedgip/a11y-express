@@ -72,4 +72,4 @@ const endBind = new BindFields('end', '.end-hl');
 
 // Save to local storage using saveStorage.js
 const saveStorageScript = document.querySelector('#saveStorage')
-saveStorageScript.textContent = '<script>saveStorage("#intopiaForm");</script>'
+saveStorageScript.textContent = 'saveStorage("#intopiaForm");'
