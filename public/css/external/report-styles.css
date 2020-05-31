@@ -110,7 +110,7 @@ h2.new-page {
 	position:fixed;
 /* 	top:0;
 	bottom:0; */
-	left:-20rem;
+	left:-21rem;
 	width:20rem;
 	border-right:solid black 2px;
 	background:#F5F5F5;
@@ -151,7 +151,7 @@ border: 1px solid;
 border-radius:.2em;
 margin:1em .5em 1em .5em;
 padding:.5em 1em;
-max-width:12em;
+width:80%;
 }
 .intopia-form input:focus,.intopia-form select:focus {
    box-shadow:0 0 0 2px hsl(344, 85%, 49%);
