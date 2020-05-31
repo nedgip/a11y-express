@@ -110,8 +110,8 @@ h2.new-page {
 	position:fixed;
 /* 	top:0;
 	bottom:0; */
-	left:-14rem;
-	width:14rem;
+	left:-25rem;
+	width:25rem;
 	border-right:solid black 2px;
 	background:#F5F5F5;
 	z-index:100;
@@ -125,7 +125,7 @@ h2.new-page {
 	
 	}
 .is-open .off-site-container , .is-open .site-container {
-	transform: translateX(14rem); 
+	transform: translateX(25rem); 
 }
 /* Close button */
 .right-align{
