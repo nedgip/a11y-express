@@ -53,6 +53,8 @@ const level = new AddAttr('.level', 'ng-model', 'level')
 const start = new AddAttr('.start', 'ng-model', 'start')
 const end = new AddAttr('.end', 'ng-model', 'end')
 const how = new AddAttr('.how', 'ng-model', 'how')
+const how = new AddAttr('.good', 'ng-model', 'good')
+const how = new AddAttr('.bad', 'ng-model', 'bad')
 
 // Binds fields using Angular
 class BindFields {
@@ -72,6 +74,6 @@ const levelBind = new BindFields('level', '.level-hl');
 const startBind = new BindFields('start', '.start-hl');
 const endBind = new BindFields('end', '.end-hl');
 const howBind = new BindFields('how', '.how-hl');
+const howBind = new BindFields('good', '.good-hl');
+const howBind = new BindFields('bad', '.bad-hl');
 
-const tiny = document.querySelector('.script')
-tiny.textContent = `tinymce.init({selector:'textarea'});`
