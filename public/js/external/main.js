@@ -73,3 +73,5 @@ const startBind = new BindFields('start', '.start-hl');
 const endBind = new BindFields('end', '.end-hl');
 const howBind = new BindFields('how', '.how-hl');
 
+const tiny = document.querySelector('.script')
+tiny.textContent = `tinymce.init({selector:'textarea'});`
