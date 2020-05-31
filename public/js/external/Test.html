@@ -7,20 +7,20 @@
     <title>Document</title>
 </head>
 
-<body>
+<body ng-app="">
 
     <form class="intopia-form" id="intopiaForm">
         <div>
             <label for="intopiaClient">Client</label>
-            <input id="intopiaClient" type="text" class="client" value="" name="client">
+            <input id="intopiaClient" type="text" class="client ff" value="" name="client" ng-model="client">
         </div>
         <div>
             <label for="intopiaProduct">Product</label>
-            <input id="intopiaProduct" type="text" class="product" value="" name="product">
+            <input id="intopiaProduct" type="text" class="product ff" value="" name="product">
         </div>
         <div>
             <label for="intopiaWCAG">WCAG</label>
-            <select name="wcag" class="wcag" id="intopiaWCAG">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <select name="wcag" class="wcag ff" id="intopiaWCAG">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <option>WCAG 2.1</option>
                 <option>WCAG 2.0</option>&nbsp;
@@ -28,7 +28,7 @@
         </div>
         <div>
             <label for="intopiaLevel">Level</label>
-            <select name="level" class="level" id="intopiaLevel">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+            <select name="level" class="level ff" id="intopiaLevel">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 <option>A</option>
                 <option>AA</option>
@@ -37,20 +37,72 @@
         </div>
         <div>
             <label for="intopiaStartDate">Start date</label>
-            <input name="start" id="intopiaStartDate" type="date" class="start" value="">
+            <input name="start" id="intopiaStartDate" type="date" class="start ff" value="">
         </div>
         <div>
             <label for="intopiaEndDate">End date</label>
-            <input name="end" id="intopiaEndDate" type="date" class="end" value="">
+            <input name="end" id="intopiaEndDate" type="date" class="end ff" value="">
         </div>
     </form>
+
+    <div>{{client}}</div>
+    <button id="get">Restore</button>
+    <button id="set">Save</button>
     <script src="https://a11y-express.herokuapp.com/js/external/savestorage.min.js"></script>
-    <script id="saveStorage">
+    <!-- <script id="saveStorage">
+        saveStorage("#intopiaForm");
+
+    </script> -->
+    <script>
+        const form = document.querySelector('#intopiaForm');
+        const fields = form.querySelectorAll('.ff');
+        const fieldArray = [...fields]
+        let savedForm = []
+        function formObject() {
+            fieldArray.forEach(e => {
+                const n = e.name
+                const v = e.value
+                const obj = {
+                    n: v
+                }
+                console.log(obj)
+                savedForm.push(obj)
+            })
+            console.log(savedForm)
+        }
 
 
+        form.addEventListener('keyup', e => {
+            if (!e.target.matches('input,select')) { return }
+            const name = e.target.name
+            const value = e.target.value
+            console.log(name)
+            console.log(value)
+            formObject()
+        })
+
+
+
+
+        // const getItem = document.querySelector('#get')
+        // getItem.addEventListener('click', () => {
+        //     console.log('get')
+        //     const client = localStorage.getItem("client");
+        //     console.log(client)
+        //     const clientField = document.querySelector('.client')
+        //     clientField.value = client
+        // })
+        // const setItem = document.querySelector('#set')
+        // const clientField = document.querySelector('.client')
+        // setItem.addEventListener('click', () => {
+        //     console.log('set')
+        //     formObject()
+        //     localStorage.savedForm = JSON.stringify(savedForm)
+
+        // })
     </script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
-    <script src="https://a11y-express.herokuapp.com/js/external/main.js"></script>
+    <!-- <script src="https://a11y-express.herokuapp.com/js/external/main.js"></script> -->
 </body>
 
 </html>

@@ -52,6 +52,7 @@ const wcag = new AddAttr('.wcag', 'ng-model', 'wcag')
 const level = new AddAttr('.level', 'ng-model', 'level')
 const start = new AddAttr('.start', 'ng-model', 'start')
 const end = new AddAttr('.end', 'ng-model', 'end')
+const how = new AddAttr('.how', 'ng-model', 'how')
 
 // Binds fields using Angular
 class BindFields {
@@ -70,4 +71,5 @@ const wcagBind = new BindFields('wcag', '.wcag-hl');
 const levelBind = new BindFields('level', '.level-hl');
 const startBind = new BindFields('start', '.start-hl');
 const endBind = new BindFields('end', '.end-hl');
+const howBind = new BindFields('how', '.how-hl');
 
