@@ -77,3 +77,8 @@ const howBind = new BindFields('how', '.how-hl');
 const goodBind = new BindFields('good', '.good-1-hl');
 const badBind = new BindFields('bad', '.bad-hl');
 
+// Add list item
+const addListItem = document.querySelector('.add')
+addListItem.addEventListener('click', e => {
+    e.previousElementSibling.createElement('div');
+})
