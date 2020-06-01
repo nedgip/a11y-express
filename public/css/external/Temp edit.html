@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title></title>
+    <script src="chrome-extension://mooikfkahbdckldjjndioackbalphokd/assets/prompt.js"></script>
+</head>
+
+<body aria-disabled="false">
+    <meta format="a4" orientation="portrait">
+    <title>Intopia accessibility review</title>
+    <link rel="stylesheet" href="https://a11y-express.herokuapp.com/css/external/report-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <div class="container">
+        <div class="config">
+            <div aria-hidden="true" class="off-site-container noprint">
+                <div aria-label="Side menu" id="siteMenu" tabindex="-1">
+                    <div class="menuListWrapper hidden">
+                        <button aria-label="Close side menu" class="right-align btn" id="closeSiteMenu">&nbsp;<span
+                                aria-hidden="true" class="fas fa-times"></span>&nbsp;</button>
+                        <form class="intopia-form" id="intopiaForm">
+                            <div>
+                                <label for="intopiaClient">Client</label>
+                                <input id="intopiaClient" type="text" class="client" value="" name="client">
+                            </div>
+                            <div>
+                                <label for="intopiaProduct">Product</label>
+                                <input id="intopiaProduct" type="text" class="product" value="" name="product">
+                            </div>
+                            <div>
+                                <label for="intopiaWCAG">WCAG</label>
+                                <select class="wcag" id="intopiaWCAG" name="wcag">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <option>WCAG 2.1</option>
+                                    <option>WCAG 2.0</option>&nbsp;
+                                </select>
+                            </div>
+                            <div>
+                                <label for="intopiaLevel">Level</label>
+                                <select class="level" id="intopiaLevel" name="level">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                                    &nbsp;
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <option>A</option>
+                                    <option>AA</option>
+                                    <option>AAA</option>&nbsp;
+                                </select>
+                            </div>
+                            <div>
+                                <label for="intopiaStartDate">Start date</label>
+                                <input name="start" id="intopiaStartDate" type="date" class="start" value="">
+                            </div>
+                            <div>
+                                <label for="intopiaEndDate">End date</label>
+                                <input name="end" id="intopiaEndDate" type="date" class="end" value="">
+                            </div>
+                            <div>
+                                <label>How you went</label>
+                                <textarea id="intopiaHow" name="how" class="how" value=""></textarea>
+                            </div>
+                            <div>
+                                <fieldset>
+                                    <legend>What you&#39;re doing well</legend>
+                                    <div>
+                                        <label>Good list item <span>1</span></label>
+                                        <textarea name="good" class="good-1" value=""></textarea>
+                                    </div>
+                                    <button class="btn add">Add item</button>
+                                </fieldset>
+                            </div>
+                            <div>
+                                <label>Your most critical issues</label>
+                                <textarea id="intopiaBad" name="bad" class="bad" value=""></textarea>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="site-container">
+                <button aria-expanded="false" class="sibebar btn noprint" id="menuBtn">&nbsp;<span aria-hidden="true"
+                        class="fas fa-chevron-left"></span>&nbsp;</button>
+                <div class="header"><img alt="Intopia " class="logo fr-fic fr-dii"
+                        src="https://intopia.digital/wp-content/themes/intopia/assets/images/intopia.png "
+                        style="width: 170px;">
+                    <button aria-label="Print " class="print noprint btn">&nbsp;<span
+                            class="fas fa-print "></span>&nbsp;</button>
+                </div>
+
+                <h1 class="report-title ">Accessibilty review of <span class="editable product-hl">{{product}}</span>
+                </h1>
+                <div><span style="font-family: Lato,sans-serif;">By Intopia for <span
+                            class="editable client-hl">{{client}}</span></span>
+                </div>
+                <div><span style="font-family: Lato,sans-serif;">Created on
+                        {{moment date format=&quot;DD/MM/YY&quot;}}</span></div>
+
+                <h2 class="new-page">Introduction&nbsp;</h2><span style="font-family: Lato,sans-serif;"><span
+                        class="editable client-hl">{{client}}</span> engaged Intopia to conduct an independent
+                    accessibility review of select features on the update product name. Accessibility is the extent to
+                    which a site or app is accessible to as many people as possible. Expert accessibility testers
+                    reviewed select pages and features of <span class="editable product-hl">{{product}}</span> against
+                    the Web Content Accessibility Guidelines <span class="editable wcag-hl">{{wcag}}</span> <span
+                        class="editable level-hl">{{level}}</span> from <span class="editable start-hl">{{start}}</span>
+                    - <span class="editable end-hl">{{end}}</span></span>
+
+                <h2>How you went&nbsp;</h2><span style="font-family: Lato,sans-serif;"><span
+                        class="editable how-hl">{{how}}</span></span>
+
+                <h2>What you&rsquo;re doing well</h2>
+
+                <ul>
+                    <li><span class="editable good-1-hl">{{good}}</span></li>
+                </ul>
+
+                <h2>Your most critical issues &nbsp;</h2>
+
+                <ul>
+                    <li><span class="editable bad-hl">{{bad}}</span></li>
+                </ul>
+
+                <h2 class="new-page"><span style="font-family: Lato, sans-serif;">Issues</span></h2>
+            </div>
+            <div>{{#each jira.issues}}</div>
+            <div class="container ">
+
+                <h3 class="issue-section-heading"><span
+                        style="font-family: Comfortaa, sans-serif;">{{fields.summary}}</span></h3>
+
+                <ul class="issue-detail-container ">
+                    <li class="issue-detail "><strong>Type:</strong>&nbsp;
+                        {{jArray fields.customfield_10029 &quot;value&quot;}}</li>
+                    <li class="issue-detail "><strong>Principle:</strong>&nbsp;
+                        {{jArray fields.customfield_10069 &quot;value&quot;}}</li>
+                    <li class="issue-detail "><strong>Guideline:</strong>&nbsp;
+                        {{jArray fields.customfield_10070 &quot;value&quot;}}</li>
+                    <li class="issue-detail "><strong>Success Criteria:</strong>
+                        {{jArray fields.customfield_10028 &quot;value&quot;}}</li>
+                    <li class="issue-detail "><strong>Level:</strong> {{fields.customfield_10068.value}}</li>
+                    <li class="issue-detail "><strong>Platform:</strong> {{fields.customfield_10027.value}}</li>
+                    <li class="issue-detail "><strong>Technology:</strong>{{fields.customfield_10026.value}} &nbsp;</li>
+                    <li class="issue-detail "><strong>Severity:</strong> {{fields.customfield_10025.value}}</li>
+                    <li class="issue-detail "><strong>Element:</strong> {{fields.customfield_10065}}</li>
+                    <li class="issue-detail "><strong>Component:</strong> {{fields.customfield_10066}}</li>
+                    <li class="issue-detail "><strong>Page:</strong> {{fields.customfield_10067}}</li>
+                    <li class="issue-detail "><strong>URL:</strong> {{fields.customfield_10038}}</li>
+                    <li class="issue-detail "><strong>Ref:</strong> {{{jIssueKey}}}</li>
+                </ul>
+                <div>
+
+                    <h4 class="issue-section-heading "><span style="font-family: Comfortaa,sans-serif;">What&#39;s the
+                            issue?</span></h4>
+                </div>
+                <div class="issue ">{{{jMultiLines renderedFields.customfield_10034}}}</div>
+                <div>
+
+                    <h4 class="issue-section-heading "><span style="font-family: Comfortaa,sans-serif;">Why it
+                            matters</span></h4>
+                </div>
+                <div class="issue ">{{{jMultiLines renderedFields.customfield_10031}}}</div>
+                <div>
+
+                    <h4 class="issue-section-heading "><span style="font-family: Comfortaa,sans-serif;">Our
+                            recommendation</span></h4>
+                </div>
+                <div class="issue ">{{{jMultiLines renderedFields.customfield_10032}}}</div>
+            </div>
+            <div class="seperator "><span style="font-family: Lato,sans-serif;">{{{jAttach fields.attachment}}}</span>
+            </div>
+            <br>{{{jPB}}} {{/each}}
+        </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+        <script src="https://a11y-express.herokuapp.com/js/external/main.js"></script>
+    </div>
+</body>
+
+</html>
