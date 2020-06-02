@@ -62,6 +62,7 @@ margin:auto;
   font-size:1.1em;
   background:white;
   cursor:pointer;
+  pointer-events: none;
 }
 .btn:hover {
  background: hsl(100,0%,90%)
@@ -153,7 +154,7 @@ margin:1em .5em 1em .5em;
 padding:.5em 1em;
 width:80%;
 }
-.intopia-form input:focus,.intopia-form select:focus {
+.intopia-form input:focus,.intopia-form select:focus,.intopia-form textarea {
    box-shadow:0 0 0 2px hsl(344, 85%, 49%);
  outline:transparent dotted 3px;
 }
