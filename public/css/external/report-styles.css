@@ -62,7 +62,7 @@ margin:auto;
   font-size:1.1em;
   background:white;
   cursor:pointer;
-  pointer-events: none;
+
 }
 .btn:hover {
  background: hsl(100,0%,90%)
