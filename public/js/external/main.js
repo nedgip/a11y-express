@@ -76,140 +76,159 @@ const howBind = new BindFields('how', '.how-hl');
 
 
 // Add list item
-const addListItemBtn = document.querySelector(".add");
+const addListItemBtn = document.querySelectorAll(".add");
+const addListItemBtnArray = [...addListItemBtn]
 
-addListItemBtn.addEventListener("click", (e) => {
-    const addItemButton = e.target;
-    const parent = e.target.parentElement;
-    let previousField = addItemButton.previousElementSibling.querySelector(
-        "textarea"
-    );
-    // //   Find all text areas and create an array
-    let goodListItem = document.querySelectorAll(".good-list-item");
-    let goodListItemArray = [...goodListItem];
 
-    //   If the field is empty don't do anything
-    //   To do: add some validation and return an error
-    if (previousField.value == "") {
-        return;
-    }
+class AddItem {
+    constructor(event, type) {
 
-    //   If the field has text then do the following.
-    //   Loop through array and add 1 to i. This is used to identify the text area.
-    let i = 0;
-    goodListItemArray.forEach((textarea) => {
-        i++;
+        const addItemButton = event.target;
+        const parent = event.target.parentElement;
+        let previousField = addItemButton.previousElementSibling.querySelector(
+            "textarea"
+        );
+        // //   Find all text areas and create an array
+        let listItem = document.querySelectorAll(`.${type}-list-item`);
+        let listItemArray = [...listItem];
 
-        //     Set some variables
-        const label = textarea.previousElementSibling;
-        const fieldContainer = textarea.parentElement;
-        //    Add ID's and label for new field.
-        label.textContent = `Item ${i}`;
-        textarea.setAttribute("id", `g${i}`);
-        textarea.setAttribute("data-target", `goodListItem${i}`);
-        fieldContainer.setAttribute("id", `GoodFieldContainer${i}`);
-    });
-    // Create the new field and label
-    const div = document.createElement("div");
-    div.setAttribute("id", `GoodFieldContainer${i + 1}`);
-    div.innerHTML = `
-<label>Item ${i + 1}</label>
-<textarea id='g${i + 1}' class='good-list-item ff'></textarea>
-`;
-    parent.insertBefore(div, addItemButton);
+        //   If the field is empty don't do anything
+        //   To do: add some validation and return an error
+        if (previousField.value == "") {
+            return;
+        }
 
-    //   Build update button
-    const updateButton = document.createElement("button");
-    updateButton.innerHTML = `<span aria-hidden="true" class="fas fa-sync-alt"></span>`;
-    parent.insertBefore(updateButton, div);
-    updateButton.setAttribute("id", `updateGood${i}`);
-    updateButton.classList.add("update", "btn");
-
-    //   Add event listener to the update button
-    updateButton.addEventListener("click", (e) => {
-        const updateField = updateButton.previousElementSibling;
-        const target = updateField.querySelector("textarea").dataset.target;
-        const value = updateField.querySelector("textarea").value;
-        console.log(value);
-        let goodList = document.querySelector(".good-list");
-        const item = goodList.querySelector(`#${target}`);
-        item.innerHTML = `
-<span class='editable'>${value}</span>
-  `;
-    });
-    //   Build remove button
-    const removeButton = document.createElement("button");
-    removeButton.innerHTML = `<span aria-hidden="true" class="fas fa-trash"></span>`;
-    parent.insertBefore(removeButton, div);
-    removeButton.setAttribute("id", `removeGood${i}`);
-    removeButton.classList.add("remove", "btn");
-    const removeBtnID = removeButton.getAttribute("id");
-
-    // Add eventListener for remove button
-    removeButton.addEventListener("click", (e) => {
-        const removeField =
-            removeButton.previousElementSibling.previousElementSibling;
-        const target = removeField.querySelector("textarea").dataset.target;
-        let goodList = document.querySelector(".good-list");
-        const removeItem = goodList.querySelector(`#${target}`);
-        removeItem.parentNode.removeChild(removeItem);
-        removeButton.parentNode.removeChild(removeField);
-        removeButton.parentNode.removeChild(updateButton);
-        removeButton.parentNode.removeChild(removeButton);
-
-        const listContent = goodList.querySelectorAll("li");
-        const listContentArray = [...listContent];
-        console.log(listContentArray);
-        let n = 0;
-        listContentArray.forEach((lItem) => {
-            n++;
-            lItem.setAttribute("id", `goodListItem${n}`);
-        });
-        //  Reset numbering for elements
-        let goodListItem = document.querySelectorAll(".good-list-item");
-        let goodListItemArray = [...goodListItem];
-
+        //   If the field has text then do the following.
+        //   Loop through array and add 1 to i. This is used to identify the text area.
         let i = 0;
-        console.log(goodListItemArray);
-        // for (let a = 0; a < goodListItemArray.length; a++) {}
-        const numberofItemsInArray = goodListItemArray.length;
-        console.log(numberofItemsInArray);
-        goodListItemArray.forEach((textarea) => {
-            //     To do:  Fix bug with assigning new id values to elements that don't exist on the last array item
+        listItemArray.forEach((textarea) => {
             i++;
-            textarea.previousElementSibling.textContent = `Item ${i}`;
-            textarea.setAttribute("id", `g${i}`);
-            textarea.setAttribute("data-target", `goodListItem${i}`);
-            textarea.parentElement.setAttribute("id", `GoodFieldContainer${i}`);
 
-            //      If textarea is the last item in the array don't update the id's for the update and remove buttons
-            if (textarea == goodListItemArray.slice(-1)[0]) {
-                return;
-            }
-            textarea.parentElement.nextElementSibling.setAttribute(
-                "id",
-                `updateGood${i}`
-            );
-            textarea.parentElement.nextElementSibling.nextElementSibling.setAttribute(
-                "id",
-                `removeGood${i}`
-            );
+            //     Set some variables
+            const label = textarea.previousElementSibling;
+            const fieldContainer = textarea.parentElement;
+            //    Add ID's and label for new field.
+            label.textContent = `Item ${i}`;
+            textarea.setAttribute("id", `${type}${i}`);
+            textarea.setAttribute("data-target", `${type}ListItem${i}`);
+            fieldContainer.setAttribute("id", `${type}FieldContainer${i}`);
         });
-    });
+        // Create the new field and label
+        const div = document.createElement("div");
+        div.setAttribute("id", `${type}FieldContainer${i + 1}`);
+        div.innerHTML = `
+<label>Item ${i + 1}</label>
+<textarea id='${type}${i + 1}' class='${type}-list-item ff'></textarea>
+`;
+        parent.insertBefore(div, addItemButton);
 
-    //  Reassign previous field variable to the new previous field.
-    previousField = addItemButton.previousElementSibling.querySelector(
-        "textarea"
-    );
-    previousField.focus();
+        //   Build update button
+        const updateButton = document.createElement("button");
+        updateButton.innerHTML = `<span aria-hidden="true" class="fas fa-sync-alt"></span>`;
+        parent.insertBefore(updateButton, div);
+        updateButton.setAttribute("id", `update${type}${i}`);
+        updateButton.classList.add("update", "btn");
 
-    //   Add a new list item to What you're doing well.
-    let goodList = document.querySelector(".good-list");
-    const newListItem = document.createElement("li");
-    newListItem.setAttribute("id", `goodListItem${i}`);
-    const value = parent.querySelector(`#g${i}`).value;
-    newListItem.innerHTML = `
+        //   Add event listener to the update button
+        updateButton.addEventListener("click", (e) => {
+            const updateField = updateButton.previousElementSibling;
+            const target = updateField.querySelector("textarea").dataset.target;
+            const value = updateField.querySelector("textarea").value;
+            console.log(value);
+            let typeList = document.querySelector(`.${type}-list`);
+            const item = typeList.querySelector(`#${target}`);
+            item.innerHTML = `
 <span class='editable'>${value}</span>
   `;
-    goodList.appendChild(newListItem);
-});
+        });
+        //   Build remove button
+        const removeButton = document.createElement("button");
+        removeButton.innerHTML = `<span aria-hidden="true" class="fas fa-trash"></span>`;
+        parent.insertBefore(removeButton, div);
+        removeButton.setAttribute("id", `removeGood${i}`);
+        removeButton.classList.add("remove", "btn");
+        const removeBtnID = removeButton.getAttribute("id");
+
+        // Add eventListener for remove button
+        removeButton.addEventListener("click", (e) => {
+            const removeField =
+                removeButton.previousElementSibling.previousElementSibling;
+            const target = removeField.querySelector("textarea").dataset.target;
+            let typeList = document.querySelector(`.${type}-list`);
+            const removeItem = typeList.querySelector(`#${target}`);
+            removeItem.parentNode.removeChild(removeItem);
+            removeButton.parentNode.removeChild(removeField);
+            removeButton.parentNode.removeChild(updateButton);
+            removeButton.parentNode.removeChild(removeButton);
+
+            const listContent = typeList.querySelectorAll("li");
+            const listContentArray = [...listContent];
+            console.log(listContentArray);
+            let n = 0;
+            listContentArray.forEach((lItem) => {
+                n++;
+                lItem.setAttribute("id", `${type}ListItem${n}`);
+            });
+            //  Reset numbering for elements
+            let listItem = document.querySelectorAll(`.${type}-list-item`);
+            let listItemArray = [...listItem];
+
+            let i = 0;
+            console.log(listItemArray);
+
+            const numberofItemsInArray = listItemArray.length;
+            console.log(numberofItemsInArray);
+            listItemArray.forEach((textarea) => {
+                //     To do:  Fix bug with assigning new id values to elements that don't exist on the last array item
+                i++;
+                textarea.previousElementSibling.textContent = `Item ${i}`;
+                textarea.setAttribute("id", `${type}${i}`);
+                textarea.setAttribute("data-target", `${type}ListItem${i}`);
+                textarea.parentElement.setAttribute("id", `${type}FieldContainer${i}`);
+
+                //      If textarea is the last item in the array don't update the id's for the update and remove buttons
+                if (textarea == listItemArray.slice(-1)[0]) {
+                    return;
+                }
+                textarea.parentElement.nextElementSibling.setAttribute(
+                    "id",
+                    `update${type}${i}`
+                );
+                textarea.parentElement.nextElementSibling.nextElementSibling.setAttribute(
+                    "id",
+                    `remove${type}${i}`
+                );
+            });
+        });
+
+        //  Reassign previous field variable to the new previous field.
+        previousField = addItemButton.previousElementSibling.querySelector(
+            "textarea"
+        );
+        previousField.focus();
+
+        //   Add a new list item to What you're doing well.
+        let typeList = document.querySelector(`.${type}-list`);
+        const newListItem = document.createElement("li");
+        newListItem.setAttribute("id", `${type}ListItem${i}`);
+        const value = parent.querySelector(`#${type}${i}`).value;
+        newListItem.innerHTML = `
+<span class='editable'>${value}</span>
+  `;
+        typeList.appendChild(newListItem);
+    }
+}
+
+
+addListItemBtnArray.forEach(lBtn => {
+    console.log(lBtn)
+    lBtn.addEventListener("click", btn => {
+        if (btn.target.classList.contains('good')) {
+            const addGItem = new AddItem(btn, 'good')
+        } else {
+            const addBItem = new AddItem(btn, 'bad')
+        }
+    });
+
+})
+
