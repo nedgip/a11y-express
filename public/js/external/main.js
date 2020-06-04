@@ -53,8 +53,7 @@ const level = new AddAttr('.level', 'ng-model', 'level')
 const start = new AddAttr('.start', 'ng-model', 'start')
 const end = new AddAttr('.end', 'ng-model', 'end')
 const how = new AddAttr('.how', 'ng-model', 'how')
-const good = new AddAttr('.good-1', 'ng-model', 'good')
-const bad = new AddAttr('.bad', 'ng-model', 'bad')
+
 
 // Binds fields using Angular
 class BindFields {
@@ -74,8 +73,7 @@ const levelBind = new BindFields('level', '.level-hl');
 const startBind = new BindFields('start', '.start-hl');
 const endBind = new BindFields('end', '.end-hl');
 const howBind = new BindFields('how', '.how-hl');
-const goodBind = new BindFields('good', '.good-1-hl');
-const badBind = new BindFields('bad', '.bad-hl');
+
 
 // Add list item
 const addListItemBtn = document.querySelector(".add");
