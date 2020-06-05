@@ -81,8 +81,8 @@ const gList = document.createElement('ul')
 const bList = document.createElement('ul')
 gList.classList.add('good-list')
 bList.classList.add('bad-list')
-gListHeading.insertBefore(gList, gListHeading.nextSibling)
-bListHeading.insertBefore(bList, bListHeading.nextSibling)
+gListHeading.insertAdjacentElement("afterend", gList)
+bListHeading.insertAdjacentElement("afterend", bList)
 
 // Add list item
 const addListItemBtn = document.querySelectorAll(".add");
