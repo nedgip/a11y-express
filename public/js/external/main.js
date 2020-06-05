@@ -77,11 +77,12 @@ const howBind = new BindFields('how', '.how-hl');
 // Add <ul> for good and bad lists
 const gListHeading = document.querySelector('.gl')
 const bListHeading = document.querySelector('.bl')
-const gList = gListHeading.nextElementSibling.createElement('ul')
-const bList = bListHeading.nextElementSibling.createElement('ul')
+const gList = gListHeading.createElement('ul')
+const bList = bListHeading.createElement('ul')
 gList.classList.add('good-list')
 bList.classList.add('bad-list')
-
+gListHeading.insertBefore(gList, gListHeading.nextElementSibling)
+bListHeading.insertBefore(bList, bListHeading.nextElementSibling)
 // Add list item
 const addListItemBtn = document.querySelectorAll(".add");
 const addListItemBtnArray = [...addListItemBtn]
