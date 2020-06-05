@@ -117,6 +117,7 @@ class AddItem {
             const label = textarea.previousElementSibling;
             const fieldContainer = textarea.parentElement;
             //    Add ID's and label for new field.
+            label.setAttribute('for', `${type}${i}`)
             label.textContent = `Item ${i}`;
             textarea.setAttribute("id", `${type}${i}`);
             textarea.setAttribute("data-target", `${type}ListItem${i}`);
@@ -136,6 +137,7 @@ class AddItem {
         updateButton.innerHTML = `<span aria-hidden="true" class="fas fa-sync-alt"></span>`;
         parent.insertBefore(updateButton, div);
         updateButton.setAttribute("id", `update${type}${i}`);
+        updateButton.setAttribute('aria-label', `Update item ${i}`)
         updateButton.classList.add("update", "btn");
 
         //   Add event listener to the update button
@@ -155,6 +157,7 @@ class AddItem {
         removeButton.innerHTML = `<span aria-hidden="true" class="fas fa-trash"></span>`;
         parent.insertBefore(removeButton, div);
         removeButton.setAttribute("id", `removeGood${i}`);
+        removeButton.setAttribute('aria-label', `Remove item ${i}`)
         removeButton.classList.add("remove", "btn");
         const removeBtnID = removeButton.getAttribute("id");
 
