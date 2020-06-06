@@ -102,9 +102,13 @@ function AddContent(variable, value, originalValue) {
     const content = document.querySelectorAll(`.${variable}`);
     const contentArray = [...content];
     contentArray.forEach((e) => {
-        value === ""
-            ? e.textContent = originalValue
-            : e.textContent = value
+        if (value === "") {
+            e.textContent = originalValue;
+            e.classList.add("editable");
+        } else {
+            e.textContent = value;
+            e.classList.remove("editable");
+        }
     });
 }
 
