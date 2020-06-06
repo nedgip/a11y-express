@@ -84,6 +84,48 @@ bList.classList.add('bad-list')
 gListHeading.insertAdjacentElement("afterend", gList)
 bListHeading.insertAdjacentElement("afterend", bList)
 
+// Report details section
+const updateReportDetailsBtn = document.querySelector(".update-report-details");
+updateReportDetailsBtn.addEventListener("click", (e) => {
+    const detail = document.querySelectorAll(".detail");
+    const detailArray = [...detail];
+    detailArray.forEach((event) => {
+        const field = event.value;
+        const name = event.name;
+        const originalValue = event.dataset.value
+
+        AddContent(name, field, originalValue);
+    });
+});
+
+function AddContent(variable, value, originalValue) {
+    const content = document.querySelectorAll(`.${variable}`);
+    const contentArray = [...content];
+    contentArray.forEach((e) => {
+        value === ""
+            ? e.textContent = originalValue
+            : e.textContent = value
+    });
+}
+
+const clearReportDetailsBtn = document.querySelector(".clear-report-details");
+clearReportDetailsBtn.addEventListener("click", (e) => {
+    let detail = document.querySelectorAll(".detail");
+    let detailArray = [...detail];
+    detailArray.forEach((event) => {
+        event.value = "";
+        const field = event.value;
+        const name = event.name;
+        const originalValue = event.dataset.value
+
+        AddContent(name, field, originalValue);
+    });
+});
+
+
+
+
+
 // Add list item
 const addListItemBtn = document.querySelectorAll(".add");
 const addListItemBtnArray = [...addListItemBtn]
@@ -244,9 +286,3 @@ addListItemBtnArray.forEach(lBtn => {
 
 })
 
-const script = document.querySelector('.script')
-script.innerHTML = `tinymce.init({
-      selector: 'textarea',
-      plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
-      toolbar_mode: 'floating',
-    });`
