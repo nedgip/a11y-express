@@ -235,11 +235,12 @@ class AddItem {
 addListItemBtnArray.forEach(lBtn => {
     console.log(lBtn)
     lBtn.addEventListener("click", btn => {
-        const addGItem = new AddItem(btn, 'good')
-        const addBItem = new AddItem(btn, 'bad')
-        btn.target.classList.contains('good')
-            ? addGItem
-            : addBItem
+        if (btn.target.classList.contains('good')) {
+            const addGItem = new AddItem(btn, 'good')
+        } else {
+            const addBItem = new AddItem(btn, 'bad')
+        }
     });
+
 })
 
