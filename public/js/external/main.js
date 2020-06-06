@@ -219,7 +219,7 @@ class AddItem {
         );
         previousField.focus();
 
-        //   Add a new list item to What you're doing well.
+        //   Add a new list item to the list in content.
         let typeList = document.querySelector(`.${type}-list`);
         const newListItem = document.createElement("li");
         newListItem.setAttribute("id", `${type}ListItem${i}`);
@@ -235,12 +235,11 @@ class AddItem {
 addListItemBtnArray.forEach(lBtn => {
     console.log(lBtn)
     lBtn.addEventListener("click", btn => {
-        if (btn.target.classList.contains('good')) {
-            const addGItem = new AddItem(btn, 'good')
-        } else {
-            const addBItem = new AddItem(btn, 'bad')
-        }
+        const addGItem = new AddItem(btn, 'good')
+        const addBItem = new AddItem(btn, 'bad')
+        btn.target.classList.contains('good')
+            ? addGItem()
+            : addBItem()
     });
-
 })
 
