@@ -238,8 +238,8 @@ addListItemBtnArray.forEach(lBtn => {
         const addGItem = new AddItem(btn, 'good')
         const addBItem = new AddItem(btn, 'bad')
         btn.target.classList.contains('good')
-            ? addGItem()
-            : addBItem()
+            ? addGItem
+            : addBItem
     });
 })
 
