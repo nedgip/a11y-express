@@ -245,10 +245,8 @@ addListItemBtnArray.forEach(lBtn => {
 })
 
 const script = document.querySelector('.script')
-script.innerHTML = ` <script>
-    tinymce.init({
+script.innerHTML = `tinymce.init({
       selector: 'textarea',
       plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',
       toolbar_mode: 'floating',
-    });
-  </script>`
+    });`
