@@ -285,7 +285,7 @@ class AddItem {
         newListItem.setAttribute("id", `${type}ListItem${i}`);
         const value = parent.querySelector(`#${type}${i}`).value;
         newListItem.innerHTML = `
-<span class='editable'>${value}</span>
+<span>${value}</span>
   `;
         typeList.appendChild(newListItem);
     }
