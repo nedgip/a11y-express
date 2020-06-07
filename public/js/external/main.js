@@ -44,35 +44,35 @@ class AddAttr {
         s.setAttribute(attr, value)
     }
 }
-// Add Angular to file and inputs
-const ngApp = new AddAttr('.config', 'ng-app', '')
-const product = new AddAttr('.product', 'ng-model', 'product')
-const client = new AddAttr('.client', 'ng-model', 'client')
-const wcag = new AddAttr('.wcag', 'ng-model', 'wcag')
-const level = new AddAttr('.level', 'ng-model', 'level')
-const start = new AddAttr('.start', 'ng-model', 'start')
-const end = new AddAttr('.end', 'ng-model', 'end')
-const how = new AddAttr('.how', 'ng-model', 'how')
+// // Add Angular to file and inputs
+// const ngApp = new AddAttr('.config', 'ng-app', '')
+// const product = new AddAttr('.product', 'ng-model', 'product')
+// const client = new AddAttr('.client', 'ng-model', 'client')
+// const wcag = new AddAttr('.wcag', 'ng-model', 'wcag')
+// const level = new AddAttr('.level', 'ng-model', 'level')
+// const start = new AddAttr('.start', 'ng-model', 'start')
+// const end = new AddAttr('.end', 'ng-model', 'end')
+// const how = new AddAttr('.how', 'ng-model', 'how')
 
 
-// Binds fields using Angular
-class BindFields {
-    constructor(value, selector) {
-        const v = document.querySelectorAll(selector);
-        const vArray = [...v];
-        vArray.forEach(e => {
-            e.textContent = `{{${value}}}`
-        })
-    }
-}
+// // Binds fields using Angular
+// class BindFields {
+//     constructor(value, selector) {
+//         const v = document.querySelectorAll(selector);
+//         const vArray = [...v];
+//         vArray.forEach(e => {
+//             e.textContent = `{{${value}}}`
+//         })
+//     }
+// }
 
-const clientBind = new BindFields('client', '.client-hl');
-const productBind = new BindFields('product', '.product-hl');
-const wcagBind = new BindFields('wcag', '.wcag-hl');
-const levelBind = new BindFields('level', '.level-hl');
-const startBind = new BindFields('start', '.start-hl');
-const endBind = new BindFields('end', '.end-hl');
-const howBind = new BindFields('how', '.how-hl');
+// const clientBind = new BindFields('client', '.client-hl');
+// const productBind = new BindFields('product', '.product-hl');
+// const wcagBind = new BindFields('wcag', '.wcag-hl');
+// const levelBind = new BindFields('level', '.level-hl');
+// const startBind = new BindFields('start', '.start-hl');
+// const endBind = new BindFields('end', '.end-hl');
+// const howBind = new BindFields('how', '.how-hl');
 
 // Add <ul> for good and bad lists
 const gListHeading = document.querySelector('.gl')
@@ -85,64 +85,84 @@ gListHeading.insertAdjacentElement("afterend", gList)
 bListHeading.insertAdjacentElement("afterend", bList)
 
 // Report details section
-const detail = document.querySelectorAll(".detail");
-const detailArray = [...detail];
-
 // On page load, loop through fields and load data from local storage.
-detailArray.forEach(e => {
-    const name = e.name
-    e.value = localStorage.getItem(name)
-})
+const detail = document.querySelectorAll(".detail");
+const how = document.querySelector(".how-field");
+const detailArray = [...detail];
+detailArray.push(how);
+detailArray.forEach((e) => {
+    const name = e.name;
+    e.value = localStorage.getItem(name);
+});
 
-// Update report details button
-const updateReportDetailsBtn = document.querySelector(".update-report-details");
-updateReportDetailsBtn.addEventListener("click", (e) => {
-    const detail = document.querySelectorAll(".detail");
-    const detailArray = [...detail];
-    detailArray.forEach((event) => {
-        const field = event.value;
-        const name = event.name;
-        const originalValue = event.dataset.value;
+const updateBtn = document.querySelectorAll(".updateBtn");
+const updateBtnArray = [...updateBtn];
 
-        AddContent(name, field, originalValue);
+updateBtnArray.forEach((uBtn) => {
+    uBtn.addEventListener("click", (e) => {
+        if (uBtn.classList.contains("how-button")) {
+            const howField = document.querySelector(".how-field");
+            let { name, field, originalValue } = getFieldValue(howField);
+            addContent(name, field, originalValue);
+        } else {
+            const detail = document.querySelectorAll(".detail");
+            const detailArray = [...detail];
+
+            detailArray.forEach((event) => {
+                //     Use destructuring to get the values from GetFieldValue function
+                let { name, field, originalValue } = getFieldValue(event);
+                addContent(name, field, originalValue);
+            });
+        }
     });
 });
 
-// Constructor to update page content
-function AddContent(variable, value, originalValue) {
+function getFieldValue(event) {
+    const field = event.value;
+    const name = event.name;
+    const originalValue = event.dataset.value;
+    return { field, name, originalValue };
+}
+
+function addContent(variable, value, originalValue) {
     const content = document.querySelectorAll(`.${variable}`);
     const contentArray = [...content];
     contentArray.forEach((e) => {
         if (value === "") {
             e.textContent = originalValue;
             e.classList.add("editable");
-
+            localStorage.setItem(variable, value);
         } else {
             e.textContent = value;
             e.classList.remove("editable");
-            localStorage.setItem(variable, value)
+            localStorage.setItem(variable, value);
         }
     });
 }
-// Clears report details field
-const clearReportDetailsBtn = document.querySelector(".clear-report-details");
-clearReportDetailsBtn.addEventListener("click", (e) => {
-    let detail = document.querySelectorAll(".detail");
-    let detailArray = [...detail];
-    detailArray.forEach((event) => {
-        event.value = "";
-        const field = event.value;
-        const name = event.name;
-        const originalValue = event.dataset.value;
 
-        AddContent(name, field, originalValue);
-        localStorage.clear();
+const clearBtn = document.querySelectorAll(".clearBtn");
+const clearBtnArray = [...clearBtn];
+
+clearBtnArray.forEach((cBtn) => {
+    cBtn.addEventListener("click", (e) => {
+        if (e.target.classList.contains("clear-how-button")) {
+            const howField = document.querySelector(".how-field");
+            howField.value = "";
+            let { name, field, originalValue } = getFieldValue(howField);
+            addContent(name, field, originalValue);
+        } else {
+            let detail = document.querySelectorAll(".detail");
+            let detailArray = [...detail];
+            detailArray.forEach((event) => {
+                event.value = "";
+                let { name, field, originalValue } = getFieldValue(event);
+                addContent(name, field, originalValue);
+                localStorage.clear();
+            });
+        }
     });
 });
 
-function LoadLocalStorage(name) {
-    localStorage.getItem(name)
-}
 
 
 // Add list item
