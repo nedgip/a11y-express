@@ -85,6 +85,16 @@ gListHeading.insertAdjacentElement("afterend", gList)
 bListHeading.insertAdjacentElement("afterend", bList)
 
 // Report details section
+const detail = document.querySelectorAll(".detail");
+const detailArray = [...detail];
+detailArray.forEach(e => {
+    const name = e.name
+
+    e.value = localStorage.getItem(name)
+    console.log(localStorage.getItem(name))
+})
+
+
 const updateReportDetailsBtn = document.querySelector(".update-report-details");
 updateReportDetailsBtn.addEventListener("click", (e) => {
     const detail = document.querySelectorAll(".detail");
@@ -109,9 +119,7 @@ function AddContent(variable, value, originalValue) {
         } else {
             e.textContent = value;
             e.classList.remove("editable");
-            console.log(variable)
-            let v = variable
-            localStorage.v = `"${value}"`
+            localStorage.setItem(variable, value)
         }
     });
 }
@@ -127,12 +135,13 @@ clearReportDetailsBtn.addEventListener("click", (e) => {
         const originalValue = event.dataset.value;
 
         AddContent(name, field, originalValue);
+        localStorage.clear();
     });
 });
 
-
-
-
+function LoadLocalStorage(name) {
+    localStorage.getItem(name)
+}
 
 
 // Add list item
