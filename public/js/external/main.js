@@ -92,7 +92,7 @@ updateReportDetailsBtn.addEventListener("click", (e) => {
     detailArray.forEach((event) => {
         const field = event.value;
         const name = event.name;
-        const originalValue = event.dataset.value
+        const originalValue = event.dataset.value;
 
         AddContent(name, field, originalValue);
     });
@@ -105,9 +105,13 @@ function AddContent(variable, value, originalValue) {
         if (value === "") {
             e.textContent = originalValue;
             e.classList.add("editable");
+
         } else {
             e.textContent = value;
             e.classList.remove("editable");
+            console.log(variable)
+            let v = variable
+            localStorage.v = `"${value}"`
         }
     });
 }
@@ -120,11 +124,12 @@ clearReportDetailsBtn.addEventListener("click", (e) => {
         event.value = "";
         const field = event.value;
         const name = event.name;
-        const originalValue = event.dataset.value
+        const originalValue = event.dataset.value;
 
         AddContent(name, field, originalValue);
     });
 });
+
 
 
 
