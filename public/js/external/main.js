@@ -87,14 +87,14 @@ bListHeading.insertAdjacentElement("afterend", bList)
 // Report details section
 const detail = document.querySelectorAll(".detail");
 const detailArray = [...detail];
+
+// On page load, loop through fields and load data from local storage.
 detailArray.forEach(e => {
     const name = e.name
-
     e.value = localStorage.getItem(name)
-    console.log(localStorage.getItem(name))
 })
 
-
+// Update report details button
 const updateReportDetailsBtn = document.querySelector(".update-report-details");
 updateReportDetailsBtn.addEventListener("click", (e) => {
     const detail = document.querySelectorAll(".detail");
@@ -108,6 +108,7 @@ updateReportDetailsBtn.addEventListener("click", (e) => {
     });
 });
 
+// Constructor to update page content
 function AddContent(variable, value, originalValue) {
     const content = document.querySelectorAll(`.${variable}`);
     const contentArray = [...content];
@@ -123,7 +124,7 @@ function AddContent(variable, value, originalValue) {
         }
     });
 }
-
+// Clears report details field
 const clearReportDetailsBtn = document.querySelector(".clear-report-details");
 clearReportDetailsBtn.addEventListener("click", (e) => {
     let detail = document.querySelectorAll(".detail");
