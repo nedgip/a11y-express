@@ -325,3 +325,26 @@ addListItemBtnArray.forEach(lBtn => {
 
 })
 
+
+// Accordion code
+
+const accordionContainer = document.querySelector('.accordion-container')
+
+
+accordionContainer.addEventListener('click', function (e) {
+    const accordionHeader = e.target.closest('.accordion-header')
+    const arrow = e.target.querySelector('.arrow');
+    const accordionPanel = e.target.nextElementSibling;
+    if (accordionHeader) {
+        accordionPanel.classList.toggle('is-open')
+        if (accordionPanel.classList.contains('is-open')) {
+            accordionHeader.setAttribute('aria-expanded', 'true')
+            arrow.classList.add('rotate-down')
+            arrow.classList.remove('rotate-up')
+        } else {
+            accordionHeader.setAttribute('aria-expanded', 'false')
+            arrow.classList.add('rotate-up')
+            arrow.classList.remove('rotate-down')
+        }
+    }
+})
