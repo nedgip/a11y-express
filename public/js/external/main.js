@@ -348,3 +348,13 @@ accordionContainer.addEventListener('click', function (e) {
         }
     }
 })
+
+// Clean file button
+const saveBtn = document.querySelector('.save')
+const settings = document.querySelector('.config')
+const sidebarBtn = document.querySelector('.sibebar')
+saveBtn.addEventListener('click', e => {
+    body.classList.remove("is-open");
+    sidebarBtn.parentNode.removeChild(sidebarBtn)
+    settings.parentNode.removeChild(settings)
+})
