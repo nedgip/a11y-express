@@ -219,6 +219,7 @@ class AddItem {
         parent.insertBefore(updateButton, div);
         updateButton.setAttribute("id", `update${type}${i}`);
         updateButton.setAttribute('aria-label', `Update item ${i}`)
+        updateButton.setAttribute("type", "button");
         updateButton.classList.add("update", "btn");
 
         //   Add event listener to the update button
@@ -239,6 +240,7 @@ class AddItem {
         parent.insertBefore(removeButton, div);
         removeButton.setAttribute("id", `removeGood${i}`);
         removeButton.setAttribute('aria-label', `Remove item ${i}`)
+        removeButton.setAttribute("type", "button");
         removeButton.classList.add("remove", "btn");
         const removeBtnID = removeButton.getAttribute("id");
 
