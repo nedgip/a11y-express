@@ -231,7 +231,7 @@ class AddItem {
             let typeList = document.querySelector(`.${type}-list`);
             const item = typeList.querySelector(`#${target}`);
             item.innerHTML = `
-<span class='editable'>${value}</span>
+<span>${value}</span>
   `;
         });
         //   Build remove button
