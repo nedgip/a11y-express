@@ -328,26 +328,28 @@ addListItemBtnArray.forEach(lBtn => {
 
 // Accordion code
 
-const accordionContainer = document.querySelector('.accordion-container')
+const accordionContainer = document.querySelector(".accordion-container");
 
-
-accordionContainer.addEventListener('click', function (e) {
-    const accordionHeader = e.target.closest('.accordion-header')
-    const arrow = e.target.querySelector('.arrow');
+accordionContainer.addEventListener("click", function (e) {
+    const accordionHeader = e.target.closest(".accordion-header");
+    const arrow = e.target.querySelector(".arrow");
     const accordionPanel = e.target.nextElementSibling;
+    const accordionInner = accordionPanel.querySelector(".accordion-inner");
     if (accordionHeader) {
-        accordionPanel.classList.toggle('is-open')
-        if (accordionPanel.classList.contains('is-open')) {
-            accordionHeader.setAttribute('aria-expanded', 'true')
-            arrow.classList.add('rotate-down')
-            arrow.classList.remove('rotate-up')
+        accordionPanel.classList.toggle("is-open");
+        if (accordionPanel.classList.contains("is-open")) {
+            accordionHeader.setAttribute("aria-expanded", "true");
+            arrow.classList.add("rotate-down");
+            arrow.classList.remove("rotate-up");
+            accordionInner.classList.remove("hidden");
         } else {
-            accordionHeader.setAttribute('aria-expanded', 'false')
-            arrow.classList.add('rotate-up')
-            arrow.classList.remove('rotate-down')
+            accordionHeader.setAttribute("aria-expanded", "false");
+            arrow.classList.add("rotate-up");
+            arrow.classList.remove("rotate-down");
+            accordionInner.classList.add("hidden");
         }
     }
-})
+});
 
 // Clean file button
 const saveBtn = document.querySelector('.save')
