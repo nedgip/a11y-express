@@ -4,6 +4,9 @@ font-size:18px;
 line-height:1.5em;
 }
 
+.a {
+color:hsl(16, 88%, 44%);
+}
 
 .container {
 max-width:800px;

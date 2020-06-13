@@ -44,35 +44,7 @@ class AddAttr {
         s.setAttribute(attr, value)
     }
 }
-// // Add Angular to file and inputs
-// const ngApp = new AddAttr('.config', 'ng-app', '')
-// const product = new AddAttr('.product', 'ng-model', 'product')
-// const client = new AddAttr('.client', 'ng-model', 'client')
-// const wcag = new AddAttr('.wcag', 'ng-model', 'wcag')
-// const level = new AddAttr('.level', 'ng-model', 'level')
-// const start = new AddAttr('.start', 'ng-model', 'start')
-// const end = new AddAttr('.end', 'ng-model', 'end')
-// const how = new AddAttr('.how', 'ng-model', 'how')
 
-
-// // Binds fields using Angular
-// class BindFields {
-//     constructor(value, selector) {
-//         const v = document.querySelectorAll(selector);
-//         const vArray = [...v];
-//         vArray.forEach(e => {
-//             e.textContent = `{{${value}}}`
-//         })
-//     }
-// }
-
-// const clientBind = new BindFields('client', '.client-hl');
-// const productBind = new BindFields('product', '.product-hl');
-// const wcagBind = new BindFields('wcag', '.wcag-hl');
-// const levelBind = new BindFields('level', '.level-hl');
-// const startBind = new BindFields('start', '.start-hl');
-// const endBind = new BindFields('end', '.end-hl');
-// const howBind = new BindFields('how', '.how-hl');
 
 // Add <ul> for good and bad lists
 const gListHeading = document.querySelector('.gl')
