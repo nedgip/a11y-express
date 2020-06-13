@@ -5,7 +5,12 @@ line-height:1.5em;
 }
 
 a {
-color:hsl(16, 88%, 44%);
+color:hsl(200, 90%, 30%);
+}
+.issue img {
+  max-width:30em;
+  max-height:auto;
+  border:1px solid lightgrey;
 }
 
 .container {
