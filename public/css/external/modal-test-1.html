@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal test 1</title>
+    <link rel="stylesheet" href="https://a11y-express.herokuapp.com/css/external/modal.css">
+    <script src="https://a11y-express.herokuapp.com/js/external/modal-1.js"></script>
+</head>
+
+<body>
+    div id="main">
+    <h1>Modal test 1</h1>
+    <ul>
+        <li>Has role="dialog"</li>
+        <li>Sets focus on modal container</li>
+        <li>Modal labelled by heading using aria-labelledby</li>
+    </ul>
+    <div>
+        <a href="#"> Start</a>
+    </div>
+    <div>
+        <button id="modalBtn">Activate</button>
+    </div>
+    <div>
+        <a href="#">End</a>
+    </div>
+    </div>
+
+    <!--  Modal  -->
+    <div id="modalWrapper" class="hidden modal-wrapper"></div>
+
+    <div id="modal" class="modal hidden" tabindex="-1" role="dialog" aria-labelledby="modalHeading">
+        <h1 id="modalHeading">Important message</h1>
+        <p>This is the important message.</p>
+        <button id="closeBtn">Close</button>
+    </div>
+</body>
+
+</html>
