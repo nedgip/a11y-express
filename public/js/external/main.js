@@ -335,7 +335,7 @@ saveBtn.addEventListener('click', e => {
     settings.parentNode.removeChild(settings)
 })
 
-/// Table of contents
+// Table of contents
 const heading2 = document.querySelectorAll("h2");
 const heading2Array = [...heading2];
 const heading3 = document.querySelectorAll("h3");
@@ -347,24 +347,24 @@ contentsHeading.setAttribute('id', 'contentsHeading')
 contentsHeading.classList.add("new-page");
 const nav = document.createElement("nav");
 nav.setAttribute("aria-labelledby", "contentsHeading");
-const ol = document.createElement("ol");
+const ul = document.createElement("ul");
 const nestedOl = document.createElement("ol")
 const siteContainer = document.querySelector(".site-container");
 siteContainer.insertBefore(nav, firstHeading);
 siteContainer.insertBefore(contentsHeading, nav);
-nav.appendChild(ol);
+nav.appendChild(ul);
 
 let tocID = heading2Array.length;
 heading2Array.forEach((heading) => {
     tocID++;
     let li = document.createElement("li");
     let headingValue = heading.textContent;
-    ol.appendChild(li);
+    ul.appendChild(li);
     li.innerHTML = `<a href="#toc${tocID}">${headingValue}</a>`;
     heading.setAttribute("id", `toc${tocID}`);
     heading.setAttribute("tabindex", "-1");
 });
-ol.insertAdjacentElement('beforeend', nestedOl);
+ul.insertAdjacentElement('beforeend', nestedOl);
 heading3Array.forEach((heading) => {
     tocID++;
     let li = document.createElement("li");
@@ -375,6 +375,3 @@ heading3Array.forEach((heading) => {
     heading.setAttribute("tabindex", "-1");
 
 });
-
-
-
