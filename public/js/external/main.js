@@ -335,23 +335,46 @@ saveBtn.addEventListener('click', e => {
     settings.parentNode.removeChild(settings)
 })
 
-// Table of contents
-const headings = document.querySelectorAll("h2");
-const headingArray = [...headings];
-const firstHeading = headingArray[0]
-console.log(firstHeading)
+/// Table of contents
+const heading2 = document.querySelectorAll("h2");
+const heading2Array = [...heading2];
+const heading3 = document.querySelectorAll("h3");
+const heading3Array = [...heading3];
+const firstHeading = heading2Array[0];
+const contentsHeading = document.createElement("h2");
+contentsHeading.textContent = "Contents";
+contentsHeading.setAttribute('id', 'contentsHeading')
+contentsHeading.classList.add("new-page");
+const nav = document.createElement("nav");
+nav.setAttribute("aria-labelledby", "contentsHeading");
 const ol = document.createElement("ol");
-const siteContainer = document.querySelector('.site-container')
-siteContainer.insertBefore(ol, firstHeading)
-let i = 0
-headingArray.forEach((heading) => {
-    i++
+const nestedOl = document.createElement("ol")
+const siteContainer = document.querySelector(".site-container");
+siteContainer.insertBefore(nav, firstHeading);
+siteContainer.insertBefore(contentsHeading, nav);
+nav.appendChild(ol);
+
+let tocID = heading2Array.length;
+heading2Array.forEach((heading) => {
+    tocID++;
     let li = document.createElement("li");
-    let headingValue = heading.textContent
+    let headingValue = heading.textContent;
     ol.appendChild(li);
-    li.innerHTML = `<a href="#toc${i}">${headingValue}</a>`;
-    heading.setAttribute('id', `toc${i}`)
-    heading.setAttribute('tabindex', '-1')
+    li.innerHTML = `<a href="#toc${tocID}">${headingValue}</a>`;
+    heading.setAttribute("id", `toc${tocID}`);
+    heading.setAttribute("tabindex", "-1");
 });
+ol.insertAdjacentElement('beforeend', nestedOl);
+heading3Array.forEach((heading) => {
+    tocID++;
+    let li = document.createElement("li");
+    let headingValue = heading.textContent;
+    nestedOl.appendChild(li)
+    li.innerHTML = `<a href="#toc${tocID}">${headingValue}</a>`;
+    heading.setAttribute("id", `toc${tocID}`);
+    heading.setAttribute("tabindex", "-1");
+
+});
+
 
 
