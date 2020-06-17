@@ -347,31 +347,26 @@ contentsHeading.setAttribute('id', 'contentsHeading')
 contentsHeading.classList.add("new-page");
 const nav = document.createElement("nav");
 nav.setAttribute("aria-labelledby", "contentsHeading");
-const ul = document.createElement("ul");
-const nestedOl = document.createElement("ol")
+const tocUl = document.createElement("ul");
+const tocOl = document.createElement("ol")
 const siteContainer = document.querySelector(".site-container");
 siteContainer.insertBefore(nav, firstHeading);
 siteContainer.insertBefore(contentsHeading, nav);
-nav.appendChild(ul);
+nav.appendChild(tocUl);
+
+function toc(listType, headingArray) {
+    headingArray.forEach((heading) => {
+        tocID++;
+        let li = document.createElement("li");
+        let headingValue = heading.textContent;
+        listType.appendChild(li);
+        li.innerHTML = `<a href="#toc${tocID}">${headingValue}</a>`;
+        heading.setAttribute("id", `toc${tocID}`);
+        heading.setAttribute("tabindex", "-1");
+    })
+}
 
 let tocID = heading2Array.length;
-heading2Array.forEach((heading) => {
-    tocID++;
-    let li = document.createElement("li");
-    let headingValue = heading.textContent;
-    ul.appendChild(li);
-    li.innerHTML = `<a href="#toc${tocID}">${headingValue}</a>`;
-    heading.setAttribute("id", `toc${tocID}`);
-    heading.setAttribute("tabindex", "-1");
-});
-ul.insertAdjacentElement('beforeend', nestedOl);
-heading3Array.forEach((heading) => {
-    tocID++;
-    let li = document.createElement("li");
-    let headingValue = heading.textContent;
-    nestedOl.appendChild(li)
-    li.innerHTML = `<a href="#toc${tocID}">${headingValue}</a>`;
-    heading.setAttribute("id", `toc${tocID}`);
-    heading.setAttribute("tabindex", "-1");
-
-});
+toc(tocUl, heading2Array);
+tocUl.insertAdjacentElement('beforeend', tocOl);
+toc(tocOl, heading3Array);
