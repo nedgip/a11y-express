@@ -350,7 +350,6 @@ nav.setAttribute("aria-labelledby", "contentsHeading");
 const tocUl = document.createElement("ul");
 const tocOl = document.createElement("ol")
 const siteContainer = document.querySelector(".site-container");
-const tocContainer = document.querySelector(".toc-container");
 tocContainer.appendChild(contentsHeading);
 tocContainer.insertAdjacentElement('beforeend', nav)
 nav.appendChild(tocUl);
