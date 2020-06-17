@@ -240,3 +240,20 @@ height:auto;
   font-weight: 600;
   border: 1px dashed grey;
 }
+
+@media only screen and (max-width: 375px) {
+.site-container{
+  margin:1em;
+  width:100%;
+}
+  .report-title {
+  max-width:100%;
+}
+  .issue-detail {
+    flex-wrap: wrap;
+}
+  .issue {
+    overflow-wrap: break-word;
+    padding: 0 1em 0 0;
+}
+}
