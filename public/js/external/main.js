@@ -370,4 +370,36 @@ toc(tocUl, heading2Array);
 tocUl.insertAdjacentElement('beforeend', tocOl);
 toc(tocOl, heading3Array);
 
-//Make images decorative
+// Comments
+container.addEventListener("dblclick", addComment);
+
+function addComment(e) {
+    let commentLocation = e.target;
+    if (e.target.classList.contains("comment")) {
+        deleteSingleComment(e.target);
+    }
+
+    let comment = document.createElement("span");
+    commentLocation.insertAdjacentElement("beforeend", comment);
+    comment.setAttribute("contenteditable", true);
+    comment.setAttribute("role", "textarea");
+    comment.setAttribute("aria-label", "Comment");
+    comment.classList.add("comment");
+    comment.focus();
+}
+
+let comments = document.querySelectorAll(".comment");
+let commentsArray = [...comments];
+
+function deleteComments() {
+    let comments = document.querySelectorAll(".comment");
+    let commentsArray = [...comments];
+    commentsArray.forEach((e) => {
+        e.parentNode.removeChild(e);
+    });
+}
+
+function deleteSingleComment(event) {
+    event.parentNode.removeChild(event);
+}
+
