@@ -331,6 +331,8 @@ if (container.classList.contains('edit')) {
         contentsHeading.parentNode.removeChild(contentsHeading)
         nav.parentNode.removeChild(nav)
         container.classList.remove('edit')
+        deleteComments();
+        container.removeEventListener("dblclick", addComment);
     })
 }
 // Table of contents
