@@ -328,14 +328,14 @@ if (container.classList.contains('edit')) {
         body.classList.remove("is-open");
         sidebarBtn.parentNode.removeChild(sidebarBtn)
         settings.parentNode.removeChild(settings)
-        contentsHeading.parentNode.removeChild(contentsHeading)
-        nav.parentNode.removeChild(nav)
         container.classList.remove('edit')
         deleteComments();
         container.removeEventListener("dblclick", addComment);
     })
 }
 // Table of contents
+const tocContainer = document.querySelector(".toc-container");
+tocContainer.innerHTML = "";
 const heading2 = document.querySelectorAll("h2");
 const heading2Array = [...heading2];
 const heading3 = document.querySelectorAll("h3");
@@ -371,6 +371,7 @@ let tocID = heading2Array.length;
 toc(tocUl, heading2Array);
 tocUl.insertAdjacentElement('beforeend', tocOl);
 toc(tocOl, heading3Array);
+
 
 // Comments
 container.addEventListener("dblclick", addComment);
