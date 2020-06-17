@@ -250,7 +250,8 @@ height:auto;
   max-width:100%;
 }
   .issue-detail {
-    flex:unset;
+    display:block;
+    line-height: 2;
 }
   .issue {
     overflow-wrap: break-word;
