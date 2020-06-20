@@ -405,3 +405,32 @@ function deleteSingleComment(event) {
     event.parentNode.removeChild(event);
 }
 
+// Filter
+const searchField = document.querySelector('#issueFilter');
+const resultStatus = document.querySelector('#resultStatus')
+function searchFilter() {
+let filter = searchField.value.toLowerCase()
+const ul = document.querySelector('.issue-list');
+let li = document.querySelectorAll('.issue');
+let liArray = [...li]
+let noLi = liArray.length
+
+liArray.forEach(issue => {
+ let query = issue.textContent;
+  if (query.toLowerCase().indexOf(filter) > -1) {
+    issue.style.display = "";
+  } else {
+    issue.style.display = "none";
+    noLi-- 
+  }
+  resultStatus.textContent = `${noLi} results found for "${filter}"`
+  if(filter === "") {resultStatus.textContent = ""}
+}) 
+}
+
+
+searchField.addEventListener('keyup', event => {
+  searchFilter()
+  
+})
+

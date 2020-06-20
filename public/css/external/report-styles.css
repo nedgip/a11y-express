@@ -258,6 +258,32 @@ height:auto;
   outline: transparent dotted 3px;
 }
 
+/* Filter */
+#resultStatus {
+  margin:1em 0 0 0;
+}
+i {
+  margin-right:.5em;
+}
+
+div.filter label {
+  font-weight:bold;
+}
+div.filter input {
+  padding:.5em 1em;
+  border:1px solid grey;
+  border-radius:.5em;
+  font-size:1rem;
+  max-width:30em;
+}
+
+div.filter input:focus {
+  box-shadow: 0 0 0 2px hsl(344, 85%, 49%);
+  outline: transparent dotted 3px;
+}
+
+
+
 @media only screen and (max-width: 600px) {
 .site-container{
   margin:1em;
