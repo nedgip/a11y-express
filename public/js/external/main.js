@@ -407,30 +407,29 @@ function deleteSingleComment(event) {
 
 // Filter
 const searchField = document.querySelector('#issueFilter');
-const resultStatus = document.querySelector('#resultStatus');
-resultStatus.setAttribute('role', 'status');
+const resultStatus = document.querySelector('#resultStatus')
 function searchFilter() {
     let filter = searchField.value.toLowerCase()
     const ul = document.querySelector('.issue-list');
-    let liArray = Array.prototype.slice.call(ul.querySelectorAll(".issue"));
-    let numberOfResults = liArray.length;
+    let li = document.querySelectorAll('.issue');
+    let liArray = [...li]
+    let noLi = liArray.length
 
-    liArray.forEach(function (issue) {
+    liArray.forEach(issue => {
         let query = issue.textContent;
         if (query.toLowerCase().indexOf(filter) > -1) {
             issue.style.display = "";
         } else {
             issue.style.display = "none";
-            numberOfResults--
+            noLi--
         }
-        resultStatus.textContent = numberOfResults + " results found for " + '"' + filter + '"'
+        resultStatus.textContent = `${noLi} results found for "${filter}"`
         if (filter === "") { resultStatus.textContent = "" }
     })
 }
 
 
-searchField.addEventListener('keyup', function (event) {
+searchField.addEventListener('keyup', event => {
     searchFilter()
 
 })
-
