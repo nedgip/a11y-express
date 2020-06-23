@@ -1,6 +1,6 @@
 // Print button
 const pBtn = document.querySelector('.print');
-pBtn.addEventListener('click', () => {
+pBtn.addEventListener('click', function () {
     window.print()
 })
 
@@ -408,30 +408,29 @@ function deleteSingleComment(event) {
 // Filter
 const searchField = document.querySelector('#issueFilter');
 const resultStatus = document.querySelector('#resultStatus');
-resultStatus.setAttribute('role','status');
+resultStatus.setAttribute('role', 'status');
 function searchFilter() {
-let filter = searchField.value.toLowerCase()
-const ul = document.querySelector('.issue-list');
-let li = document.querySelectorAll('.issue');
-let liArray = [...li]
-let noLi = liArray.length
+    let filter = searchField.value.toLowerCase()
+    const ul = document.querySelector('.issue-list');
+    let liArray = Array.prototype.slice.call(ul.querySelectorAll(".issue"));
+    let noLi = liArray.length
 
-liArray.forEach(issue => {
- let query = issue.textContent;
-  if (query.toLowerCase().indexOf(filter) > -1) {
-    issue.style.display = "";
-  } else {
-    issue.style.display = "none";
-    noLi-- 
-  }
-  resultStatus.textContent = `${noLi} results found for "${filter}"`
-  if(filter === "") {resultStatus.textContent = ""}
-}) 
+    liArray.forEach(function (issue) {
+        let query = issue.textContent;
+        if (query.toLowerCase().indexOf(filter) > -1) {
+            issue.classList.remove('hidden');
+        } else {
+            issue.classList.add('hidden');
+            noLi--
+        }
+        resultStatus.textContent = noLi + " results found for " + '"' + filter + '"'
+        if (filter === "") { resultStatus.textContent = "" }
+    })
 }
 
 
-searchField.addEventListener('keyup', event => {
-  searchFilter()
-  
+searchField.addEventListener('keyup', function (event) {
+    searchFilter()
+
 })
 
