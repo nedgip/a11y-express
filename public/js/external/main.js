@@ -413,7 +413,7 @@ function searchFilter() {
     let filter = searchField.value.toLowerCase()
     const ul = document.querySelector('.issue-list');
     let liArray = Array.prototype.slice.call(ul.querySelectorAll(".issue"));
-    let noLi = liArray.length
+    let numberOfResults = liArray.length;
 
     liArray.forEach(function (issue) {
         let query = issue.textContent;
@@ -421,9 +421,9 @@ function searchFilter() {
             issue.style.display = "";
         } else {
             issue.style.display = "none";
-            noLi--
+            numberOfResults--
         }
-        resultStatus.textContent = noLi + " results found for " + '"' + filter + '"'
+        resultStatus.textContent = numberOfResults + " results found for " + '"' + filter + '"'
         if (filter === "") { resultStatus.textContent = "" }
     })
 }
