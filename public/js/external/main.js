@@ -418,9 +418,9 @@ function searchFilter() {
     liArray.forEach(function (issue) {
         let query = issue.textContent;
         if (query.toLowerCase().indexOf(filter) > -1) {
-            issue.classList.remove('hidden');
+            issue.style.display = "";
         } else {
-            issue.classList.add('hidden');
+            issue.style.display = "none";
             noLi--
         }
         resultStatus.textContent = noLi + " results found for " + '"' + filter + '"'
