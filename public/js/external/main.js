@@ -407,7 +407,8 @@ function deleteSingleComment(event) {
 
 // Filter
 const searchField = document.querySelector('#issueFilter');
-const resultStatus = document.querySelector('#resultStatus')
+const resultStatus = document.querySelector('#resultStatus');
+resultStatus.setAttribute('role', 'status');
 function searchFilter() {
     let filter = searchField.value.toLowerCase()
     const ul = document.querySelector('.issue-list');
