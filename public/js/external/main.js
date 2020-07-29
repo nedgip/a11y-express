@@ -439,5 +439,6 @@ searchField.addEventListener('keyup', event => {
 const screenshots = document.querySelectorAll('img');
 const screenshotArray = [...screenshots]
 screenshotArray.forEach((screenshot) => {
+    if (screenshot.hasAttribute('alt')) { return }
     screenshot.setAttribute('alt', '');
 })
