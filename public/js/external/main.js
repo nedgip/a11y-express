@@ -438,6 +438,6 @@ searchField.addEventListener('keyup', event => {
 // Add an empty alt attribute to <img> tags to make them decorative.
 const screenshots = document.querySelectorAll('img');
 const screenshotArray = [...screenshots]
-screenShotArray.forEach((screenshot) => {
+screenshotArray.forEach((screenshot) => {
     screenshot.setAttribute('alt', '');
 })
