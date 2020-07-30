@@ -329,8 +329,9 @@ if (container.classList.contains('edit')) {
         sidebarBtn.parentNode.removeChild(sidebarBtn)
         settings.parentNode.removeChild(settings)
         container.classList.remove('edit')
-        deleteComments();
-        container.removeEventListener("dblclick", addComment);
+        updateTitleWithProductName();
+        // deleteComments();
+        // container.removeEventListener("dblclick", addComment);
     })
 }
 // Table of contents
@@ -442,3 +443,9 @@ screenshotArray.forEach((screenshot) => {
     if (screenshot.hasAttribute('alt')) { return }
     screenshot.setAttribute('alt', '');
 })
+
+// Update the page title
+function updateTitleWithProductName() {
+    const product = document.querySelector('.product').textContent;
+    document.title = `Accessibility review of ${product}`
+}
