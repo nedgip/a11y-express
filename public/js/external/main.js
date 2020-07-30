@@ -326,12 +326,12 @@ if (container.classList.contains('edit')) {
     const sidebarBtn = document.querySelector('.sibebar')
     saveBtn.addEventListener('click', e => {
         body.classList.remove("is-open");
-        sidebarBtn.parentNode.removeChild(sidebarBtn)
-        settings.parentNode.removeChild(settings)
-        container.classList.remove('edit')
+        sidebarBtn.parentNode.removeChild(sidebarBtn);
+        settings.parentNode.removeChild(settings);
+        container.classList.remove('edit');
         updateTitleWithProductName();
-        // deleteComments();
-        // container.removeEventListener("dblclick", addComment);
+        body.removeAttribute("aria-disabled");
+        body.classList.remove("fr-view");
     })
 }
 // Table of contents
@@ -372,39 +372,6 @@ toc(tocUl, heading2Array);
 tocUl.insertAdjacentElement('beforeend', tocOl);
 toc(tocOl, heading3Array);
 
-
-// // Comments
-// container.addEventListener("dblclick", addComment);
-
-// function addComment(e) {
-//     let commentLocation = e.target;
-//     if (e.target.classList.contains("comment")) {
-//         deleteSingleComment(e.target);
-//     }
-
-//     let comment = document.createElement("span");
-//     commentLocation.insertAdjacentElement("beforeend", comment);
-//     comment.setAttribute("contenteditable", true);
-//     comment.setAttribute("role", "textarea");
-//     comment.setAttribute("aria-label", "Comment");
-//     comment.classList.add("comment");
-//     comment.focus();
-// }
-
-// let comments = document.querySelectorAll(".comment");
-// let commentsArray = [...comments];
-
-// function deleteComments() {
-//     let comments = document.querySelectorAll(".comment");
-//     let commentsArray = [...comments];
-//     commentsArray.forEach((e) => {
-//         e.parentNode.removeChild(e);
-//     });
-// }
-
-// function deleteSingleComment(event) {
-//     event.parentNode.removeChild(event);
-// }
 
 // Filter
 const searchField = document.querySelector('#issueFilter');
@@ -448,4 +415,26 @@ screenshotArray.forEach((screenshot) => {
 function updateTitleWithProductName() {
     const product = document.querySelector('.product').textContent;
     document.title = `Accessibility review of ${product}`
+}
+
+/**
+ * Handler to set multiple attributes
+ * @param {HTMLElement} element to set attributes on
+ * @param {HTMLObject} attributes as key value pairs e.g. setAttributes(textField,{"a":"b", x":"y"})
+ */
+function setAttributes(element, attributes) {
+    Object.keys(attributes).forEach(function (attribute) {
+        element.setAttribute(attribute, attributes[attribute]);
+    });
+}
+
+/**
+ * Handler to remove multiple attributes
+ * @param {HTMLElement} element to set attributes on
+ * @param {HTMLObject} attributes
+ */
+function removeAttributes(element, attributes) {
+    attributes.forEach(function (attribute) {
+        element.removeAttribute(attribute);
+    });
 }
