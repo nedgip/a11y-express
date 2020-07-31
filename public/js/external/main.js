@@ -438,3 +438,17 @@ function removeAttributes(element, attributes) {
         element.removeAttribute(attribute);
     });
 }
+
+
+// Set focus on skip link targets
+
+const skipLinks = Array.prototype.slice.call(
+    document.querySelectorAll(".skip-link")
+);
+skipLinks.forEach(function (skipLink) {
+    skipLink.addEventListener("click", function () {
+        const skipTarget = skipLink.getAttribute("href");
+        skipTarget.focus();
+    });
+});
+
