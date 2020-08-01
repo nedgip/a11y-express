@@ -392,7 +392,7 @@ function searchFilter() {
             issue.style.display = "none";
             noLi--
         }
-        resultStatus.textContent = `${noLi} results found for "${filter}"`
+        resultStatus.textContent = `${noLi} issues found for ${filter}`
         if (filter === "") { resultStatus.textContent = "" }
     })
 }
