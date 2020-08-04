@@ -440,8 +440,10 @@ function removeAttributes(element, attributes) {
 }
 
 
+// Adds the href on page load to avoid internal link issues when saving file locally
+document.querySelector('#skipToContentsHeading').setAttribute('href', '#contentsHeading');
+document.querySelector('#skipToTOC').setAttribute('href', '#toc10');
 // Set focus on skip link targets
-
 const skipLinks = Array.prototype.slice.call(
     document.querySelectorAll(".skip-link")
 );
