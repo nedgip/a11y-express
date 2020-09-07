@@ -454,5 +454,5 @@ skipLinks.forEach(function (skipLink) {
 
 // Replace these character â€
 const issueList = document.querySelector('.issue-list');
-
-issueList.replaceAll(/â€/, '"');
+const regex = /â€/g;
+issueList.replace(regex, '"');
