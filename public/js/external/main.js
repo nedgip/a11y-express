@@ -453,6 +453,6 @@ skipLinks.forEach(function (skipLink) {
 });
 
 // Replace these character â€
-const issueList = document.querySelector('.issue-list');
-const regex = /â€/g;
-issueList.replace(regex, '"');
+// const issueList = document.querySelector('.issue-list');
+// const regex = /â€/g;
+// issueList.replace(regex, '"');
