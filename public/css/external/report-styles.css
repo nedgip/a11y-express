@@ -323,7 +323,3 @@ div.filter input:focus {
     display: none;
   }
 }
-
-.code {
-  overflow-wrap: break-word;
-}
