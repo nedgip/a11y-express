@@ -327,7 +327,6 @@ if (container.classList.contains('edit')) {
     container.classList.remove('edit');
     updateTitleWithProductName();
     body.removeAttribute('aria-disabled');
-    body.classList.remove('fr-view');
   });
 }
 // Table of contents
