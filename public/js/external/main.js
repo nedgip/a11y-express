@@ -360,7 +360,7 @@ function clearContents() {
   return (tocContainer.innerHTML = '');
 }
 function addContentsHeading() {
-  tocContainer.innerHTML = '<h2>Contents</h2>';
+  return (tocContainer.innerHTML = '<h2 class="new-page">Contents</h2>');
 }
 
 function getPreviousHeading(heading) {
