@@ -42,13 +42,24 @@ if (container.classList.contains('edit')) {
   // Add <ul> for good and bad lists
   const gListHeading = document.querySelector('.gl');
   const bListHeading = document.querySelector('.bl');
+  const tListHeading = document.querySelector('.tl');
+  const sListHeading = document.querySelector('.sl');
+  const toListHeading = document.querySelector('.tol');
   const gList = document.createElement('ul');
   const bList = document.createElement('ul');
+  const tList = document.createElement('ul');
+  const sList = document.createElement('ul');
+  const toList = document.createElement('ul');
   gList.classList.add('good-list');
   bList.classList.add('bad-list');
+  tList.classList.add('technology-list');
+  sList.classList.add('software-list');
+  toList.classList.add('tool-list');
   gListHeading.insertAdjacentElement('afterend', gList);
   bListHeading.insertAdjacentElement('afterend', bList);
-
+  tListHeading.insertAdjacentElement('afterend', tList);
+  sListHeading.insertAdjacentElement('afterend', sList);
+  toListHeading.insertAdjacentElement('afterend', toList);
   // Report details section
   // On page load, loop through fields and load data from local storage.
   const detail = document.querySelectorAll('.detail');
@@ -79,6 +90,8 @@ if (container.classList.contains('edit')) {
           let { name, field, originalValue } = getFieldValue(event);
           addContent(name, field, originalValue);
         });
+        //         populate url link in content
+        siteLink();
       }
     });
   });
@@ -284,8 +297,14 @@ if (container.classList.contains('edit')) {
     lBtn.addEventListener('click', (btn) => {
       if (btn.target.classList.contains('good')) {
         const addGItem = new AddItem(btn, 'good');
-      } else {
+      } else if (btn.target.classList.contains('bad')) {
         const addBItem = new AddItem(btn, 'bad');
+      } else if (btn.target.classList.contains('technology')) {
+        const addTItem = new AddItem(btn, 'technology');
+      } else if (btn.target.classList.contains('software')) {
+        const addSItem = new AddItem(btn, 'software');
+      } else if (btn.target.classList.contains('tool')) {
+        const addTOItem = new AddItem(btn, 'tool');
       }
     });
   });
@@ -330,42 +349,127 @@ if (container.classList.contains('edit')) {
   });
 }
 // Table of contents
-const tocContainer = document.querySelector('.toc-container');
-tocContainer.innerHTML = '';
-const heading2 = document.querySelectorAll('h2');
-const heading2Array = [...heading2];
-const heading3 = document.querySelectorAll('h3');
-const heading3Array = [...heading3];
-const firstHeading = heading2Array[0];
-const contentsHeading = document.createElement('h2');
-contentsHeading.textContent = 'Contents';
-contentsHeading.setAttribute('id', 'contentsHeading');
-contentsHeading.classList.add('new-page');
-const nav = document.createElement('nav');
-nav.setAttribute('aria-labelledby', 'contentsHeading');
-const tocUl = document.createElement('ul');
-const tocOl = document.createElement('ol');
-const siteContainer = document.querySelector('.site-container');
-tocContainer.appendChild(contentsHeading);
-tocContainer.insertAdjacentElement('beforeend', nav);
-nav.appendChild(tocUl);
+const headingArray = Array.prototype.slice.call(
+  document.querySelectorAll('.h2, .h3, .h4')
+);
+const toc = document.querySelector('#toc');
+let id = 0;
 
-function toc(listType, headingArray) {
-  headingArray.forEach((heading) => {
-    tocID++;
-    let li = document.createElement('li');
-    let headingValue = heading.textContent;
-    listType.appendChild(li);
-    li.innerHTML = `<a href="#toc${tocID}">${headingValue}</a>`;
-    heading.setAttribute('id', `toc${tocID}`);
-    heading.setAttribute('tabindex', '-1');
-  });
+function clearContents() {
+  return (toc.innerHTML = '');
 }
 
-let tocID = heading2Array.length;
-toc(tocUl, heading2Array);
-tocUl.insertAdjacentElement('beforeend', tocOl);
-toc(tocOl, heading3Array);
+function getPreviousHeading(heading) {
+  const headingIndex = headingArray.indexOf(heading);
+  const previousHeadingIndex = headingIndex - 1;
+  return headingArray[previousHeadingIndex];
+}
+
+function getHeadingValue(heading) {
+  return heading.textContent;
+}
+
+function getHeadingLevel(heading) {
+  return heading.getAttribute('data-level');
+}
+
+function createNestedUl() {
+  return document.createElement('ul');
+}
+
+function createListItem() {
+  return document.createElement('li');
+}
+function addUl(parent, nestedUl) {
+  return parent.appendChild(nestedUl);
+}
+function addChildListItemLink(parent, newListItem, textContent, id) {
+  newListItem.classList.add('toc-link');
+  newListItem.innerHTML = `<a href="#heading${id}">${textContent}</a>`;
+  return parent.appendChild(newListItem);
+}
+function addSiblingListItemLink(sibling, newListItem, textContent, id) {
+  newListItem.classList.add('toc-link');
+  newListItem.innerHTML = `<a href="#heading${id}">${textContent}</a>`;
+  return sibling.insertAdjacentElement('afterend', newListItem);
+}
+function calculateDifferenceBetweenHeadingLevels(previous, current) {
+  return previous - current;
+}
+
+function getLastListItem() {
+  const tocArray = Array.prototype.slice.call(
+    document.querySelectorAll('.toc-link')
+  );
+  const indexOfPreviousLink = tocArray.length - 1;
+  return tocArray[indexOfPreviousLink];
+}
+
+function loopThroughHeadingArray() {
+  headingArray.forEach(function (heading) {
+    id++;
+    heading.setAttribute('id', `heading${id}`);
+    const headingLevel = getHeadingLevel(heading);
+    const previousHeading = getPreviousHeading(heading);
+
+    if (!previousHeading) {
+      const newListItemLink = createListItem();
+      addChildListItemLink(toc, newListItemLink, getHeadingValue(heading), id);
+    } else if (previousHeading) {
+      const previousHeadingLevel = getHeadingLevel(previousHeading);
+
+      if (previousHeadingLevel == headingLevel) {
+        const newListItemLink = createListItem();
+        const lastListItemLink = getLastListItem();
+        addSiblingListItemLink(
+          lastListItemLink,
+          newListItemLink,
+          getHeadingValue(heading),
+          id
+        );
+      } else if (previousHeadingLevel < headingLevel) {
+        const nestedUl = createNestedUl();
+        const lastListItemLink = getLastListItem();
+        addUl(lastListItemLink, nestedUl);
+        const newListItemLink = createListItem();
+        addChildListItemLink(
+          nestedUl,
+          newListItemLink,
+          getHeadingValue(heading),
+          id
+        );
+      } else if (previousHeadingLevel > headingLevel) {
+        const difference = calculateDifferenceBetweenHeadingLevels(
+          previousHeadingLevel,
+          headingLevel
+        );
+        const newListItemLink = createListItem();
+        const lastListItemLink = getLastListItem();
+        if (difference > 1) {
+          const previousUl = lastListItemLink.parentElement.parentElement.closest(
+            'ul'
+          );
+          addSiblingListItemLink(
+            previousUl,
+            newListItemLink,
+            getHeadingValue(heading),
+            id
+          );
+        } else {
+          const previousUl = lastListItemLink.parentElement.closest('ul');
+          addSiblingListItemLink(
+            previousUl,
+            newListItemLink,
+            getHeadingValue(heading),
+            id
+          );
+        }
+      }
+    }
+  });
+}
+clearContents();
+loopThroughHeadingArray();
 
 // Filter
 const searchField = document.querySelector('#issueFilter');
@@ -451,7 +555,11 @@ skipLinks.forEach(function (skipLink) {
   });
 });
 
-// Replace these character â€
-// const issueList = document.querySelector('.issue-list');
-// const regex = /â€/g;
-// issueList.replace(regex, '"');
+// Updates the URL link href in page content when the URL field is populated.
+function siteLink() {
+  const siteURL = document.querySelector('#url').value;
+  const siteLink = document.querySelector('#siteLink');
+  if (siteURL.value !== '') {
+    siteLink.setAttribute('href', siteURL);
+  }
+}
