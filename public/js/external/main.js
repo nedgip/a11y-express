@@ -352,11 +352,11 @@ if (container.classList.contains('edit')) {
 const headingArray = Array.prototype.slice.call(
   document.querySelectorAll('.h2, .h3, .h4')
 );
-const toc = document.querySelector('#toc');
+
 let id = 0;
 
 function clearContents() {
-  return (toc.innerHTML = '');
+  return (tocUl.innerHTML = '');
 }
 
 function getPreviousHeading(heading) {
@@ -468,6 +468,10 @@ function loopThroughHeadingArray() {
     }
   });
 }
+const tocUl = createNestedUl();
+tocUl.setAttribute('id', 'toc');
+const tocContainer = document.querySelector('.toc-container');
+addUl(tocContainer, tocUl);
 clearContents();
 loopThroughHeadingArray();
 
