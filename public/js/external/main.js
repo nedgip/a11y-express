@@ -354,9 +354,13 @@ const headingArray = Array.prototype.slice.call(
 );
 
 let id = 0;
+const tocContainer = document.querySelector('.toc-container');
 
 function clearContents() {
-  return (tocUl.innerHTML = '');
+  return (tocContainer.innerHTML = '');
+}
+function addContentsHeading() {
+  tocContainer.innerHTML = '<h2>Contents</h2>';
 }
 
 function getPreviousHeading(heading) {
@@ -468,11 +472,12 @@ function loopThroughHeadingArray() {
     }
   });
 }
+
+clearContents();
+addContentsHeading();
 const tocUl = createNestedUl();
 tocUl.setAttribute('id', 'toc');
-const tocContainer = document.querySelector('.toc-container');
 addUl(tocContainer, tocUl);
-clearContents();
 loopThroughHeadingArray();
 
 // Filter
