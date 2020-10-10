@@ -92,6 +92,7 @@ if (container.classList.contains('edit')) {
         });
         //         populate url link in content
         siteLink();
+        getNumberOfSuccessCriteria();
       }
     });
   });
@@ -570,5 +571,134 @@ function siteLink() {
   const siteLink = document.querySelector('#siteLink');
   if (siteURL.value !== '') {
     siteLink.setAttribute('href', siteURL);
+  }
+}
+
+// Returns the total number of issues by type
+function getNumberOfIssues() {
+  // variables
+  const issueArray = Array.prototype.slice.call(
+    document.querySelectorAll('.issue')
+  );
+  const severityArray = Array.prototype.slice.call(
+    document.querySelectorAll('.severity')
+  );
+  const typeArray = Array.prototype.slice.call(
+    document.querySelectorAll('.type')
+  );
+  console.log(typeArray);
+  // Functions
+
+  /**
+   * Gets the total number of issues
+   * @return {Number} Number of issues in the report
+   */
+  function getTotalNumberOfIssues() {
+    return issueArray.length;
+  }
+
+  /**
+   * Displays the total number of issues
+   * @param {Function} gets total number of issues
+   */
+  function displayTotalNumberOfIssuesReported(getTotalNumberOfIssues) {
+    const total = document.querySelector('.total');
+    total.textContent = getTotalNumberOfIssues();
+  }
+
+  /**
+   * Adds a class to the issue detail li which is used to identify it to generate an array e.g. critical.
+   * @param {Array} array of li which have specific class.
+   * @return {String} Adds a class to the issue detail li, replaces any blank space with a - and makes it lower case.
+   */
+  function addDetailClassToIssue(array, detailValue) {
+    array.forEach(function (detail) {
+      if (detail.textContent === detailValue) {
+        return detail.classList.add(
+          detailValue.replace(/\s+/g, '-').toLowerCase()
+        );
+      }
+    });
+  }
+
+  /**
+   * Counts how many items in the array that have a specific class e.g. critical.
+   * @param {String} the class which is used to identify the li.
+   * @return {Number} Number of issues which have the class passed in the param.
+   */
+  function countDetail(detailClass) {
+    let detailArray = Array.prototype.slice.call(
+      document.querySelectorAll(`.${detailClass}`)
+    );
+    return detailArray.length;
+  }
+
+  /**
+   * Displays the total number of issues with a specific detail e.g. critical.
+   * @param {String} the class which is used to identify the li.
+   * @param {Function} Function which counts how many issues are in the array.
+   */
+  function displayTotalNumberOfDetail(detailClass, countDetail) {
+    const detailValue = document.querySelector(`.${detailClass}-issues`);
+    console.log(`.${detailClass}-issues`);
+    console.log(detailClass);
+    console.log(detailValue);
+    detailValue.textContent = countDetail(detailClass);
+  }
+
+  /**
+   * Gets the total number of issues from the issue detail e.g severity.
+   * @param {Array} The array to search for the specified class.
+   * @param {String} The text value of the li.
+   * @param {String} The class used to identify the li.
+   */
+  function getTotalNumberFromDetail(array, detailValue, detailClass) {
+    addDetailClassToIssue(array, detailValue);
+    displayTotalNumberOfDetail(detailClass, countDetail);
+  }
+
+  displayTotalNumberOfIssuesReported(getTotalNumberOfIssues);
+  getTotalNumberFromDetail(severityArray, 'Critical', 'critical');
+  getTotalNumberFromDetail(severityArray, 'High', 'high');
+  getTotalNumberFromDetail(severityArray, 'Medium', 'medium');
+  getTotalNumberFromDetail(severityArray, 'Low', 'low');
+  getTotalNumberFromDetail(typeArray, 'WCAG 2', 'wcag-2');
+  getTotalNumberFromDetail(
+    typeArray,
+    'Expert observation',
+    'expert-observation'
+  );
+}
+getNumberOfIssues();
+
+// Gets the number of SC tested dependent on WCAG version and level selected.
+function getNumberOfSuccessCriteria() {
+  //   variables
+  const wcagVersion = document.querySelector('#wcag');
+  const wcagLevel = document.querySelector('#level');
+  const numberOfSC = document.querySelector('.number-of-sc');
+
+  function numberOfSuccessCriteriaTestedForWCAG21AA() {
+    return 50;
+  }
+  function numberOfSuccessCriteriaTestedForWCAG21A() {
+    return 30;
+  }
+  function numberOfSuccessCriteriaTestedForWCAG20AA() {
+    return 38;
+  }
+  function numberOfSuccessCriteriaTestedForWCAG20A() {
+    return 25;
+  }
+  numberOfSC.classList.remove('editable');
+
+  if (wcagVersion.value === 'WCAG 2.1' && wcagLevel.value === 'A & AA') {
+    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG21AA();
+  } else if (wcagVersion.value === 'WCAG 2.1' && wcagLevel.value === 'A') {
+    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG21A();
+  } else if (wcagVersion.value === 'WCAG 2.0' && wcagLevel.value === 'A & AA') {
+    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG20AA();
+  } else {
+    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG20A();
   }
 }

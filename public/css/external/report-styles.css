@@ -309,6 +309,36 @@ div.filter input:focus {
   overflow: unset;
 }
 
+.score-container {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.score-container div.total-issues {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  border: 1px solid grey;
+
+  height: 6em;
+  width: 6em;
+  padding: 0.5em;
+  display: block;
+  font-weight: bold;
+  position: relative;
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
+}
+.score {
+  font-size: 3em;
+  font-weight: bold;
+  text-align: right;
+  position: absolute;
+  bottom: 0.5em;
+  right: 0.2em;
+}
+
 @media only screen and (max-width: 600px) {
   .site-container {
     margin: 1em;
