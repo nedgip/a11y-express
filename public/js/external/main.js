@@ -658,16 +658,16 @@ function getNumberOfIssues() {
   }
 
   displayTotalNumberOfIssuesReported(getTotalNumberOfIssues);
-  getTotalNumberFromDetail(severityArray, 'Critical', 'critical');
-  getTotalNumberFromDetail(severityArray, 'High', 'high');
-  getTotalNumberFromDetail(severityArray, 'Medium', 'medium');
-  getTotalNumberFromDetail(severityArray, 'Low', 'low');
-  getTotalNumberFromDetail(typeArray, ' WCAG 2 ', 'wcag-2');
+  getTotalNumberFromDetail(typeArray, 'WCAG 2', 'wcag-2');
   getTotalNumberFromDetail(
     typeArray,
     'Expert observation',
     'expert-observation'
   );
+  getTotalNumberFromDetail(severityArray, 'Critical', 'critical');
+  getTotalNumberFromDetail(severityArray, 'High', 'high');
+  getTotalNumberFromDetail(severityArray, 'Medium', 'medium');
+  getTotalNumberFromDetail(severityArray, 'Low', 'low');
 }
 getNumberOfIssues();
 
