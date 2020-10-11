@@ -662,7 +662,7 @@ function getNumberOfIssues() {
   getTotalNumberFromDetail(severityArray, 'High', 'high');
   getTotalNumberFromDetail(severityArray, 'Medium', 'medium');
   getTotalNumberFromDetail(severityArray, 'Low', 'low');
-  getTotalNumberFromDetail(typeArray, 'WCAG 2', 'wcag-2');
+  getTotalNumberFromDetail(typeArray, ' WCAG 2 ', 'wcag-2');
   getTotalNumberFromDetail(
     typeArray,
     'Expert observation',
