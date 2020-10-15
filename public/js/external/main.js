@@ -753,10 +753,8 @@ function getNumberOfSuccessCriteria() {
 const successCriteriaArray = Array.prototype.slice.call(
   document.querySelectorAll(".success-criteria")
 );
-console.log(successCriteriaArray);
 successCriteriaArray.forEach(function (sc) {
   let scValue = sc.textContent;
-  console.log(scValue);
   loopThroughSummaryOfFindings(scValue);
 });
 
@@ -767,8 +765,7 @@ function loopThroughSummaryOfFindings(scValue) {
   arrayOfSC.forEach(function (row) {
     let rowSC = row.firstElementChild;
     let rowTextValue = rowSC.textContent;
-    console.log(rowTextValue);
-    if (rowTextValue === scValue) {
+    if (scValue.indexOf(rowTextValue) !== -1) {
       return (row.querySelector(".res").textContent = "Fail");
     }
   });
