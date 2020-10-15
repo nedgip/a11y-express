@@ -8,6 +8,10 @@ a {
   color: hsl(200, 90%, 30%);
 }
 
+table {
+  border-collapse: collapse;
+}
+
 .confluenceTh,
 .confluenceTd img {
   width: 5em;
@@ -191,6 +195,9 @@ h2.new-page {
 .hidden {
   display: none;
 }
+.visible {
+  display: unset;
+}
 .editable {
   background: hsl(50, 100%, 70%);
 }
@@ -337,6 +344,12 @@ div.filter input:focus {
   position: absolute;
   bottom: 0.5em;
   right: 0.2em;
+}
+
+.summary-of-findings td,
+.summary-of-findings th {
+  border: 1px solid grey;
+  padding: 0.5em;
 }
 
 @media only screen and (max-width: 600px) {

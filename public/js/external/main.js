@@ -1,69 +1,69 @@
 // Print button
-const pBtn = document.querySelector('.print');
-pBtn.addEventListener('click', function () {
+const pBtn = document.querySelector(".print");
+pBtn.addEventListener("click", function () {
   window.print();
 });
 
 // Sidebar menu
-const menuBtn = document.querySelector('#menuBtn');
+const menuBtn = document.querySelector("#menuBtn");
 const body = document.body;
-const container = document.querySelector('div.container');
-if (container.classList.contains('edit')) {
-  const offSiteContainer = body.querySelector('.off-site-container');
-  const siteMenu = offSiteContainer.querySelector('#siteMenu');
-  const closeSiteMenu = siteMenu.querySelector('#closeSiteMenu');
-  const siteMenuListWrapper = siteMenu.querySelector('.menuListWrapper');
+const container = document.querySelector("div.container");
+if (container.classList.contains("edit")) {
+  const offSiteContainer = body.querySelector(".off-site-container");
+  const siteMenu = offSiteContainer.querySelector("#siteMenu");
+  const closeSiteMenu = siteMenu.querySelector("#closeSiteMenu");
+  const siteMenuListWrapper = siteMenu.querySelector(".menuListWrapper");
 
   // Menu button event listener
-  menuBtn.addEventListener('click', (event) => {
-    body.classList.toggle('is-open');
-    if (body.classList.contains('is-open')) {
-      offSiteContainer.removeAttribute('aria-hidden');
-      siteMenuListWrapper.classList.remove('hidden');
-      menuBtn.setAttribute('aria-expanded', 'true');
+  menuBtn.addEventListener("click", (event) => {
+    body.classList.toggle("is-open");
+    if (body.classList.contains("is-open")) {
+      offSiteContainer.removeAttribute("aria-hidden");
+      siteMenuListWrapper.classList.remove("hidden");
+      menuBtn.setAttribute("aria-expanded", "true");
       // 	 Set focus on the labelled menu container
       closeSiteMenu.focus();
     } else {
-      offSiteContainer.setAttribute('aria-hidden', 'true');
-      siteMenuListWrapper.classList.add('hidden');
-      menuBtn.setAttribute('aria-expanded', 'false');
+      offSiteContainer.setAttribute("aria-hidden", "true");
+      siteMenuListWrapper.classList.add("hidden");
+      menuBtn.setAttribute("aria-expanded", "false");
     }
   });
 
   // Close menu button event listener
-  closeSiteMenu.addEventListener('click', (event) => {
-    body.classList.remove('is-open');
-    offSiteContainer.setAttribute('aria-hidden', 'true');
-    menuBtn.setAttribute('aria-expanded', 'false');
+  closeSiteMenu.addEventListener("click", (event) => {
+    body.classList.remove("is-open");
+    offSiteContainer.setAttribute("aria-hidden", "true");
+    menuBtn.setAttribute("aria-expanded", "false");
     // 	Return focus to the menu button
     menuBtn.focus();
   });
 
   // Add <ul> for good and bad lists
-  const gListHeading = document.querySelector('.gl');
-  const bListHeading = document.querySelector('.bl');
-  const tListHeading = document.querySelector('.tl');
-  const sListHeading = document.querySelector('.sl');
-  const toListHeading = document.querySelector('.tol');
-  const gList = document.createElement('ul');
-  const bList = document.createElement('ul');
-  const tList = document.createElement('ul');
-  const sList = document.createElement('ul');
-  const toList = document.createElement('ul');
-  gList.classList.add('good-list');
-  bList.classList.add('bad-list');
-  tList.classList.add('technology-list');
-  sList.classList.add('software-list');
-  toList.classList.add('tool-list');
-  gListHeading.insertAdjacentElement('afterend', gList);
-  bListHeading.insertAdjacentElement('afterend', bList);
-  tListHeading.insertAdjacentElement('afterend', tList);
-  sListHeading.insertAdjacentElement('afterend', sList);
-  toListHeading.insertAdjacentElement('afterend', toList);
+  const gListHeading = document.querySelector(".gl");
+  const bListHeading = document.querySelector(".bl");
+  const tListHeading = document.querySelector(".tl");
+  const sListHeading = document.querySelector(".sl");
+  const toListHeading = document.querySelector(".tol");
+  const gList = document.createElement("ul");
+  const bList = document.createElement("ul");
+  const tList = document.createElement("ul");
+  const sList = document.createElement("ul");
+  const toList = document.createElement("ul");
+  gList.classList.add("good-list");
+  bList.classList.add("bad-list");
+  tList.classList.add("technology-list");
+  sList.classList.add("software-list");
+  toList.classList.add("tool-list");
+  gListHeading.insertAdjacentElement("afterend", gList);
+  bListHeading.insertAdjacentElement("afterend", bList);
+  tListHeading.insertAdjacentElement("afterend", tList);
+  sListHeading.insertAdjacentElement("afterend", sList);
+  toListHeading.insertAdjacentElement("afterend", toList);
   // Report details section
   // On page load, loop through fields and load data from local storage.
-  const detail = document.querySelectorAll('.detail');
-  const how = document.querySelector('.how-field');
+  const detail = document.querySelectorAll(".detail");
+  const how = document.querySelector(".how-field");
   const detailArray = [...detail];
   detailArray.push(how);
   detailArray.forEach((e) => {
@@ -72,17 +72,17 @@ if (container.classList.contains('edit')) {
   });
 
   // Update button
-  const updateBtn = document.querySelectorAll('.updateBtn');
+  const updateBtn = document.querySelectorAll(".updateBtn");
   const updateBtnArray = [...updateBtn];
 
   updateBtnArray.forEach((uBtn) => {
-    uBtn.addEventListener('click', (e) => {
-      if (uBtn.classList.contains('how-button')) {
-        const howField = document.querySelector('.how-field');
+    uBtn.addEventListener("click", (e) => {
+      if (uBtn.classList.contains("how-button")) {
+        const howField = document.querySelector(".how-field");
         let { name, field, originalValue } = getFieldValue(howField);
         addContent(name, field, originalValue);
       } else {
-        const detail = document.querySelectorAll('.detail');
+        const detail = document.querySelectorAll(".detail");
         const detailArray = [...detail];
 
         detailArray.forEach((event) => {
@@ -108,33 +108,33 @@ if (container.classList.contains('edit')) {
     const content = document.querySelectorAll(`.${variable}`);
     const contentArray = [...content];
     contentArray.forEach((e) => {
-      if (value === '') {
+      if (value === "") {
         e.textContent = originalValue;
-        e.classList.add('editable');
+        e.classList.add("editable");
         localStorage.setItem(variable, value);
       } else {
         e.textContent = value;
-        e.classList.remove('editable');
+        e.classList.remove("editable");
         localStorage.setItem(variable, value);
       }
     });
   }
   // Clear button
-  const clearBtn = document.querySelectorAll('.clearBtn');
+  const clearBtn = document.querySelectorAll(".clearBtn");
   const clearBtnArray = [...clearBtn];
 
   clearBtnArray.forEach((cBtn) => {
-    cBtn.addEventListener('click', (e) => {
-      if (e.target.classList.contains('clear-how-button')) {
-        const howField = document.querySelector('.how-field');
-        howField.value = '';
+    cBtn.addEventListener("click", (e) => {
+      if (e.target.classList.contains("clear-how-button")) {
+        const howField = document.querySelector(".how-field");
+        howField.value = "";
         let { name, field, originalValue } = getFieldValue(howField);
         addContent(name, field, originalValue);
       } else {
-        let detail = document.querySelectorAll('.detail');
+        let detail = document.querySelectorAll(".detail");
         let detailArray = [...detail];
         detailArray.forEach((event) => {
-          event.value = '';
+          event.value = "";
           let { name, field, originalValue } = getFieldValue(event);
           addContent(name, field, originalValue);
           localStorage.clear();
@@ -144,7 +144,7 @@ if (container.classList.contains('edit')) {
   });
 
   // Add list item
-  const addListItemBtn = document.querySelectorAll('.add');
+  const addListItemBtn = document.querySelectorAll(".add");
   const addListItemBtnArray = [...addListItemBtn];
 
   class AddItem {
@@ -152,7 +152,7 @@ if (container.classList.contains('edit')) {
       const addItemButton = event.target;
       const parent = event.target.parentElement;
       let previousField = addItemButton.previousElementSibling.querySelector(
-        'textarea'
+        "textarea"
       );
       // //   Find all text areas and create an array
       let listItem = document.querySelectorAll(`.${type}-list-item`);
@@ -160,7 +160,7 @@ if (container.classList.contains('edit')) {
 
       //   If the field is empty don't do anything
       //   To do: add some validation and return an error
-      if (previousField.value == '') {
+      if (previousField.value == "") {
         return;
       }
 
@@ -174,15 +174,15 @@ if (container.classList.contains('edit')) {
         const label = textarea.previousElementSibling;
         const fieldContainer = textarea.parentElement;
         //    Add ID's and label for new field.
-        label.setAttribute('for', `${type}${i}`);
+        label.setAttribute("for", `${type}${i}`);
         label.textContent = `Item ${i}`;
-        textarea.setAttribute('id', `${type}${i}`);
-        textarea.setAttribute('data-target', `${type}ListItem${i}`);
-        fieldContainer.setAttribute('id', `${type}FieldContainer${i}`);
+        textarea.setAttribute("id", `${type}${i}`);
+        textarea.setAttribute("data-target", `${type}ListItem${i}`);
+        fieldContainer.setAttribute("id", `${type}FieldContainer${i}`);
       });
       // Create the new field and label
-      const div = document.createElement('div');
-      div.setAttribute('id', `${type}FieldContainer${i + 1}`);
+      const div = document.createElement("div");
+      div.setAttribute("id", `${type}FieldContainer${i + 1}`);
       div.innerHTML = `
 <label>Item ${i + 1}</label>
 <textarea id='${type}${i + 1}' class='${type}-list-item ff'></textarea>
@@ -190,19 +190,19 @@ if (container.classList.contains('edit')) {
       parent.insertBefore(div, addItemButton);
 
       //   Build update button
-      const updateButton = document.createElement('button');
+      const updateButton = document.createElement("button");
       updateButton.innerHTML = `<span aria-hidden="true" class="fas fa-sync-alt"></span>`;
       parent.insertBefore(updateButton, div);
-      updateButton.setAttribute('id', `update${type}${i}`);
-      updateButton.setAttribute('aria-label', `Update item ${i}`);
-      updateButton.setAttribute('type', 'button');
-      updateButton.classList.add('update', 'btn');
+      updateButton.setAttribute("id", `update${type}${i}`);
+      updateButton.setAttribute("aria-label", `Update item ${i}`);
+      updateButton.setAttribute("type", "button");
+      updateButton.classList.add("update", "btn");
 
       //   Add event listener to the update button
-      updateButton.addEventListener('click', (e) => {
+      updateButton.addEventListener("click", (e) => {
         const updateField = updateButton.previousElementSibling;
-        const target = updateField.querySelector('textarea').dataset.target;
-        const value = updateField.querySelector('textarea').value;
+        const target = updateField.querySelector("textarea").dataset.target;
+        const value = updateField.querySelector("textarea").value;
         console.log(value);
         let typeList = document.querySelector(`.${type}-list`);
         const item = typeList.querySelector(`#${target}`);
@@ -211,20 +211,20 @@ if (container.classList.contains('edit')) {
   `;
       });
       //   Build remove button
-      const removeButton = document.createElement('button');
+      const removeButton = document.createElement("button");
       removeButton.innerHTML = `<span aria-hidden="true" class="fas fa-trash"></span>`;
       parent.insertBefore(removeButton, div);
-      removeButton.setAttribute('id', `removeGood${i}`);
-      removeButton.setAttribute('aria-label', `Remove item ${i}`);
-      removeButton.setAttribute('type', 'button');
-      removeButton.classList.add('remove', 'btn');
-      const removeBtnID = removeButton.getAttribute('id');
+      removeButton.setAttribute("id", `removeGood${i}`);
+      removeButton.setAttribute("aria-label", `Remove item ${i}`);
+      removeButton.setAttribute("type", "button");
+      removeButton.classList.add("remove", "btn");
+      const removeBtnID = removeButton.getAttribute("id");
 
       // Add eventListener for remove button
-      removeButton.addEventListener('click', (e) => {
+      removeButton.addEventListener("click", (e) => {
         const removeField =
           removeButton.previousElementSibling.previousElementSibling;
-        const target = removeField.querySelector('textarea').dataset.target;
+        const target = removeField.querySelector("textarea").dataset.target;
         let typeList = document.querySelector(`.${type}-list`);
         const removeItem = typeList.querySelector(`#${target}`);
         removeItem.parentNode.removeChild(removeItem);
@@ -232,13 +232,13 @@ if (container.classList.contains('edit')) {
         removeButton.parentNode.removeChild(updateButton);
         removeButton.parentNode.removeChild(removeButton);
 
-        const listContent = typeList.querySelectorAll('li');
+        const listContent = typeList.querySelectorAll("li");
         const listContentArray = [...listContent];
         console.log(listContentArray);
         let n = 0;
         listContentArray.forEach((lItem) => {
           n++;
-          lItem.setAttribute('id', `${type}ListItem${n}`);
+          lItem.setAttribute("id", `${type}ListItem${n}`);
         });
         //  Reset numbering for elements
         let listItem = document.querySelectorAll(`.${type}-list-item`);
@@ -253,10 +253,10 @@ if (container.classList.contains('edit')) {
           //     To do:  Fix bug with assigning new id values to elements that don't exist on the last array item
           i++;
           textarea.previousElementSibling.textContent = `Item ${i}`;
-          textarea.setAttribute('id', `${type}${i}`);
-          textarea.setAttribute('data-target', `${type}ListItem${i}`);
+          textarea.setAttribute("id", `${type}${i}`);
+          textarea.setAttribute("data-target", `${type}ListItem${i}`);
           textarea.parentElement.setAttribute(
-            'id',
+            "id",
             `${type}FieldContainer${i}`
           );
 
@@ -265,11 +265,11 @@ if (container.classList.contains('edit')) {
             return;
           }
           textarea.parentElement.nextElementSibling.setAttribute(
-            'id',
+            "id",
             `update${type}${i}`
           );
           textarea.parentElement.nextElementSibling.nextElementSibling.setAttribute(
-            'id',
+            "id",
             `remove${type}${i}`
           );
         });
@@ -277,14 +277,14 @@ if (container.classList.contains('edit')) {
 
       //  Reassign previous field variable to the new previous field.
       previousField = addItemButton.previousElementSibling.querySelector(
-        'textarea'
+        "textarea"
       );
       previousField.focus();
 
       //   Add a new list item to the list in content.
       let typeList = document.querySelector(`.${type}-list`);
-      const newListItem = document.createElement('li');
-      newListItem.setAttribute('id', `${type}ListItem${i}`);
+      const newListItem = document.createElement("li");
+      newListItem.setAttribute("id", `${type}ListItem${i}`);
       const value = parent.querySelector(`#${type}${i}`).value;
       newListItem.innerHTML = `
 <span>${value}</span>
@@ -295,70 +295,70 @@ if (container.classList.contains('edit')) {
 
   addListItemBtnArray.forEach((lBtn) => {
     console.log(lBtn);
-    lBtn.addEventListener('click', (btn) => {
-      if (btn.target.classList.contains('good')) {
-        const addGItem = new AddItem(btn, 'good');
-      } else if (btn.target.classList.contains('bad')) {
-        const addBItem = new AddItem(btn, 'bad');
-      } else if (btn.target.classList.contains('technology')) {
-        const addTItem = new AddItem(btn, 'technology');
-      } else if (btn.target.classList.contains('software')) {
-        const addSItem = new AddItem(btn, 'software');
-      } else if (btn.target.classList.contains('tool')) {
-        const addTOItem = new AddItem(btn, 'tool');
+    lBtn.addEventListener("click", (btn) => {
+      if (btn.target.classList.contains("good")) {
+        const addGItem = new AddItem(btn, "good");
+      } else if (btn.target.classList.contains("bad")) {
+        const addBItem = new AddItem(btn, "bad");
+      } else if (btn.target.classList.contains("technology")) {
+        const addTItem = new AddItem(btn, "technology");
+      } else if (btn.target.classList.contains("software")) {
+        const addSItem = new AddItem(btn, "software");
+      } else if (btn.target.classList.contains("tool")) {
+        const addTOItem = new AddItem(btn, "tool");
       }
     });
   });
 
   // Accordion code
 
-  const accordionContainer = document.querySelector('.accordion-container');
+  const accordionContainer = document.querySelector(".accordion-container");
 
-  accordionContainer.addEventListener('click', function (e) {
-    const accordionHeader = e.target.closest('.accordion-header');
-    const arrow = e.target.querySelector('.arrow');
+  accordionContainer.addEventListener("click", function (e) {
+    const accordionHeader = e.target.closest(".accordion-header");
+    const arrow = e.target.querySelector(".arrow");
     const accordionPanel = e.target.nextElementSibling;
 
     if (accordionHeader) {
-      accordionPanel.classList.toggle('is-open');
-      const accordionInner = accordionPanel.querySelector('.accordion-inner');
-      if (accordionPanel.classList.contains('is-open')) {
-        accordionHeader.setAttribute('aria-expanded', 'true');
-        arrow.classList.add('rotate-down');
-        arrow.classList.remove('rotate-up');
-        accordionInner.classList.remove('hidden');
+      accordionPanel.classList.toggle("is-open");
+      const accordionInner = accordionPanel.querySelector(".accordion-inner");
+      if (accordionPanel.classList.contains("is-open")) {
+        accordionHeader.setAttribute("aria-expanded", "true");
+        arrow.classList.add("rotate-down");
+        arrow.classList.remove("rotate-up");
+        accordionInner.classList.remove("hidden");
       } else {
-        accordionHeader.setAttribute('aria-expanded', 'false');
-        arrow.classList.add('rotate-up');
-        arrow.classList.remove('rotate-down');
-        accordionInner.classList.add('hidden');
+        accordionHeader.setAttribute("aria-expanded", "false");
+        arrow.classList.add("rotate-up");
+        arrow.classList.remove("rotate-down");
+        accordionInner.classList.add("hidden");
       }
     }
   });
 
   // Clean file button
-  const saveBtn = document.querySelector('.save');
-  const settings = document.querySelector('.config');
-  const sidebarBtn = document.querySelector('.sibebar');
-  saveBtn.addEventListener('click', (e) => {
-    body.classList.remove('is-open');
+  const saveBtn = document.querySelector(".save");
+  const settings = document.querySelector(".config");
+  const sidebarBtn = document.querySelector(".sibebar");
+  saveBtn.addEventListener("click", (e) => {
+    body.classList.remove("is-open");
     sidebarBtn.parentNode.removeChild(sidebarBtn);
     settings.parentNode.removeChild(settings);
-    container.classList.remove('edit');
+    container.classList.remove("edit");
     updateTitleWithProductName();
-    body.removeAttribute('aria-disabled');
+    body.removeAttribute("aria-disabled");
   });
 }
 // Table of contents
 const headingArray = Array.prototype.slice.call(
-  document.querySelectorAll('.h2, .h3, .h4')
+  document.querySelectorAll(".h2, .h3, .h4")
 );
 
 let id = 0;
-const tocContainer = document.querySelector('.toc-container');
+const tocContainer = document.querySelector(".toc-container");
 
 function clearContents() {
-  return (tocContainer.innerHTML = '');
+  return (tocContainer.innerHTML = "");
 }
 function addContentsHeading() {
   return (tocContainer.innerHTML = '<h2 class="new-page">Contents</h2>');
@@ -375,28 +375,28 @@ function getHeadingValue(heading) {
 }
 
 function getHeadingLevel(heading) {
-  return heading.getAttribute('data-level');
+  return heading.getAttribute("data-level");
 }
 
 function createNestedUl() {
-  return document.createElement('ul');
+  return document.createElement("ul");
 }
 
 function createListItem() {
-  return document.createElement('li');
+  return document.createElement("li");
 }
 function addUl(parent, nestedUl) {
   return parent.appendChild(nestedUl);
 }
 function addChildListItemLink(parent, newListItem, textContent, id) {
-  newListItem.classList.add('toc-link');
+  newListItem.classList.add("toc-link");
   newListItem.innerHTML = `<a href="#heading${id}">${textContent}</a>`;
   return parent.appendChild(newListItem);
 }
 function addSiblingListItemLink(sibling, newListItem, textContent, id) {
-  newListItem.classList.add('toc-link');
+  newListItem.classList.add("toc-link");
   newListItem.innerHTML = `<a href="#heading${id}">${textContent}</a>`;
-  return sibling.insertAdjacentElement('afterend', newListItem);
+  return sibling.insertAdjacentElement("afterend", newListItem);
 }
 function calculateDifferenceBetweenHeadingLevels(previous, current) {
   return previous - current;
@@ -404,7 +404,7 @@ function calculateDifferenceBetweenHeadingLevels(previous, current) {
 
 function getLastListItem() {
   const tocArray = Array.prototype.slice.call(
-    document.querySelectorAll('.toc-link')
+    document.querySelectorAll(".toc-link")
   );
   const indexOfPreviousLink = tocArray.length - 1;
   return tocArray[indexOfPreviousLink];
@@ -413,7 +413,7 @@ function getLastListItem() {
 function loopThroughHeadingArray() {
   headingArray.forEach(function (heading) {
     id++;
-    heading.setAttribute('id', `heading${id}`);
+    heading.setAttribute("id", `heading${id}`);
     const headingLevel = getHeadingLevel(heading);
     const previousHeading = getPreviousHeading(heading);
 
@@ -452,7 +452,7 @@ function loopThroughHeadingArray() {
         const lastListItemLink = getLastListItem();
         if (difference > 1) {
           const previousUl = lastListItemLink.parentElement.parentElement.closest(
-            'ul'
+            "ul"
           );
           addSiblingListItemLink(
             previousUl,
@@ -461,7 +461,7 @@ function loopThroughHeadingArray() {
             id
           );
         } else {
-          const previousUl = lastListItemLink.parentElement.closest('ul');
+          const previousUl = lastListItemLink.parentElement.closest("ul");
           addSiblingListItemLink(
             previousUl,
             newListItemLink,
@@ -477,53 +477,53 @@ function loopThroughHeadingArray() {
 clearContents();
 addContentsHeading();
 const tocUl = createNestedUl();
-tocUl.setAttribute('id', 'toc');
+tocUl.setAttribute("id", "toc");
 addUl(tocContainer, tocUl);
 loopThroughHeadingArray();
 
 // Filter
-const searchField = document.querySelector('#issueFilter');
-const resultStatus = document.querySelector('#resultStatus');
-resultStatus.setAttribute('role', 'status');
+const searchField = document.querySelector("#issueFilter");
+const resultStatus = document.querySelector("#resultStatus");
+resultStatus.setAttribute("role", "status");
 function searchFilter() {
   let filter = searchField.value.toLowerCase();
-  const ul = document.querySelector('.issue-list');
-  let li = document.querySelectorAll('.issue');
+  const ul = document.querySelector(".issue-list");
+  let li = document.querySelectorAll(".issue");
   let liArray = [...li];
   let noLi = liArray.length;
 
   liArray.forEach((issue) => {
     let query = issue.textContent;
     if (query.toLowerCase().indexOf(filter) > -1) {
-      issue.style.display = '';
+      issue.style.display = "";
     } else {
-      issue.style.display = 'none';
+      issue.style.display = "none";
       noLi--;
     }
     resultStatus.textContent = `${noLi} issues found for ${filter}`;
-    if (filter === '') {
-      resultStatus.textContent = '';
+    if (filter === "") {
+      resultStatus.textContent = "";
     }
   });
 }
 
-searchField.addEventListener('keyup', (event) => {
+searchField.addEventListener("keyup", (event) => {
   searchFilter();
 });
 
 // Add an empty alt attribute to <img> tags to make them decorative.
-const screenshots = document.querySelectorAll('img');
+const screenshots = document.querySelectorAll("img");
 const screenshotArray = [...screenshots];
 screenshotArray.forEach((screenshot) => {
-  if (screenshot.hasAttribute('alt')) {
+  if (screenshot.hasAttribute("alt")) {
     return;
   }
-  screenshot.setAttribute('alt', '');
+  screenshot.setAttribute("alt", "");
 });
 
 // Update the page title
 function updateTitleWithProductName() {
-  const product = document.querySelector('.product').textContent;
+  const product = document.querySelector(".product").textContent;
   document.title = `Accessibility review of ${product}`;
 }
 
@@ -551,26 +551,26 @@ function removeAttributes(element, attributes) {
 
 // Adds the href on page load to avoid internal link issues when saving file locally
 document
-  .querySelector('#skipToContentsHeading')
-  .setAttribute('href', '#contentsHeading');
-document.querySelector('#skipToTOC').setAttribute('href', '#toc10');
+  .querySelector("#skipToContentsHeading")
+  .setAttribute("href", "#contentsHeading");
+document.querySelector("#skipToTOC").setAttribute("href", "#toc10");
 // Set focus on skip link targets
 const skipLinks = Array.prototype.slice.call(
-  document.querySelectorAll('.skip-link')
+  document.querySelectorAll(".skip-link")
 );
 skipLinks.forEach(function (skipLink) {
-  skipLink.addEventListener('click', function () {
-    const skipTarget = skipLink.getAttribute('href');
+  skipLink.addEventListener("click", function () {
+    const skipTarget = skipLink.getAttribute("href");
     skipTarget.focus();
   });
 });
 
 // Updates the URL link href in page content when the URL field is populated.
 function siteLink() {
-  const siteURL = document.querySelector('#url').value;
-  const siteLink = document.querySelector('#siteLink');
-  if (siteURL.value !== '') {
-    siteLink.setAttribute('href', siteURL);
+  const siteURL = document.querySelector("#url").value;
+  const siteLink = document.querySelector("#siteLink");
+  if (siteURL.value !== "") {
+    siteLink.setAttribute("href", siteURL);
   }
 }
 
@@ -578,13 +578,13 @@ function siteLink() {
 function getNumberOfIssues() {
   // variables
   const issueArray = Array.prototype.slice.call(
-    document.querySelectorAll('.issue')
+    document.querySelectorAll(".issue")
   );
   const severityArray = Array.prototype.slice.call(
-    document.querySelectorAll('.severity')
+    document.querySelectorAll(".severity")
   );
   const typeArray = Array.prototype.slice.call(
-    document.querySelectorAll('.type')
+    document.querySelectorAll(".type")
   );
   console.log(typeArray);
   // Functions
@@ -602,7 +602,7 @@ function getNumberOfIssues() {
    * @param {Function} gets total number of issues
    */
   function displayTotalNumberOfIssuesReported(getTotalNumberOfIssues) {
-    const total = document.querySelector('.total');
+    const total = document.querySelector(".total");
     total.textContent = getTotalNumberOfIssues();
   }
 
@@ -615,7 +615,7 @@ function getNumberOfIssues() {
     array.forEach(function (detail) {
       if (detail.textContent === detailValue) {
         return detail.classList.add(
-          detailValue.replace(/\s+/g, '-').toLowerCase()
+          detailValue.replace(/\s+/g, "-").toLowerCase()
         );
       }
     });
@@ -658,26 +658,27 @@ function getNumberOfIssues() {
   }
 
   displayTotalNumberOfIssuesReported(getTotalNumberOfIssues);
-  getTotalNumberFromDetail(typeArray, 'WCAG 2', 'wcag-2');
+  getTotalNumberFromDetail(typeArray, "WCAG 2", "wcag-2");
   getTotalNumberFromDetail(
     typeArray,
-    'Expert observation',
-    'expert-observation'
+    "Expert observation",
+    "expert-observation"
   );
-  getTotalNumberFromDetail(severityArray, 'Critical', 'critical');
-  getTotalNumberFromDetail(severityArray, 'High', 'high');
-  getTotalNumberFromDetail(severityArray, 'Medium', 'medium');
-  getTotalNumberFromDetail(severityArray, 'Low', 'low');
+  getTotalNumberFromDetail(severityArray, "Critical", "critical");
+  getTotalNumberFromDetail(severityArray, "High", "high");
+  getTotalNumberFromDetail(severityArray, "Medium", "medium");
+  getTotalNumberFromDetail(severityArray, "Low", "low");
 }
 getNumberOfIssues();
 
 // Gets the number of SC tested dependent on WCAG version and level selected.
 function getNumberOfSuccessCriteria() {
   //   variables
-  const wcagVersion = document.querySelector('#wcag');
-  const wcagLevel = document.querySelector('#level');
-  const numberOfSC = document.querySelector('.number-of-sc');
+  const wcagVersion = document.querySelector("#wcag");
+  const wcagLevel = document.querySelector("#level");
+  const numberOfSC = document.querySelector(".number-of-sc");
 
+  //   Functions set the number of Success Criteria that were tested.
   function numberOfSuccessCriteriaTestedForWCAG21AA() {
     return 50;
   }
@@ -690,15 +691,85 @@ function getNumberOfSuccessCriteria() {
   function numberOfSuccessCriteriaTestedForWCAG20A() {
     return 25;
   }
-  numberOfSC.classList.remove('editable');
-
-  if (wcagVersion.value === 'WCAG 2.1' && wcagLevel.value === 'A & AA') {
-    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG21AA();
-  } else if (wcagVersion.value === 'WCAG 2.1' && wcagLevel.value === 'A') {
-    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG21A();
-  } else if (wcagVersion.value === 'WCAG 2.0' && wcagLevel.value === 'A & AA') {
-    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG20AA();
-  } else {
-    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG20A();
+  function numberOfSuccessCriteriaTestedForWCAG20AAA() {
+    return 61;
   }
+  function numberOfSuccessCriteriaTestedForWCAG21AAA() {
+    return 78;
+  }
+
+  //   Functions which display the success crtieria that were tested.
+  function resetSuccessCriteriaInSummaryOfFinding() {
+    let arrayOfSC = Array.prototype.slice.call(
+      document.querySelectorAll(".summary-of-findings tr")
+    );
+    arrayOfSC.forEach(function (row) {
+      row.classList.remove("hidden");
+    });
+  }
+  function hideSuccessCriteria(sc) {
+    resetSuccessCriteriaInSummaryOfFinding();
+    let arrayOfSC = Array.prototype.slice.call(document.querySelectorAll(sc));
+    arrayOfSC.forEach(function (row) {
+      return row.classList.add("hidden");
+    });
+  }
+
+  numberOfSC.classList.remove("editable");
+
+  if (wcagVersion.value === "WCAG 2.1" && wcagLevel.value === "A & AA") {
+    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG21AA();
+    let wcagVersionLevelClass = ".AAA";
+    hideSuccessCriteria(wcagVersionLevelClass);
+  } else if (wcagVersion.value === "WCAG 2.1" && wcagLevel.value === "A") {
+    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG21A();
+    let wcagVersionLevelClass = ".AA , .AAA";
+    hideSuccessCriteria(wcagVersionLevelClass);
+  } else if (wcagVersion.value === "WCAG 2.0" && wcagLevel.value === "A & AA") {
+    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG20AA();
+    let wcagVersionLevelClass = ".wcag-21, .AAA";
+    hideSuccessCriteria(wcagVersionLevelClass);
+  } else if (wcagVersion.value === "WCAG 2.0" && wcagLevel.value === "A") {
+    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG20A();
+    let wcagVersionLevelClass = ".wcag-21 , .AA , .AAA";
+    hideSuccessCriteria(wcagVersionLevelClass);
+  } else if (
+    wcagVersion.value === "WCAG 2.1" &&
+    wcagLevel.value === "A & AA & AAA"
+  ) {
+    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG21AAA();
+    resetSuccessCriteriaInSummaryOfFinding();
+  } else if (
+    wcagVersion.value === "WCAG 2.0" &&
+    wcagLevel.value === "A & AA & AAA"
+  ) {
+    numberOfSC.textContent = numberOfSuccessCriteriaTestedForWCAG20AAA();
+    let wcagVersionLevelClass = ".wcag-21";
+    hideSuccessCriteria(wcagVersionLevelClass);
+  }
+}
+
+// Check for Success Criteria in issue list
+const successCriteriaArray = Array.prototype.slice.call(
+  document.querySelectorAll(".success-criteria")
+);
+console.log(successCriteriaArray);
+successCriteriaArray.forEach(function (sc) {
+  let scValue = sc.textContent;
+  console.log(scValue);
+  loopThroughSummaryOfFindings(scValue);
+});
+
+function loopThroughSummaryOfFindings(scValue) {
+  let arrayOfSC = Array.prototype.slice.call(
+    document.querySelectorAll(".summary-of-findings tr")
+  );
+  arrayOfSC.forEach(function (row) {
+    let rowSC = row.firstElementChild;
+    let rowTextValue = rowSC.textContent;
+    console.log(rowTextValue);
+    if (rowTextValue === scValue) {
+      return (row.querySelector(".res").textContent = "Fail");
+    }
+  });
 }
