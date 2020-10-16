@@ -93,6 +93,7 @@ if (container.classList.contains("edit")) {
         //         populate url link in content
         siteLink();
         getNumberOfSuccessCriteria();
+        displayPercentOfFailedSuccessCriteria()
       }
     });
   });
@@ -755,10 +756,11 @@ const successCriteriaArray = Array.prototype.slice.call(
 );
 successCriteriaArray.forEach(function (sc) {
   let scValue = sc.textContent;
-  loopThroughSummaryOfFindings(scValue);
+  failSCInSummaryOfFindings(scValue);
 });
 
-function loopThroughSummaryOfFindings(scValue) {
+// Returns fail results for Success Criteria in the Summary of findings table.
+function failSCInSummaryOfFindings(scValue) {
   let arrayOfSC = Array.prototype.slice.call(
     document.querySelectorAll(".summary-of-findings tr")
   );
@@ -770,3 +772,54 @@ function loopThroughSummaryOfFindings(scValue) {
     }
   });
 }
+
+// Calculates % of failed success criteria
+function generateArrayOfSCInSummaryOfFindings() {
+  const arrayOfSCInSummaryOfFindingsResults = Array.prototype.slice.call(
+    document.querySelectorAll(".res")
+  );
+  arrayOfSCInSummaryOfFindingsResults.forEach(function (res) {
+    res.classList.remove('visible-result');
+    if (!res.parentElement.classList.contains('hidden')) {
+      res.classList.add('visible-result');
+    }
+  })
+  let arrayOfVisibleSCResultsInSummaryOfFindings = Array.prototype.slice.call(document.querySelectorAll('.visible-result'))
+  return arrayOfVisibleSCResultsInSummaryOfFindings;
+}
+
+
+function getTotalNumberOfSC() {
+  let arrayOfSCInSummaryOfFindingsResults = generateArrayOfSCInSummaryOfFindings();
+  return arrayOfSCInSummaryOfFindingsResults.length;
+}
+
+function getTotalNumberOfFailedSC() {
+  let arrayOfSCInSummaryOfFindingsResults = generateArrayOfSCInSummaryOfFindings();
+  arrayOfSCInSummaryOfFindingsResults.forEach(function (sc) {
+    if (sc.textContent === "Fail") {
+      sc.classList.add("fail");
+    }
+  });
+  const arrayOfSummaryOfFindingsFails = Array.prototype.slice.call(
+    document.querySelectorAll(".fail")
+  );
+  return arrayOfSummaryOfFindingsFails.length;
+}
+
+function calculatePercentOfFailedSuccessCriteria() {
+  const totalNumberOfSC = getTotalNumberOfSC();
+  const numberOfFailedSC = getTotalNumberOfFailedSC();
+  console.log(totalNumberOfSC)
+  const percentOfFailedSC = (numberOfFailedSC / totalNumberOfSC) * 100;
+  return Math.round(percentOfFailedSC);
+}
+
+
+function displayPercentOfFailedSuccessCriteria() {
+  const summaryOfFindingPercentFailed = document.querySelector('.percent');
+  summaryOfFindingPercentFailed.classList.remove('editable')
+  return summaryOfFindingPercentFailed.textContent = calculatePercentOfFailedSuccessCriteria();
+}
+
+displayPercentOfFailedSuccessCriteria()
