@@ -350,9 +350,10 @@ div.filter input:focus {
 .summary-of-findings th,
 .levelResults td,
 .levelResults th {
-  border: 1px solid grey;
+  border: 1px solid grey !important;
   padding: 0.5em;
   text-align: left;
+  background-color: white !important;
 }
 
 .summary-of-results-charts {
