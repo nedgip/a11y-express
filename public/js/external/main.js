@@ -93,7 +93,10 @@ if (container.classList.contains("edit")) {
         //         populate url link in content
         siteLink();
         getNumberOfSuccessCriteria();
-        displayPercentOfFailedSuccessCriteria()
+        displayPercentOfFailedSuccessCriteria();
+        am4core.disposeAllCharts();
+        generatePieChart();
+        displayTableOfLevelResults();
       }
     });
   });
@@ -672,6 +675,8 @@ function getNumberOfIssues() {
 }
 getNumberOfIssues();
 
+const wcagVersion = document.querySelector("#wcag");
+const wcagLevel = document.querySelector("#level");
 // Gets the number of SC tested dependent on WCAG version and level selected.
 function getNumberOfSuccessCriteria() {
   //   variables
@@ -775,51 +780,165 @@ function failSCInSummaryOfFindings(scValue) {
 
 // Calculates % of failed success criteria
 function generateArrayOfSCInSummaryOfFindings() {
-  const arrayOfSCInSummaryOfFindingsResults = Array.prototype.slice.call(
+  const arrayOfSummaryOfFindingsResults = Array.prototype.slice.call(
     document.querySelectorAll(".res")
   );
-  arrayOfSCInSummaryOfFindingsResults.forEach(function (res) {
-    res.classList.remove('visible-result');
-    if (!res.parentElement.classList.contains('hidden')) {
-      res.classList.add('visible-result');
-    }
-  })
-  let arrayOfVisibleSCResultsInSummaryOfFindings = Array.prototype.slice.call(document.querySelectorAll('.visible-result'))
-  return arrayOfVisibleSCResultsInSummaryOfFindings;
-}
-
-
-function getTotalNumberOfSC() {
-  let arrayOfSCInSummaryOfFindingsResults = generateArrayOfSCInSummaryOfFindings();
-  return arrayOfSCInSummaryOfFindingsResults.length;
-}
-
-function getTotalNumberOfFailedSC() {
-  let arrayOfSCInSummaryOfFindingsResults = generateArrayOfSCInSummaryOfFindings();
-  arrayOfSCInSummaryOfFindingsResults.forEach(function (sc) {
-    if (sc.textContent === "Fail") {
-      sc.classList.add("fail");
+  arrayOfSummaryOfFindingsResults.forEach(function (res) {
+    res.classList.remove("visible-result");
+    if (!res.parentElement.classList.contains("hidden")) {
+      res.classList.add("visible-result");
     }
   });
-  const arrayOfSummaryOfFindingsFails = Array.prototype.slice.call(
-    document.querySelectorAll(".fail")
+
+  return Array.prototype.slice.call(
+    document.querySelectorAll(".visible-result")
   );
-  return arrayOfSummaryOfFindingsFails.length;
+}
+
+function getNumberOfVisibleSC() {
+  let arrayOfResults = generateArrayOfSCInSummaryOfFindings();
+  console.log(arrayOfResults);
+  return arrayOfResults.length;
+}
+
+function addResultClassToSummaryOfFindingsResult(result) {
+  let arrayOfResults = generateArrayOfSCInSummaryOfFindings();
+  arrayOfResults.forEach(function (res) {
+    res.classList.remove("pass");
+    if (
+      res.textContent === result &&
+      res.classList.contains("visible-result")
+    ) {
+      res.classList.add(result.toLowerCase());
+    }
+  });
+}
+function getNumberOfSCResults(result) {
+  addResultClassToSummaryOfFindingsResult(result);
+  let arrayOfResults = Array.prototype.slice.call(
+    document.querySelectorAll("." + result.toLowerCase())
+  );
+  console.log("These " + arrayOfResults.length);
+  return arrayOfResults.length;
 }
 
 function calculatePercentOfFailedSuccessCriteria() {
-  const totalNumberOfSC = getTotalNumberOfSC();
-  const numberOfFailedSC = getTotalNumberOfFailedSC();
-  console.log(totalNumberOfSC)
+  const totalNumberOfSC = getNumberOfVisibleSC();
+  const numberOfFailedSC = getNumberOfSCResults("Fail");
+  console.log(totalNumberOfSC);
   const percentOfFailedSC = (numberOfFailedSC / totalNumberOfSC) * 100;
-  return Math.round(percentOfFailedSC);
+  return Math.round(percentOfFailedSC * 10) / 10;
 }
-
 
 function displayPercentOfFailedSuccessCriteria() {
-  const summaryOfFindingPercentFailed = document.querySelector('.percent');
-  summaryOfFindingPercentFailed.classList.remove('editable')
-  return summaryOfFindingPercentFailed.textContent = calculatePercentOfFailedSuccessCriteria();
+  const summaryOfResultsPercentFailed = document.querySelector(".percent");
+  summaryOfResultsPercentFailed.classList.remove("editable");
+  return (summaryOfResultsPercentFailed.textContent = calculatePercentOfFailedSuccessCriteria());
 }
 
-displayPercentOfFailedSuccessCriteria()
+function generatePieChart() {
+  // Create chart instance
+  const chart = am4core.create("chartdiv", am4charts.PieChart);
+
+  // Add data
+  chart.data = [
+    {
+      result: "Pass",
+      number: getNumberOfSCResults("Pass"),
+      color: am4core.color("#008000")
+    },
+    {
+      result: "Fail",
+      number: getNumberOfSCResults("Fail"),
+      color: am4core.color("#C00000")
+    }
+  ];
+
+  // Add and configure Series
+  const pieSeries = chart.series.push(new am4charts.PieSeries());
+  pieSeries.dataFields.value = "number";
+  pieSeries.dataFields.category = "result";
+  pieSeries.slices.template.stroke = am4core.color("#24521F");
+  pieSeries.slices.template.strokeWidth = 2;
+  pieSeries.slices.template.strokeOpacity = 1;
+  chart.innerRadius = am4core.percent(40);
+  pieSeries.slices.template.propertyFields.fill = "color";
+  pieSeries.slices.template.tooltipText = "";
+  const hs = pieSeries.slices.template.states.getKey("hover");
+  hs.properties.scale = 1;
+  const as = pieSeries.slices.template.states.getKey("active");
+  as.properties.shiftRadius = 0;
+}
+
+function getNumberOfResultForLevel(result, level) {
+  let arrayOfLevel = Array.prototype.slice.call(
+    document.querySelectorAll("." + level)
+  );
+  let numberOfResultForLevel = 0;
+  arrayOfLevel.forEach(function (row) {
+    let res = row.querySelector(".res");
+
+    if (
+      res.textContent === result &&
+      res.classList.contains("visible-result")
+    ) {
+      numberOfResultForLevel++;
+    }
+  });
+  
+  return numberOfResultForLevel;
+}
+
+function getTotalSCForLevel(level) {
+  let arrayOfSCLevel = Array.prototype.slice.call(document.querySelectorAll('.lev'));
+  let total = 0
+  arrayOfSCLevel.forEach(function(l) {
+    if (l.textContent === level && l.nextElementSibling.classList.contains("visible-result")){
+      total ++
+    }
+  })
+  return total;
+}
+
+function setTotalSCLevelResult(target, level){
+  let td = document.querySelector(target);
+  td.textContent = getTotalSCForLevel(level)
+}
+
+
+function setSCPassFailLevelResult(target, result, level) {
+  let td = document.querySelector(target);
+  td.textContent = getNumberOfResultForLevel(result, level);
+}
+
+function displayTableOfLevelResults() {
+  const rowAA = document.querySelector(".lAA");
+  const rowAAA = document.querySelector(".lAAA");
+  rowAA.classList.remove("hidden");
+  rowAAA.classList.remove("hidden");
+
+  if (wcagLevel.value === "A") {
+    rowAA.classList.add("hidden");
+    rowAAA.classList.add("hidden");
+  } else if (wcagLevel.value === "A & AA") {
+    rowAAA.classList.add("hidden");
+  }
+  let aTotal = getTotalSCForLevel("A");
+  let aaTotal = getTotalSCForLevel("AA");
+  let aaaTotal = getTotalSCForLevel("AAA");
+
+  
+  setSCPassFailLevelResult(".p-a", "Pass", "A");
+  setSCPassFailLevelResult(".p-aa", "Pass", "AA");
+  setSCPassFailLevelResult(".p-aaa", "Pass", "AAA");
+  setSCPassFailLevelResult(".f-a", "Fail", "A");
+  setSCPassFailLevelResult(".f-aa", "Fail", "AA");
+  setSCPassFailLevelResult(".f-aaa", "Fail", "AAA");
+  setTotalSCLevelResult(".t-a", "A");
+  setTotalSCLevelResult(".t-aa", "AA");
+  setTotalSCLevelResult(".t-aaa", "AAA");
+}
+
+displayTableOfLevelResults();
+displayPercentOfFailedSuccessCriteria();
+generatePieChart();

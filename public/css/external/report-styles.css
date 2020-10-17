@@ -347,9 +347,20 @@ div.filter input:focus {
 }
 
 .summary-of-findings td,
-.summary-of-findings th {
+.summary-of-findings th,
+.levelResults td,
+.levelResults th {
   border: 1px solid grey;
   padding: 0.5em;
+  text-align: left;
+}
+
+.summary-of-results-charts {
+  /*   display: flex;
+  justify-content:space-between;
+  align-items:center;
+  flex-wrap:wrap;
+  text-align:left; */
 }
 
 @media only screen and (max-width: 600px) {
