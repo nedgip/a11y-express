@@ -858,7 +858,7 @@ function generatePieChart() {
   const pieSeries = chart.series.push(new am4charts.PieSeries());
   pieSeries.dataFields.value = "number";
   pieSeries.dataFields.category = "result";
-  pieSeries.slices.template.stroke = am4core.color("#24521F");
+  pieSeries.slices.template.stroke = am4core.color("#ffffff");
   pieSeries.slices.template.strokeWidth = 2;
   pieSeries.slices.template.strokeOpacity = 1;
   chart.innerRadius = am4core.percent(40);
