@@ -121,6 +121,12 @@ h2.new-page {
   .noprint {
     display: none;
   }
+  div,
+  table,
+  span,
+  img {
+    break-inside: avoid;
+  }
 }
 
 .editLive {
