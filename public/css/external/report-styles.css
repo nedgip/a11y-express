@@ -121,10 +121,10 @@ h2.new-page {
   .noprint {
     display: none;
   }
-  div,
-  table,
-  span,
-  img {
+  .score-container,
+  .levelResults,
+  .summary-of-results-charts,
+  .summary-of-findings {
     break-inside: avoid;
   }
 }
