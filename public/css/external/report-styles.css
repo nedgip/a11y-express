@@ -357,6 +357,7 @@ th {
   padding: 0.5em;
   text-align: left;
   background-color: white !important;
+  word-break: normal !important;
 }
 
 .summary-of-results-charts {
