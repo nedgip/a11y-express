@@ -351,10 +351,8 @@ div.filter input:focus {
   right: 0.2em;
 }
 
-.summary-of-findings td,
-.summary-of-findings th,
-.levelResults td,
-.levelResults th {
+td,
+th {
   border: 1px solid grey !important;
   padding: 0.5em;
   text-align: left;
