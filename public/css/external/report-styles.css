@@ -123,8 +123,7 @@ h2.new-page {
   }
   .score-container,
   .levelResults,
-  .summary-of-results-charts,
-  .summary-of-findings {
+  .summary-of-results-charts {
     break-inside: avoid;
   }
 }
