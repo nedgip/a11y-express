@@ -370,6 +370,11 @@ table.class3 td {
   border: none !important;
   margin-bottom: 1em;
 }
+table.class3 img {
+  width: 100%;
+  max-width: 15em;
+  height: auto;
+}
 
 @media only screen and (max-width: 600px) {
   .site-container {
