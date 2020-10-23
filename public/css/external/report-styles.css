@@ -359,6 +359,15 @@ th {
   background-color: white !important;
   word-break: normal !important;
 }
+table.class3 tr {
+  display: flex;
+  flex-direction: column;
+}
+
+table.class3 td {
+  border: none;
+  margin-bottom: 1em;
+}
 
 .summary-of-results-charts {
   /*   display: flex;
