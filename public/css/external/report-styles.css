@@ -353,6 +353,7 @@ div.filter input:focus {
 
 td,
 th {
+  /* Using important to override styles forced by the export tool */
   border: 1px solid grey !important;
   padding: 0.5em;
   text-align: left;
@@ -365,16 +366,9 @@ table.class3 tr {
 }
 
 table.class3 td {
-  border: none;
+  /* Using important to override styles forced by the export tool */
+  border: none !important;
   margin-bottom: 1em;
-}
-
-.summary-of-results-charts {
-  /*   display: flex;
-  justify-content:space-between;
-  align-items:center;
-  flex-wrap:wrap;
-  text-align:left; */
 }
 
 @media only screen and (max-width: 600px) {
