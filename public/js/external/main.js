@@ -948,7 +948,7 @@ let awsDomain = "https://intopia-cloud.s3-ap-southeast-2.amazonaws.com/"
 
 
 attachmentTable.forEach(function(attachment){
-  let key = attachment.parentElement.querySelector('ul').querySelector('.key-url').textContent
+  let key = attachment.parentElement.querySelector('ul .key-url a').textContent
   let projectKey = key.split('-')[0]
   console.log(projectKey)
   let issueHeading = attachment.parentElement.querySelector('.issue-section-heading').textContent;
