@@ -950,13 +950,9 @@ let awsDomain = "https://intopia-cloud.s3-ap-southeast-2.amazonaws.com/"
 attachmentTable.forEach(function(attachment){
   let key = attachment.parentElement.querySelector('ul .key-url a').textContent
   let projectKey = key.split('-')[0]
-  console.log(projectKey)
-  let issueHeading = attachment.parentElement.querySelector('.issue-section-heading').textContent;
-  let keySummary = key + "+" + issueHeading.replace(/\s+/g, '+')
-  console.log(keySummary)
    let linkNodelist = attachment.querySelectorAll('a')
    linkNodelist.forEach(function(link){
-     let fileName = link.textContent
+   let fileName = link.textContent
    let newUrl = awsDomain + projectKey + "/" + key + '/' + fileName
   console.log(newUrl)
    let imgThumbnail = attachment.querySelector('img');
