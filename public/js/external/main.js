@@ -957,7 +957,7 @@ attachmentTable.forEach(function(attachment){
    let linkNodelist = attachment.querySelectorAll('a')
    linkNodelist.forEach(function(link){
      let fileName = link.textContent
-   let newUrl = awsDomain + projectKey + "/" + keySummary + '/' + fileName
+   let newUrl = awsDomain + projectKey + "/" + key + '/' + fileName
   console.log(newUrl)
    let imgThumbnail = attachment.querySelector('img');
    imgThumbnail.setAttribute('src', newUrl)
