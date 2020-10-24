@@ -123,6 +123,8 @@ if (container.classList.contains("edit")) {
       }
     });
   }
+  
+  
   // Clear button
   const clearBtn = document.querySelectorAll(".clearBtn");
   const clearBtnArray = [...clearBtn];
@@ -316,28 +318,33 @@ if (container.classList.contains("edit")) {
 
   // Accordion code
 
-  const accordionContainer = document.querySelector(".accordion-container");
+  const accordionContainers = document.querySelectorAll(".accordion-container");
+  accordionContainers.forEach(function (accordionContainer) {
+    accordionContainer.addEventListener("click", function (e) {
+      const accordionHeader = e.target.closest(".accordion-header");
+      console.log(e.target);
+      const arrow = e.target.parentElement.querySelector(".arrow");
+      const accordion = e.target.closest(".accordion");
+      const accordionPanel = accordion.querySelector(".accordion-panel");
 
-  accordionContainer.addEventListener("click", function (e) {
-    const accordionHeader = e.target.closest(".accordion-header");
-    const arrow = e.target.querySelector(".arrow");
-    const accordionPanel = e.target.nextElementSibling;
-
-    if (accordionHeader) {
-      accordionPanel.classList.toggle("is-open");
-      const accordionInner = accordionPanel.querySelector(".accordion-inner");
-      if (accordionPanel.classList.contains("is-open")) {
-        accordionHeader.setAttribute("aria-expanded", "true");
-        arrow.classList.add("rotate-down");
-        arrow.classList.remove("rotate-up");
-        accordionInner.classList.remove("hidden");
-      } else {
-        accordionHeader.setAttribute("aria-expanded", "false");
-        arrow.classList.add("rotate-up");
-        arrow.classList.remove("rotate-down");
-        accordionInner.classList.add("hidden");
+      if (accordionHeader) {
+        accordionPanel.classList.toggle("is-open");
+        const accordionInner = accordionPanel.querySelector(".accordion-inner");
+        if (accordionPanel.classList.contains("is-open")) {
+          accordionHeader.setAttribute("aria-expanded", "true");
+          arrow.classList.add("rotate-down");
+          arrow.classList.remove("rotate-up");
+          accordionInner.classList.remove("hidden");
+          accordion.classList.remove("noprint");
+        } else {
+          accordionHeader.setAttribute("aria-expanded", "false");
+          arrow.classList.add("rotate-up");
+          arrow.classList.remove("rotate-down");
+          accordionInner.classList.add("hidden");
+          accordion.classList.add("noprint");
+        }
       }
-    }
+    });
   });
 
   // Clean file button
@@ -365,7 +372,10 @@ function clearContents() {
   return (tocContainer.innerHTML = "");
 }
 function addContentsHeading() {
-  return (tocContainer.innerHTML = '<h2 class="new-page">Contents</h2>');
+  return (tocContainer.innerHTML = `<div class="accordion">
+            <h2 class="h2 new-page" data-level="2"><button id="contents" aria-expanded="false" class="accordion-header" type="button">Contents<span aria-hidden="true" class="arrow right fas fa-chevron-up rotate-down noprint"></span></button></h2>
+            <div class="accordion-panel is-open">
+              <div class="accordion-inner toc-accordion">`);
 }
 
 function getPreviousHeading(heading) {
@@ -481,8 +491,9 @@ function loopThroughHeadingArray() {
 clearContents();
 addContentsHeading();
 const tocUl = createNestedUl();
+const tocAccordion = tocContainer.querySelector(".toc-accordion");
 tocUl.setAttribute("id", "toc");
-addUl(tocContainer, tocUl);
+addUl(tocAccordion, tocUl);
 loopThroughHeadingArray();
 
 // Filter
@@ -556,8 +567,8 @@ function removeAttributes(element, attributes) {
 // Adds the href on page load to avoid internal link issues when saving file locally
 document
   .querySelector("#skipToContentsHeading")
-  .setAttribute("href", "#contentsHeading");
-document.querySelector("#skipToTOC").setAttribute("href", "#toc10");
+  .setAttribute("href", "#contents");
+document.querySelector("#skipToIssues").setAttribute("href", "#issueButton");
 // Set focus on skip link targets
 const skipLinks = Array.prototype.slice.call(
   document.querySelectorAll(".skip-link")
@@ -885,26 +896,30 @@ function getNumberOfResultForLevel(result, level) {
       numberOfResultForLevel++;
     }
   });
-  
+
   return numberOfResultForLevel;
 }
 
 function getTotalSCForLevel(level) {
-  let arrayOfSCLevel = Array.prototype.slice.call(document.querySelectorAll('.lev'));
-  let total = 0
-  arrayOfSCLevel.forEach(function(l) {
-    if (l.textContent === level && l.nextElementSibling.classList.contains("visible-result")){
-      total ++
+  let arrayOfSCLevel = Array.prototype.slice.call(
+    document.querySelectorAll(".lev")
+  );
+  let total = 0;
+  arrayOfSCLevel.forEach(function (l) {
+    if (
+      l.textContent === level &&
+      l.nextElementSibling.classList.contains("visible-result")
+    ) {
+      total++;
     }
-  })
+  });
   return total;
 }
 
-function setTotalSCLevelResult(target, level){
+function setTotalSCLevelResult(target, level) {
   let td = document.querySelector(target);
-  td.textContent = getTotalSCForLevel(level)
+  td.textContent = getTotalSCForLevel(level);
 }
-
 
 function setSCPassFailLevelResult(target, result, level) {
   let td = document.querySelector(target);
@@ -927,7 +942,6 @@ function displayTableOfLevelResults() {
   let aaTotal = getTotalSCForLevel("AA");
   let aaaTotal = getTotalSCForLevel("AAA");
 
-  
   setSCPassFailLevelResult(".p-a", "Pass", "A");
   setSCPassFailLevelResult(".p-aa", "Pass", "AA");
   setSCPassFailLevelResult(".p-aaa", "Pass", "AAA");
@@ -943,21 +957,20 @@ displayTableOfLevelResults();
 displayPercentOfFailedSuccessCriteria();
 generatePieChart();
 
-const attachmentTable = document.querySelectorAll('.class3');
-let awsDomain = "https://intopia-cloud.s3-ap-southeast-2.amazonaws.com/"
+const attachmentTable = document.querySelectorAll(".class3");
+let awsDomain = "https://intopia-cloud.s3-ap-southeast-2.amazonaws.com/";
 
-
-attachmentTable.forEach(function(attachment){
-  attachment.setAttribute('role','presentation');
-  let key = attachment.parentElement.querySelector('ul .key-url a').textContent;
-  let projectKey = key.split('-')[0]
-   let linkNodelist = attachment.querySelectorAll('a')
-   linkNodelist.forEach(function(link){
-   let fileName = link.textContent
-   let newUrl = awsDomain + projectKey + "/" + key + '/' + fileName
-  console.log(newUrl)
-   let imgThumbnail = link.previousElementSibling.previousElementSibling;
-   imgThumbnail.setAttribute('src', newUrl)
-   link.setAttribute('href', newUrl)
-   })
-})
+attachmentTable.forEach(function (attachment) {
+  attachment.setAttribute("role", "presentation");
+  let key = attachment.parentElement.querySelector("ul .key-url a").textContent;
+  let projectKey = key.split("-")[0];
+  let linkNodelist = attachment.querySelectorAll("a");
+  linkNodelist.forEach(function (link) {
+    let fileName = link.textContent;
+    let newUrl = awsDomain + projectKey + "/" + key + "/" + fileName;
+    console.log(newUrl);
+    let imgThumbnail = link.previousElementSibling.previousElementSibling;
+    imgThumbnail.setAttribute("src", newUrl);
+    link.setAttribute("href", newUrl);
+  });
+});

@@ -1,17 +1,28 @@
 body {
   font-family: sans-serif;
-  font-size: 18px;
+  font-size: 1.2rem;
   line-height: 1.5em;
+}
+header {
+  width: 100%;
+  padding: 1em;
 }
 
 a {
   color: hsl(200, 90%, 30%);
+  padding: 0.1em;
+}
+
+a:focus {
+  outline: solid hsl(210, 0%, 35%);
 }
 
 table {
   border-collapse: collapse;
 }
-
+h2 {
+  font-size: 1.5rem;
+}
 .confluenceTh,
 .confluenceTd img {
   width: 5em;
@@ -80,8 +91,8 @@ table {
 }
 .btn {
   border: 1px solid;
-  border-radius: 0.3em;
-  padding: 0.1em 0.8em;
+  border-radius: 0.1em;
+  padding: 0.5em;
   font-size: 1.1em;
   background: white;
   cursor: pointer;
@@ -91,8 +102,12 @@ table {
   background: hsl(100, 0%, 90%);
 }
 .btn:focus {
-  box-shadow: 0 0 0 2px hsl(344, 85%, 49%);
+  box-shadow: 0 0 0 2px hsl(210, 75%, 35%);
   outline: transparent dotted 3px;
+}
+
+.btn-full {
+  width: 100%;
 }
 .save {
   margin-top: 1em;
@@ -132,7 +147,7 @@ h2.new-page {
   background: hsl(48, 90%, 68%);
 }
 .editLive:focus {
-  outline: 3px hsl(344, 85%, 49%) solid;
+  outline: 3px hsl(210, 75%, 35%) solid;
   padding: 0.2em;
 }
 
@@ -142,8 +157,8 @@ h2.new-page {
   position: fixed;
   /* 	top:0;
 	bottom:0; */
-  left: -20rem;
-  width: 20rem;
+  left: -18em;
+  width: 18em;
   border-right: solid black 1px;
   background: #f5f5f5;
   z-index: 100;
@@ -151,13 +166,14 @@ h2.new-page {
   top: 0;
   bottom: 0;
   transition: transform 0.3s ease-out;
+  overflow: hidden;
 }
 .site-container {
   transition: transform 0.3s ease-out;
 }
 .is-open .off-site-container,
 .is-open .site-container {
-  transform: translateX(20rem);
+  transform: translateX(18em);
 }
 /* Close button */
 .right-align {
@@ -166,7 +182,10 @@ h2.new-page {
   margin-right: 0.5em;
   top: 0.5em;
 }
-
+.top {
+  position: relative;
+  top: 2em;
+}
 /* Form */
 
 .intopia-form {
@@ -191,7 +210,7 @@ h2.new-page {
 .intopia-form input:focus,
 .intopia-form select:focus,
 .intopia-form textarea:focus {
-  box-shadow: 0 0 0 2px hsl(344, 85%, 49%);
+  box-shadow: 0 0 0 2px hsl(210, 75%, 35%);
   outline: transparent dotted 3px;
 }
 .intopia-form textarea {
@@ -217,21 +236,22 @@ h2.new-page {
 }
 
 .accordion-header {
-  font-size: 1.2em;
+  font-size: 1em;
   width: 100%;
-  border: 1px solid grey;
-  border-radius: 0.3em;
-  padding: 1em;
-  background: #f5f5f5;
+  border: none;
+  border-bottom: 0.1em solid black;
+  padding: 0.5em 0;
+  background: none;
   cursor: pointer;
   font-weight: 600;
   text-align: left;
   display: flex;
   justify-content: space-between;
   margin: 0.5em 0 0.2em 0;
+  align-items: center;
 }
 .accordion-header:focus {
-  box-shadow: 0 0 0 2px hsl(344, 85%, 49%);
+  box-shadow: 0 0 0 2px hsl(210, 85%, 35%);
   outline: transparent dotted 3px;
 }
 .accordion-panel {
@@ -247,8 +267,9 @@ h2.new-page {
 
 .accordion-inner {
   padding: 1em;
-  border: 1px solid grey;
-  border-radius: 0.3em;
+}
+.arrow {
+  font-size: 0.8em;
 }
 .rotate-up {
   transform: rotate(0deg);
@@ -263,23 +284,6 @@ h2.new-page {
   margin-top: 1em;
   font-weight: 600;
   border: 1px dashed grey;
-}
-.comment {
-  background: white;
-  opacity: 0.8;
-  padding: 1em 0.5em 1em 0.5em;
-  color: black;
-  font-size: 1rem;
-  font-weight: 600;
-  font-family: sans-serif;
-  z-index: 100;
-  border: 3px solid;
-  border-radius: 25px;
-}
-
-.comment:focus {
-  box-shadow: 0 0 0 2px hsl(344, 85%, 49%);
-  outline: transparent dotted 3px;
 }
 
 /* Filter */
@@ -303,7 +307,7 @@ div.filter input {
 }
 
 div.filter input:focus {
-  box-shadow: 0 0 0 2px hsl(344, 85%, 49%);
+  box-shadow: 0 0 0 2px hsl(210, 75%, 35%);
   outline: transparent dotted 3px;
 }
 
