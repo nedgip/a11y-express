@@ -166,7 +166,7 @@ h2.new-page {
   top: 0;
   bottom: 0;
   transition: transform 0.3s ease-out;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 .site-container {
   transition: transform 0.3s ease-out;
