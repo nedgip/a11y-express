@@ -111,6 +111,11 @@ h2 {
 }
 .save {
   margin-top: 1em;
+  background: hsl(210, 85%, 35%);
+  color: white;
+}
+.save:hover {
+  background: hsl(210, 85%, 25%);
 }
 
 /* Page media print styles */
@@ -204,7 +209,7 @@ h2.new-page {
   margin: 1em 0.5em 1em 0.5em;
   padding: 0.5em 1em;
   width: 80%;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-family: arial;
 }
 .intopia-form input:focus,
