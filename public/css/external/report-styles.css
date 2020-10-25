@@ -214,7 +214,7 @@ h2 {
   font-size: 1em;
   width: 100%;
   border: none;
-  border-bottom: 0.1em solid black;
+  border-bottom: 0.1em solid #d3420d;
   padding: 0.5em 0;
   background: none;
   cursor: pointer;
