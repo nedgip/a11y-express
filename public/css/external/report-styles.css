@@ -28,11 +28,12 @@ h2 {
   width: 5em;
 }
 
-.good-list li,
+/* .good-list li,
 .bad-list li,
 .technology-list li,
-.software-list li {
-  margin-bottom: 0.7em;
+.software-list  */
+li {
+  margin-bottom: 0.2em;
 }
 .issue img {
   max-width: 30em;
