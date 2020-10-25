@@ -118,36 +118,6 @@ h2 {
   background: hsl(210, 85%, 25%);
 }
 
-/* Page media print styles */
-@page {
-  size: A4;
-}
-@page :left {
-  margin-left: 20mm;
-}
-
-@page :right {
-  margin-left: 20mm;
-}
-h2.new-page {
-  page-break-before: always;
-}
-@page: left {
-  @bottom-left {
-    content: 'Page ' counter(page) ' of ' counter(pages);
-  }
-}
-@media print {
-  .noprint {
-    display: none;
-  }
-  .score-container,
-  .levelResults,
-  .summary-of-results-charts {
-    break-inside: avoid;
-  }
-}
-
 .editLive {
   background: hsl(48, 90%, 68%);
 }
@@ -403,5 +373,35 @@ table.class3 img {
   }
   .skip-link {
     display: none;
+  }
+}
+
+/* Page media print styles */
+@page {
+  size: A4;
+}
+@page :left {
+  margin-left: 20mm;
+}
+
+@page :right {
+  margin-left: 20mm;
+}
+h2.new-page {
+  page-break-before: always;
+}
+@page: left {
+  @bottom-left {
+    content: 'Page ' counter(page) ' of ' counter(pages);
+  }
+}
+@media print {
+  .noprint {
+    display: none !important;
+  }
+  .score-container,
+  .levelResults,
+  .summary-of-results-charts {
+    break-inside: avoid;
   }
 }
